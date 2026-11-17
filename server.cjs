@@ -14,7 +14,7 @@ const server=http.createServer((req,res)=>{
   if(!new RegExp(`^(127\\.0\\.0\\.1|localhost)(:${PORT})?$`,'i').test(req.headers.host||''))return send(res,403,{error:'本服务只接受本机地址。'});
   if(req.method!=='GET'&&req.method!=='HEAD')return send(res,405,{error:'只支持读取。'});
   let url;try{url=new URL(req.url,'http://127.0.0.1');}catch{return send(res,400,{error:'无效地址。'});}
-  if(url.pathname==='/api/health')return send(res,200,{app:'ziping-study',version:'0.3.0',localOnly:true,tz:process.versions.tz,icu:process.versions.icu,node:process.version});
+  if(url.pathname==='/api/health')return send(res,200,{app:'ziping-study',version:'0.7.2',localOnly:true,tz:process.versions.tz,icu:process.versions.icu,node:process.version});
   if(url.pathname==='/api/search'){
     const q=(url.searchParams.get('q')||'').trim(),book=url.searchParams.get('book')||'',offset=Math.max(0,Math.min(15000,Number(url.searchParams.get('offset'))||0));
     if(q.length>80||!/^$|^BK0[1-7]$/.test(book))return send(res,400,{error:'检索参数无效。'});
@@ -25,7 +25,7 @@ const server=http.createServer((req,res)=>{
   }
   let pathname;try{pathname=decodeURIComponent(url.pathname);}catch{return send(res,400,{error:'无效编码。'});}
   if(pathname==='/'||pathname==='/index.html')pathname='/index.html';
-  const allowed=pathname==='/index.html'||['/app.js','/content.js','/academy.js','/academy-advanced.js','/reading.js','/engine.js','/styles.css'].includes(pathname)||/^\/books\/BK0[1-7]\.js$/.test(pathname)||/^\/assets\/[a-zA-Z0-9_.-]+$/.test(pathname)||/^\/vendor\/(lunar.js|lunar.LICENSE)$/.test(pathname);
+  const allowed=pathname==='/index.html'||['/app.js','/content.js','/academy.js','/academy-advanced.js','/lessons-deep.js','/lessons-order.js','/cases-deep.js','/reading.js','/engine.js','/places.js','/extra.js','/styles.css'].includes(pathname)||/^\/books\/BK0[1-7]\.js$/.test(pathname)||/^\/assets\/[a-zA-Z0-9_.-]+$/.test(pathname)||/^\/vendor\/(lunar.js|lunar.LICENSE)$/.test(pathname);
   if(!allowed)return send(res,404,{error:'未提供此文件。'});
   const filename=path.join(ROOT,pathname);
   fs.readFile(filename,(err,data)=>{

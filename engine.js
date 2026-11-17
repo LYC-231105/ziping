@@ -70,7 +70,9 @@
   }
   function factsAt(input,a,utc){
     const mode=input.clock||'civil',lon=Number(input.longitude),corr=mode==='true'?eot(utc):0;
-    const clock=mode==='civil'?wallStamp(zonedParts(utc,input.timezone)):utc+lon*240000+corr*60000;
+    const wallClock=wallStamp(zonedParts(utc,input.timezone));
+    const lonOK=Number.isFinite(lon);
+    const clock= mode==='civil'?wallClock : utc+lon*240000+corr*60000;
     const dayEC=solarAt(clock).getLunar().getEightChar();dayEC.setSect(Number(input.dayBoundary)===23?1:2);
     const bj=solarAt(utc+8*3600000).getLunar(),bjEC=bj.getEightChar();
     let day=dayEC.getDay(),time=dayEC.getTime();
@@ -78,7 +80,16 @@
       time=GAN[mod(GAN.indexOf(day[0])*2,10)]+'子';
     }
     const ps=[bjEC.getYear(),bjEC.getMonth(),day,time];
-    return {pillars:ps,day,clock,correction:corr,lunar:`${bj.getYearInChinese()}年 ${bj.getMonthInChinese()}月${bj.getDayInChinese()}`,lunarNumeric:[bj.getYear(),bj.getMonth(),bj.getDay()],details:ps.map(p=>pillarDetail(p,day[0]))};
+    const lmtWall=lonOK?utc+lon*240000:null,trueWall=lonOK?utc+lon*240000+corr*60000:null;
+    const solar=lonOK?{
+      mode,clockWall:formatWall(wallClock),lmtWall:formatWall(lmtWall),trueWall:formatWall(trueWall),
+      lonMinutes:lon*4,LON:lon,
+      zoneMinutes:(wallClock-utc)/60000,
+      eotMinutes:corr,
+      longitudeCorrection:lon*4-(wallClock-utc)/60000,
+      totalMinutes:mode==='civil'?0:(lon*4-(wallClock-utc)/60000)+corr
+    }:null;
+    return {pillars:ps,day,clock,correction:corr,solar,lunar:`${bj.getYearInChinese()}年 ${bj.getMonthInChinese()}月${bj.getDayInChinese()}`,lunarNumeric:[bj.getYear(),bj.getMonth(),bj.getDay()],details:ps.map(p=>pillarDetail(p,day[0]))};
   }
   function addWall(t,years,months,days,hours){
     const d=new Date(t),orig=d.getUTCDate();d.setUTCDate(1);d.setUTCFullYear(d.getUTCFullYear()+years);d.setUTCMonth(d.getUTCMonth()+months);
@@ -124,7 +135,7 @@
     return out;
   }
   function calculate(input){
-    input={timezone:'Asia/Shanghai',clock:'civil',gender:'male',dayBoundary:0,ziStem:'next',...input};
+    input={timezone:'Asia/Shanghai',clock:'true',gender:'male',dayBoundary:0,ziStem:'next',...input};
     if(!['civil','mean','true'].includes(input.clock))throw Error('未知时间口径。');
     if(!['male','female'].includes(input.gender))throw Error('请选择用于传统顺逆规则的参数。');
     try{zonedParts(Date.now(),input.timezone);}catch{throw Error('IANA时区无效，请选择列表中的时区或填写有效名称。');}
@@ -170,7 +181,18 @@
     const dg=GAN.indexOf(f.day[0]),life=f.details.map(p=>{
       const starts=[11,6,2,9,2,9,5,0,8,3];return ['长生','沐浴','冠带','临官','帝旺','衰','病','死','墓','绝','胎','养'][mod((ZHI.indexOf(p.branch)-starts[dg])*(dg%2?-1:1),12)];
     });
-    return {input,unknownTime:false,uncertain:timeAlternatives.length>1,timeAlternatives,utc,offsetMinutes:offsetAt(utc,input.timezone),civil:formatWall(wallStamp(a)),clock:formatWall(f.clock),correction:f.correction,
+    // 校正前后对比：同一瞬间，民用钟表时与真太阳时分别落到的时柱
+    let hourCompare=null;
+    if(Number.isFinite(Number(input.longitude))){
+      try{
+        const civilP=factsAt({...input,clock:'civil'},a,utc).pillars;
+        const trueP=factsAt({...input,clock:'true'},a,utc).pillars;
+        hourCompare={civil:civilP,true:trueP,dayChanged:civilP[2]!==trueP[2],hourChanged:civilP[3]!==trueP[3],
+          civilBranch:civilP[3][1],trueBranch:trueP[3][1],applied:input.clock==='true'};
+      }catch(e){hourCompare=null;}
+    }
+    if(hourCompare&&hourCompare.hourChanged)warnings.push(`出生地真太阳时与钟表时跨越时辰分界：按钟表时为${hourCompare.civil[3]}，校正后为${hourCompare.true[3]}。本盘采用校正后结果，请核对出生记录时刻与出生地经度；若读数本身有误差，请在高级设置比较候选盘。`);
+    return {input,unknownTime:false,uncertain:timeAlternatives.length>1,timeAlternatives,utc,offsetMinutes:offsetAt(utc,input.timezone),civil:formatWall(wallStamp(a)),clock:formatWall(f.clock),correction:f.correction,solar:f.solar,hourCompare,
       lunar:f.lunar,lunarDateBasis:'同一瞬间的UTC+8农历读数',pillars:f.pillars,details:f.details,dayMaster:f.day[0],counts,roots,life,
       relations:relations(f.pillars),before,after,luck:luck(input,utc,f),warnings,engine:'lunar-javascript 1.7.8 + ziping 0.1.0',solarAlternatives:input.clock==='true'?[-120000,120000].map(delta=>({shiftMinutes:delta/60000,pillars:factsAt(input,a,utc+delta).pillars})):[],
       ziAlternative:arrAt(f.clock)[3]===23?factsAt({...input,dayBoundary:Number(input.dayBoundary)===23?0:23},a,utc).pillars:null};

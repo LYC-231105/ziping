@@ -18,7 +18,7 @@
   }
   return out;
  }
- function occurrences(c,which){const gods=Array.isArray(which)?which:groups[which],out=[];c.details.forEach((p,i)=>{const pos=['年','月','日','时'][i];if(i!==2&&gods.includes(p.god))out.push({god:p.god,stem:p.stem,pos:pos+'干',visible:true,index:i});p.hidden.forEach((h,k)=>{if(gods.includes(h.god))out.push({god:h.god,stem:h.stem,pos:pos+'支'+p.branch+'藏'+(k===0?'本气':'气'),visible:false,index:i});});});return out;}
+ function occurrences(c,which){const gods=Array.isArray(which)?which:groups[which],out=[];c.details.forEach((p,i)=>{const pos=['年','月','日','时'][i];if(i!==2&&gods.includes(p.god))out.push({god:p.god,stem:p.stem,pos:pos+'干',visible:true,index:i});p.hidden.forEach((h,k)=>{if(gods.includes(h.god))out.push({god:h.god,stem:h.stem,pos:pos+'支'+p.branch+'藏'+(k===0?'本气':k===1?'中气':'余气'),visible:false,index:i});});});return out;}
  const list=a=>a.map(x=>x.pos+x.stem+'（'+x.god+'）').join('；')||'原局明干及固定藏干表中未检出';
  function strength(c){
   const dm=Z.element(c.dayMaster),month=c.details[1].hidden[0],mg=month.god;
