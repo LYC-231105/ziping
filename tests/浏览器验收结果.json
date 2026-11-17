@@ -1,0 +1,110 @@
+{
+  "created_at": "2026-11-16T15:00:52.567Z",
+  "passed": 24,
+  "failed": 0,
+  "errors": [],
+  "results": [
+    {
+      "name": "首屏四柱和字段",
+      "passed": true
+    },
+    {
+      "name": "大运流年切换",
+      "passed": true
+    },
+    {
+      "name": "计算依据对话框",
+      "passed": true
+    },
+    {
+      "name": "详批与教学独立",
+      "passed": true
+    },
+    {
+      "name": "原文入口",
+      "passed": true
+    },
+    {
+      "name": "报告下载",
+      "passed": true
+    },
+    {
+      "name": "教学48讲与十神练习",
+      "passed": true
+    },
+    {
+      "name": "练习换题",
+      "passed": true
+    },
+    {
+      "name": "学习进度与笔记保存",
+      "passed": true
+    },
+    {
+      "name": "古籍完整检索",
+      "passed": true
+    },
+    {
+      "name": "HTTP古籍完整阅读与分页",
+      "passed": true
+    },
+    {
+      "name": "命盘本地保存与恢复",
+      "passed": true
+    },
+    {
+      "name": "公历农历切换保持同日",
+      "passed": true
+    },
+    {
+      "name": "未知时刻阻止唯一详批",
+      "passed": true
+    },
+    {
+      "name": "错误输入显示可读提示",
+      "passed": true
+    },
+    {
+      "name": "其他独立入口",
+      "passed": true
+    },
+    {
+      "name": "输入以文字渲染",
+      "passed": true
+    },
+    {
+      "name": "时间误差范围触发候选与详批限制",
+      "passed": true
+    },
+    {
+      "name": "手机排盘无整页横溢出",
+      "passed": true
+    },
+    {
+      "name": "手机教学入口与布局",
+      "passed": true
+    },
+    {
+      "name": "手机详批布局",
+      "passed": true
+    },
+    {
+      "name": "手机资料与记录菜单可达",
+      "passed": true
+    },
+    {
+      "name": "本机HTTP数据访问范围",
+      "passed": true
+    },
+    {
+      "name": "页面无运行时异常",
+      "passed": true
+    }
+  ],
+  "browser": "157.0.4341.60",
+  "viewports": [
+    "1440x1080",
+    "390x844"
+  ],
+  "mode": "HTTP本机服务；V0.2"
+}

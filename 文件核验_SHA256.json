@@ -1,0 +1,347 @@
+{
+  "version": "0.3",
+  "createdAt": "2026-11-16T16:00:52.404119+00:00",
+  "scope": "网页交付文件完整性；不认证预测效果",
+  "files": [
+    {
+      "path": ".gitattributes",
+      "bytes": 251,
+      "sha256": "da9ebaeabbad4655e5a1b74fb4ba79f83a45de0a2310060f8e8c4ef06e8466f3"
+    },
+    {
+      "path": ".gitignore",
+      "bytes": 501,
+      "sha256": "122e42ac17220c62a77b768de497ddcc700937e33556af0f2ad4e137280a34c1"
+    },
+    {
+      "path": "academy-advanced.js",
+      "bytes": 41992,
+      "sha256": "95d9634ba9f17f2654f1d8fa905ad746814611e3820d23dae0b26541d742abc3"
+    },
+    {
+      "path": "academy.js",
+      "bytes": 43512,
+      "sha256": "88c24101f063680d02dea327234d6b9059f1288154fb2afecd6b16d8ac51b992"
+    },
+    {
+      "path": "AGENTS.md",
+      "bytes": 2957,
+      "sha256": "02041cff9f86fad822f45df3bd5dadd918451745b4bfc94005e9111c382997b6"
+    },
+    {
+      "path": "app.js",
+      "bytes": 106400,
+      "sha256": "6d5703a55e10eca0651b32b995e4d338f0b3f1a8f5bea7160d735cba69f248d3"
+    },
+    {
+      "path": "assets/seal.svg",
+      "bytes": 350,
+      "sha256": "19148b2f1f304b0966d61f01070e184474a1d5d3026e601b4aa13c20ae5ac9d3"
+    },
+    {
+      "path": "books/BK01.js",
+      "bytes": 216452,
+      "sha256": "b09159e00f4e751fe83102e2d30c58b22b6f234d644fec308d1856a4cb6e3424"
+    },
+    {
+      "path": "books/BK02.js",
+      "bytes": 3694494,
+      "sha256": "6948f5c692ee3aaabacbc1066bc11166b6b063e43c4b255fb2c46cb0fc7fe97a"
+    },
+    {
+      "path": "books/BK03.js",
+      "bytes": 1055178,
+      "sha256": "0437d605238e1b2431491c008d649247cfc8f9e627c4138ec365763046a1883c"
+    },
+    {
+      "path": "books/BK04.js",
+      "bytes": 723130,
+      "sha256": "81c57aa7840f9abbf18db4185608c229e0e2346e67a4ff4480127ab75bc2f054"
+    },
+    {
+      "path": "books/BK05.js",
+      "bytes": 344090,
+      "sha256": "51a06cf2dd5f4d1136648bb6ca5667ce95695bfa664637e9b0a9eb07dd8dded6"
+    },
+    {
+      "path": "books/BK06.js",
+      "bytes": 1496403,
+      "sha256": "a2b0bb85141de6194725f3dbb4e5bd815c8d3b8774c4e0f264c240990ceb7193"
+    },
+    {
+      "path": "books/BK07.js",
+      "bytes": 268311,
+      "sha256": "528fe6767b5213e79bff50d4fbbef562639bdade699e142e4264ebfd6c4d580e"
+    },
+    {
+      "path": "content.js",
+      "bytes": 276424,
+      "sha256": "610e637d6a9f31f4ed56a1dc1b0a307876de5d6c370d31eede5464c84dd15a8d"
+    },
+    {
+      "path": "engine.js",
+      "bytes": 16286,
+      "sha256": "acf6601a42964b81d92924cd218d2197fb4e0593869ec90f1093c373d5adbdca"
+    },
+    {
+      "path": "index.html",
+      "bytes": 3270,
+      "sha256": "2e0b04fda04a19f9bb052feaf4a4317d7b0b7ef4cb4ebaa02d2f2e952e7a3f32"
+    },
+    {
+      "path": "package.json",
+      "bytes": 347,
+      "sha256": "1c13aad8acaf3a950061608a8effd837f2869b660d05af5acc381170b1a21a55"
+    },
+    {
+      "path": "private/passages.jsonl",
+      "bytes": 8163040,
+      "sha256": "4cc148eb663e65e2b7e4578b1a8d564e990f0a1e0230a2c9a1d670bb3569981b"
+    },
+    {
+      "path": "reading.js",
+      "bytes": 26825,
+      "sha256": "082d257565d1da374f5c854aced6345649a9841126774ad6458f4e39dd9c0482"
+    },
+    {
+      "path": "README.md",
+      "bytes": 2468,
+      "sha256": "7d765d26ca21e6dbccd1b443dc717103696c7f5c025b2f07126036f955a4706c"
+    },
+    {
+      "path": "references/GitHub公开范围与来源核验.json",
+      "bytes": 1725,
+      "sha256": "80283b644ee3454797f9c7592229fb62c4a5219fd9d73bc9a9386f5df13cee84"
+    },
+    {
+      "path": "references/V0.1_验收记录_历史.md",
+      "bytes": 3225,
+      "sha256": "00c76c72ffcfae73b64bb066ac284b1287e5b9fde12cc8608f2d2b66f6590b7f"
+    },
+    {
+      "path": "references/V03_补充教学来源核验.json",
+      "bytes": 4450,
+      "sha256": "006266f7fe576d80045030fc0ed2c1efe42c04f1812413654c656c98383971a1"
+    },
+    {
+      "path": "references/男女取法与教学修订说明.md",
+      "bytes": 1552,
+      "sha256": "492bf8f9d7df61d3bd64517c882e46824331bc2f7585ef0a04ad3a28ad4781d5"
+    },
+    {
+      "path": "references/男女教学_原文核验.json",
+      "bytes": 15543,
+      "sha256": "e5d013c73746d4ad2085f14f4fde7aba8e49e1fe5b1830ec5db9497ef6b92d4c"
+    },
+    {
+      "path": "references/离线书库核验.json",
+      "bytes": 1533,
+      "sha256": "079eb5dbd3612137ee60d83a4f6431f52c081d462b780c9107984d5bf0f923fb"
+    },
+    {
+      "path": "references/联网资料核验.json",
+      "bytes": 2880,
+      "sha256": "543b70af9e023ce8409107625036f637aa00fd8ea6b5c81f3205b77fcf2bbeb2"
+    },
+    {
+      "path": "references/详批方法研究.md",
+      "bytes": 2685,
+      "sha256": "6ea2a8f701c2f3e9e048c31bd41031ab1dac339a66f57d27259c7ba664fe5701"
+    },
+    {
+      "path": "server.cjs",
+      "bytes": 4711,
+      "sha256": "43cb2310a97a3c53c6cbf07999e72104849a13cf1dbc034d0237290be2b2eb55"
+    },
+    {
+      "path": "styles.css",
+      "bytes": 35616,
+      "sha256": "04f8585d28c35253dd14a0f53d21d417c6a9fbef0ba0affe8ce958eb761e449f"
+    },
+    {
+      "path": "tests/engine.test.cjs",
+      "bytes": 9178,
+      "sha256": "0f8155a9f87916f91511fb79c96fc28ace8432fd5929cb7d525ea56a0dd175bf"
+    },
+    {
+      "path": "tests/fixtures/sxtwl_1500参考盘.json",
+      "bytes": 676783,
+      "sha256": "b93f269e478841f8476c1762070a7cb15cd81c6051eccecb47ee4ea425748ec3"
+    },
+    {
+      "path": "tests/fixtures/节令边界待集成测试.json",
+      "bytes": 53627,
+      "sha256": "8deba8a9f50249a3db564485ad1ff7a70998f104fbb95d52e75b344edb48836c"
+    },
+    {
+      "path": "tests/GitHub同步规则验收.json",
+      "bytes": 955,
+      "sha256": "f4a0212bbbff64064c79514a1825049ad0714f9fb2d72b018d8fd9f09d8a81b2"
+    },
+    {
+      "path": "tests/reading.test.cjs",
+      "bytes": 6218,
+      "sha256": "45d0df025031dce98b8ae3d9333390d788fb8f186efa69a0bd66e4f26c80d75d"
+    },
+    {
+      "path": "tests/V02_D盘实际打开验收.json",
+      "bytes": 902,
+      "sha256": "fc4a69bbeea896fc8d7ce98f280a0c30fa5ae3d17a6353e0194a632a9ce11db8"
+    },
+    {
+      "path": "tests/V02_书库完整性.json",
+      "bytes": 1145,
+      "sha256": "a23d5d8c32262b1d18f4acc746dcd117bded60bcf638b97ca7d17e337a3d8b3a"
+    },
+    {
+      "path": "tests/V02_离线与教学验收.json",
+      "bytes": 2355,
+      "sha256": "81231742c4f1e836839f5ab7a30bcb9074e67399c395867f0aadf1c3f70f6318"
+    },
+    {
+      "path": "tests/V03_D盘实际验收.json",
+      "bytes": 1939,
+      "sha256": "b888e76b0f6803530424563d63305f503edb5b663a7d10a820f921699bf094fa"
+    },
+    {
+      "path": "tests/V03_浏览器综合验收.json",
+      "bytes": 4663,
+      "sha256": "702e5a980337e273ae7a14d1b4b4c069395454eefc1ecd7d23f97e1b14431923"
+    },
+    {
+      "path": "tests/V03_详批与教学逻辑验收.json",
+      "bytes": 7268,
+      "sha256": "393548209f580c6184bf9c7d9bb8655de7aba3e9bbdb3075ca76f0d850b1301a"
+    },
+    {
+      "path": "tests/浏览器验收结果.json",
+      "bytes": 2169,
+      "sha256": "fa556e551258881996f0382fb0011d3986a9a004b45feacc59868a873cf17810"
+    },
+    {
+      "path": "tests/计算测试结果.json",
+      "bytes": 1350,
+      "sha256": "c5bfbbc672a050cbe8afd0260cfbf3a8604edfff55eb75ec0df9f3ef9ed98a04"
+    },
+    {
+      "path": "upload-github.ps1",
+      "bytes": 6068,
+      "sha256": "5701b4c138539732ac518e903de1106412c48fe761f30aca62a52f141b9cd811"
+    },
+    {
+      "path": "vendor/lunar.js",
+      "bytes": 436585,
+      "sha256": "84f0105dd1c0be1c39990a0f38084f857901b1368c787c70b5687c8afd02298a"
+    },
+    {
+      "path": "vendor/lunar.LICENSE",
+      "bytes": 1061,
+      "sha256": "d9210caf1844dcf410095cea464b79800aad30dbd49df092076b9f0ddc015404"
+    },
+    {
+      "path": "上传GitHub.cmd",
+      "bytes": 186,
+      "sha256": "6538737ea9f64b596ab4f39b4d04dce64078453dab981742d9e0dd96696c88a1"
+    },
+    {
+      "path": "使用说明.md",
+      "bytes": 7640,
+      "sha256": "fa9cd25dbe0b215d84ef90d4d3e64ed9e72075c5a7bc2a2a59a79f2b78cddf92"
+    },
+    {
+      "path": "启动网页.cmd",
+      "bytes": 601,
+      "sha256": "d20ba64698763fb542e76a9413796eea54d46cf037e1fb61bff85567294d65f2"
+    },
+    {
+      "path": "更新说明_V0.2.md",
+      "bytes": 1799,
+      "sha256": "717200e2b20d39ed010e0fc602760b1ceb514feaab0860bc1f96650fa62c5556"
+    },
+    {
+      "path": "更新说明_V0.3.md",
+      "bytes": 2257,
+      "sha256": "c86b81cba823d43eb6ac01e71200227b3ea6b374113b064f9c71c581ed71624f"
+    },
+    {
+      "path": "验收截图/01_排盘_桌面.png",
+      "bytes": 158900,
+      "sha256": "81133de413931ba1e30501b1f3e7d4e1b1d3dfa32393cfcd1726e694573dae36"
+    },
+    {
+      "path": "验收截图/02_详批_桌面.png",
+      "bytes": 123941,
+      "sha256": "13ad1361e0845bd16f1c7fb386e111d2e9486267c5dd1d8cdb10d5b9f8fe42e0"
+    },
+    {
+      "path": "验收截图/03_教学_桌面.png",
+      "bytes": 122328,
+      "sha256": "3e0a5a14e7939fedf441214e140b80a910b2c4413f24b59a18f6eee9f9e34265"
+    },
+    {
+      "path": "验收截图/04_书斋_桌面.png",
+      "bytes": 125027,
+      "sha256": "3654ad590ae2daba65b657443fb9d5acdd831c3a0b7ffa9144149086e2d6ae59"
+    },
+    {
+      "path": "验收截图/05_排盘_手机.png",
+      "bytes": 130609,
+      "sha256": "b7943c55056bae55fbf73bb86042f7d2a5babfb444eab1aabc33ede1ffcf3211"
+    },
+    {
+      "path": "验收截图/06_教学_手机.png",
+      "bytes": 236875,
+      "sha256": "109130ad7a8690637565247b6cea6826f2c7a3036ad5c8a73b6cb248101b835c"
+    },
+    {
+      "path": "验收截图/07_离线全文阅读.png",
+      "bytes": 137540,
+      "sha256": "9b2c397498ee1ffcc087026532a3ec3fad5a1be16ad1b88a974a442b31adac69"
+    },
+    {
+      "path": "验收截图/08_男女教学专题.png",
+      "bytes": 103417,
+      "sha256": "8dcc2ed1a6f9c7731b9deab169bee8d0792501a285aac64637c52fe78cbac05b"
+    },
+    {
+      "path": "验收截图/09_十二步女命实训.png",
+      "bytes": 80628,
+      "sha256": "b3f439b996328198490a0be583aecebe805e0ade7b8b8c0cf2f0534ab30e1385"
+    },
+    {
+      "path": "验收截图/10_离线阅读_手机.png",
+      "bytes": 36547,
+      "sha256": "9d1f95d615683605841acf48608a01ac9ffe1ac0585218f1196f783e35075e4b"
+    },
+    {
+      "path": "验收截图/11_V03_手动地点.png",
+      "bytes": 131998,
+      "sha256": "6a48c9aaac02800edfa64864c6603d390a327005c9d48c2ee1fa8c27910a0d21"
+    },
+    {
+      "path": "验收截图/12_V03_大运流年.png",
+      "bytes": 175269,
+      "sha256": "34bfdc4c9d260047aea5f54c6b96070af9734cb699131df0849ed47fcc4bff83"
+    },
+    {
+      "path": "验收截图/13_V03_基础总表.png",
+      "bytes": 75164,
+      "sha256": "0b88b41b81d3145b5fa5e30430b474fd351a18c45a2e8758608819b31eb75af7"
+    },
+    {
+      "path": "验收截图/14_V03_流年手机.png",
+      "bytes": 49100,
+      "sha256": "ed289ac1b9334cc58a7fefcaacef8ec936fc87e555c4a7209780c3823a6daa8d"
+    },
+    {
+      "path": "验收截图/测试报告导出.md",
+      "bytes": 11434,
+      "sha256": "690286b1469b23d8b7e2cc72d1738e072b5e5abbc2d4a41a4570a3c55d301cdb"
+    },
+    {
+      "path": "验收记录.md",
+      "bytes": 2810,
+      "sha256": "554462c7104c310ab0ab351151893430350190b83e6a1a0ca1bc28227e0ad3b9"
+    }
+  ]
+}

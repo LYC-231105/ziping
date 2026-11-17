@@ -1,0 +1,123 @@
+{
+  "createdAt": "2026-11-16T15:34:44.038293+00:00",
+  "purpose": "V0.3 旺衰、六亲、财运、健康传统理论定位与证据边界，原文仅作为历史理论来源",
+  "online_checks": [
+    {
+      "id": "BK01",
+      "url": "https://raw.githubusercontent.com/china-testing/bazi/33b18354d5407727640e545c3aaec0efb4bf5282/books/zipingzhenquan.md",
+      "status": 200,
+      "bytes": 73359,
+      "sha256": "a0b1954eceb356f629c184a7066099f87185b6ab3e78d2b2e45f6c8c64848adc",
+      "accessedAt": "2026-11-16T15:34:45.686262+00:00",
+      "paragraph_matches": [
+        {
+          "id": "BK01-L124-C0",
+          "normalized_found": true
+        },
+        {
+          "id": "BK01-L128-C0",
+          "normalized_found": true
+        },
+        {
+          "id": "BK01-L148-C0",
+          "normalized_found": true
+        },
+        {
+          "id": "BK01-L354-C0",
+          "normalized_found": true
+        },
+        {
+          "id": "BK01-L358-C0",
+          "normalized_found": true
+        }
+      ]
+    },
+    {
+      "id": "BK02",
+      "url": "https://raw.githubusercontent.com/daizhige-org/daizhigev20/409cd37f76567ba5631a0a0557b18566b0f20054/%E6%98%93%E8%97%8F/%E6%9C%AF%E6%95%B0/%E4%B8%89%E5%91%BD%E9%80%9A%E4%BC%9A.md",
+      "status": 200,
+      "bytes": 1433745,
+      "sha256": "8b368af812544f731cf62834937edf5eb6a1c954486f54797956b9f0fd0fb121",
+      "accessedAt": "2026-11-16T15:34:46.225491+00:00",
+      "paragraph_matches": [
+        {
+          "id": "BK02-L2121-C0",
+          "normalized_found": true
+        }
+      ]
+    },
+    {
+      "id": "BK04",
+      "url": "https://raw.githubusercontent.com/daizhige-org/daizhigev20/409cd37f76567ba5631a0a0557b18566b0f20054/%E6%98%93%E8%97%8F/%E6%9C%AF%E6%95%B0/%E6%BB%B4%E5%A4%A9%E9%AB%93%E9%98%90%E5%BE%AE.md",
+      "status": 200,
+      "bytes": 407520,
+      "sha256": "9f8a5dceff649585f855a1feb6a54436a11bfaf997fb8dbb2e26a3c4d7eaa19b",
+      "accessedAt": "2026-11-16T15:34:46.222245+00:00",
+      "paragraph_matches": [
+        {
+          "id": "BK04-L3142-C0",
+          "normalized_found": true
+        }
+      ]
+    },
+    {
+      "id": "NCCIH",
+      "url": "https://www.nccih.nih.gov/health/traditional-chinese-medicine-what-you-need-to-know",
+      "status": 200,
+      "bytes": 532315,
+      "sha256": "d63323a1890dab87b8dc7fb5bba7ac8a9383d8bc3246415b2f3e19b0b16588aa",
+      "accessedAt": "2026-11-16T15:34:48.097070+00:00",
+      "title": "Traditional Chinese Medicine: What You Need To Know | NCCIH",
+      "use": "用于传统医学概念与现代证据的边界说明；不证明八字疾病预测有效"
+    }
+  ],
+  "local_sources": [
+    {
+      "id": "BK01-L124-C0",
+      "chapter": "六、论十干得时不旺失时不弱",
+      "sha256": "fc1c18f093f32ff4200172c77ab65c22b568a8fdbcba707c7260b0aec802efaa",
+      "review_status": "待校勘"
+    },
+    {
+      "id": "BK01-L128-C0",
+      "chapter": "六、论十干得时不旺失时不弱",
+      "sha256": "fb22d1ccf3730e6337410e93891fbc32f1e06333c154093c961bb8169a2bc296",
+      "review_status": "待校勘"
+    },
+    {
+      "id": "BK01-L148-C0",
+      "chapter": "八、论用神",
+      "sha256": "52971a7c44e5d0c81aec4ad15c1a9411e241ff072b51caf76ff87e2860186ad5",
+      "review_status": "待校勘"
+    },
+    {
+      "id": "BK01-L354-C0",
+      "chapter": "二十四、论妻子",
+      "sha256": "87db17550fa63214011bea0c00fcb2d7b29a7939273596c71f557f0693a6f435",
+      "review_status": "待校勘"
+    },
+    {
+      "id": "BK01-L358-C0",
+      "chapter": "二十四、论妻子",
+      "sha256": "3e7197ab482b2c6b0f83600467f347c3eb79625650172126d2fb5998024a6979",
+      "review_status": "待校勘"
+    },
+    {
+      "id": "BK02-L2121-C0",
+      "chapter": "未分章",
+      "sha256": "dc1e74f97b6d9782ebd412261f1964f20c8928f5246081dcfe8a0f60debdfe67",
+      "review_status": "待校勘"
+    },
+    {
+      "id": "BK04-L3142-C0",
+      "chapter": "未分章",
+      "sha256": "5165b406020c394d56de6495853b0f0fe6068d41ba9b402d883c12ca7dd9c5ed",
+      "review_status": "待校勘"
+    }
+  ],
+  "conventions": [
+    "天干四冲与地支六破明确作为所采传统列表，不冒充各书一致结论。",
+    "三刑仅三支齐见列出，两支刑与自刑作用保留异说。",
+    "网络本待校勘，文本核验不等于预测效果验证。"
+  ]
+}

@@ -1,0 +1,117 @@
+{
+  "createdAt": "2026-11-16T14:57:51.409Z",
+  "mode": "file://，含断网检索",
+  "passed": 27,
+  "failed": 0,
+  "results": [
+    {
+      "name": "直接打开网页可进入书库",
+      "passed": true
+    },
+    {
+      "name": "file协议完整读取 BK01",
+      "passed": true
+    },
+    {
+      "name": "file协议完整读取 BK02",
+      "passed": true
+    },
+    {
+      "name": "file协议完整读取 BK03",
+      "passed": true
+    },
+    {
+      "name": "file协议完整读取 BK04",
+      "passed": true
+    },
+    {
+      "name": "file协议完整读取 BK05",
+      "passed": true
+    },
+    {
+      "name": "file协议完整读取 BK06",
+      "passed": true
+    },
+    {
+      "name": "file协议完整读取 BK07",
+      "passed": true
+    },
+    {
+      "name": "书目目录翻页和书签",
+      "passed": true
+    },
+    {
+      "name": "本书检索与前后文",
+      "passed": true
+    },
+    {
+      "name": "原文来源和字号",
+      "passed": true
+    },
+    {
+      "name": "断网全文检索七书",
+      "passed": true
+    },
+    {
+      "name": "教学48讲和男女专题",
+      "passed": true
+    },
+    {
+      "name": "已读与通过小测分别保存",
+      "passed": true
+    },
+    {
+      "name": "整盘实训六样本十二步",
+      "passed": true
+    },
+    {
+      "name": "独立模式隐藏参考并保存作业",
+      "passed": true
+    },
+    {
+      "name": "实训确定题真实判错再通过",
+      "passed": true
+    },
+    {
+      "name": "男女对照实际重算",
+      "passed": true
+    },
+    {
+      "name": "女命示范和六样本可用",
+      "passed": true
+    },
+    {
+      "name": "作业与学习备份导出",
+      "passed": true
+    },
+    {
+      "name": "学习备份可导入恢复",
+      "passed": true
+    },
+    {
+      "name": "男命女命详批分支",
+      "passed": true
+    },
+    {
+      "name": "手机页面无整页横溢 library/BK02/200",
+      "passed": true
+    },
+    {
+      "name": "手机页面无整页横溢 learn/L36",
+      "passed": true
+    },
+    {
+      "name": "手机页面无整页横溢 learn/practice",
+      "passed": true
+    },
+    {
+      "name": "手机页面无整页横溢 analysis",
+      "passed": true
+    },
+    {
+      "name": "JavaScript没有运行错误",
+      "passed": true
+    }
+  ],
+  "errors": []
+}

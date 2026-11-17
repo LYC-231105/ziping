@@ -1,0 +1,32 @@
+# Local tools and generated working data
+node_modules/
+.env
+.env.*
+!.env.example
+*.pem
+*.key
+*.p12
+*.pfx
+*.log
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/
+work/
+.tmp/
+.tmp-*/
+backups/
+备份/
+用户数据/
+user-data/
+exports/
+子平命盘备份*.json
+子平学习备份*.json
+*_命盘.json
+*_八字研读.md
+*_八运逐年完整研读.md
+*_作业.md
+
+# Corpus editions awaiting public redistribution confirmation (local reader keeps them)
+/books/BK*.js
+/private/passages.jsonl

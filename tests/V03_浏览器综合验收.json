@@ -1,0 +1,212 @@
+{
+  "createdAt": "2026-11-16T15:40:19.688Z",
+  "passed": 51,
+  "failed": 0,
+  "errors": [],
+  "results": [
+    {
+      "name": "file 18节详批、八步大运、88流年分段",
+      "passed": true
+    },
+    {
+      "name": "file 每年八类分析与实际十神",
+      "passed": true
+    },
+    {
+      "name": "file 跨交运流年定位和展开",
+      "passed": true
+    },
+    {
+      "name": "file 无效年份明确提示",
+      "passed": true
+    },
+    {
+      "name": "file 八运及全年正文展开收起",
+      "passed": true
+    },
+    {
+      "name": "file 非精选原文引用能打开及翻阅",
+      "passed": true
+    },
+    {
+      "name": "file 手动地点输入显示",
+      "passed": true
+    },
+    {
+      "name": "file 地点预设往返保留手填名称",
+      "passed": true
+    },
+    {
+      "name": "file 切换男女保留手填地点",
+      "passed": true
+    },
+    {
+      "name": "file 自定义地点保存及导出",
+      "passed": true
+    },
+    {
+      "name": "file 保存命盘重新打开手填地点",
+      "passed": true
+    },
+    {
+      "name": "file 空手填地点阻止生成",
+      "passed": true
+    },
+    {
+      "name": "file 女命详批及首运重新计算",
+      "passed": true
+    },
+    {
+      "name": "file 完整详批导出含八运与所有逐年",
+      "passed": true
+    },
+    {
+      "name": "file 基础总表日主可切换",
+      "passed": true
+    },
+    {
+      "name": "file 旺衰作业保存并可核四栏",
+      "passed": true
+    },
+    {
+      "name": "file 78讲以及新增小测判错再判对",
+      "passed": true
+    },
+    {
+      "name": "file 新增30讲内容和小测均能打开",
+      "passed": true
+    },
+    {
+      "name": "file 学习备份恢复旺衰笔记和小测",
+      "passed": true
+    },
+    {
+      "name": "file 七部书籍末段完整可读",
+      "passed": true
+    },
+    {
+      "name": "file 时刻未知不输出唯一详批",
+      "passed": true
+    },
+    {
+      "name": "HTTP 18节详批、八步大运、88流年分段",
+      "passed": true
+    },
+    {
+      "name": "HTTP 每年八类分析与实际十神",
+      "passed": true
+    },
+    {
+      "name": "HTTP 跨交运流年定位和展开",
+      "passed": true
+    },
+    {
+      "name": "HTTP 无效年份明确提示",
+      "passed": true
+    },
+    {
+      "name": "HTTP 八运及全年正文展开收起",
+      "passed": true
+    },
+    {
+      "name": "HTTP 非精选原文引用能打开及翻阅",
+      "passed": true
+    },
+    {
+      "name": "HTTP 手动地点输入显示",
+      "passed": true
+    },
+    {
+      "name": "HTTP 地点预设往返保留手填名称",
+      "passed": true
+    },
+    {
+      "name": "HTTP 切换男女保留手填地点",
+      "passed": true
+    },
+    {
+      "name": "HTTP 自定义地点保存及导出",
+      "passed": true
+    },
+    {
+      "name": "HTTP 保存命盘重新打开手填地点",
+      "passed": true
+    },
+    {
+      "name": "HTTP 空手填地点阻止生成",
+      "passed": true
+    },
+    {
+      "name": "HTTP 女命详批及首运重新计算",
+      "passed": true
+    },
+    {
+      "name": "HTTP 完整详批导出含八运与所有逐年",
+      "passed": true
+    },
+    {
+      "name": "HTTP 基础总表日主可切换",
+      "passed": true
+    },
+    {
+      "name": "HTTP 旺衰作业保存并可核四栏",
+      "passed": true
+    },
+    {
+      "name": "HTTP 78讲以及新增小测判错再判对",
+      "passed": true
+    },
+    {
+      "name": "HTTP 新增30讲内容和小测均能打开",
+      "passed": true
+    },
+    {
+      "name": "HTTP 学习备份恢复旺衰笔记和小测",
+      "passed": true
+    },
+    {
+      "name": "HTTP 七部书籍末段完整可读",
+      "passed": true
+    },
+    {
+      "name": "HTTP 时刻未知不输出唯一详批",
+      "passed": true
+    },
+    {
+      "name": "HTTP服务版本及新增文件可读取",
+      "passed": true
+    },
+    {
+      "name": "手机无整页横溢 chart",
+      "passed": true
+    },
+    {
+      "name": "手机无整页横溢 analysis",
+      "passed": true
+    },
+    {
+      "name": "手机无整页横溢 learn/basics",
+      "passed": true
+    },
+    {
+      "name": "手机无整页横溢 learn/L56",
+      "passed": true
+    },
+    {
+      "name": "手机无整页横溢 learn/L78",
+      "passed": true
+    },
+    {
+      "name": "手机无整页横溢 learn/practice",
+      "passed": true
+    },
+    {
+      "name": "手机无整页横溢 library/BK01/124",
+      "passed": true
+    },
+    {
+      "name": "浏览器没有脚本异常",
+      "passed": true
+    }
+  ]
+}

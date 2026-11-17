@@ -1,0 +1,49 @@
+{
+  "createdAt": "2026-11-16T15:05:19.799255+00:00",
+  "total": 13448,
+  "books": [
+    {
+      "id": "BK01",
+      "paragraphs": 348,
+      "exact_round_trip": true,
+      "paragraph_sha256_verified": true
+    },
+    {
+      "id": "BK02",
+      "paragraphs": 6076,
+      "exact_round_trip": true,
+      "paragraph_sha256_verified": true
+    },
+    {
+      "id": "BK03",
+      "paragraphs": 2342,
+      "exact_round_trip": true,
+      "paragraph_sha256_verified": true
+    },
+    {
+      "id": "BK04",
+      "paragraphs": 966,
+      "exact_round_trip": true,
+      "paragraph_sha256_verified": true
+    },
+    {
+      "id": "BK05",
+      "paragraphs": 681,
+      "exact_round_trip": true,
+      "paragraph_sha256_verified": true
+    },
+    {
+      "id": "BK06",
+      "paragraphs": 2774,
+      "exact_round_trip": true,
+      "paragraph_sha256_verified": true
+    },
+    {
+      "id": "BK07",
+      "paragraphs": 261,
+      "exact_round_trip": true,
+      "paragraph_sha256_verified": true
+    }
+  ],
+  "scope": "确认原段无遗漏、无改写及逐段内容哈希；不替代古籍校勘。"
+}

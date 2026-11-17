@@ -1,0 +1,77 @@
+[
+  {
+    "id": "wenzhen",
+    "url": "https://www.iwzbz.com/index.html",
+    "final_url": "https://www.iwzbz.com/index.html",
+    "bytes": 11370,
+    "sha256": "766698d4d994e52ac3110a7c68bd7b78b18528b498d4cb6f4a07f8a6bb0cdb39",
+    "fetched_at": "2026-11-16T13:44:51.944006+00:00",
+    "status": "downloaded"
+  },
+  {
+    "id": "wenzhen_course",
+    "url": "https://www.iwzbz.com/artical/h5book/v5/3_1_100_2_3.html",
+    "final_url": "https://www.iwzbz.com/artical/h5book/v5/3_1_100_2_3.html",
+    "bytes": 30720,
+    "sha256": "1df9e83ebe8f1daea64aa1d54af09041709a2f577806fbbb48ac1b55a88fdab2",
+    "fetched_at": "2026-11-16T13:44:52.249643+00:00",
+    "status": "downloaded"
+  },
+  {
+    "id": "ziping_wiki",
+    "url": "https://zh.wikisource.org/wiki/%E5%AD%90%E5%B9%B3%E7%9C%9F%E8%A9%AE",
+    "status": "failed",
+    "error": "HTTP Error 404: Not Found"
+  },
+  {
+    "id": "ditiansui_wiki",
+    "url": "https://zh.wikisource.org/wiki/%E6%BB%B4%E5%A4%A9%E9%AB%93",
+    "final_url": "https://zh.wikisource.org/wiki/%E6%BB%B4%E5%A4%A9%E9%AB%93",
+    "bytes": 163068,
+    "sha256": "b49fc7ed6005a442222d0782c19cccedd99945659bed1e5f7d68f8a16dcf6f36",
+    "fetched_at": "2026-11-16T13:44:59.390632+00:00",
+    "status": "downloaded"
+  },
+  {
+    "id": "noaa",
+    "url": "https://gml.noaa.gov/grad/solcalc/solareqns.PDF",
+    "final_url": "https://gml.noaa.gov/grad/solcalc/solareqns.PDF",
+    "bytes": 208947,
+    "sha256": "7fa1fdb5f6b5c05ab1ec3ffde92e6fb2d5df98bf1a87055075ae2c3c1240a627",
+    "fetched_at": "2026-11-16T13:45:00.996441+00:00",
+    "status": "downloaded"
+  },
+  {
+    "id": "lunar_docs",
+    "url": "https://6tail.cn/calendar/api.html",
+    "final_url": "https://6tail.cn/calendar/api.html",
+    "bytes": 13773,
+    "sha256": "cb8a561e978ec6dc2b4ab81122b7928cdcd256a20df60ebf59b401deeab6386f",
+    "fetched_at": "2026-11-16T13:45:01.372746+00:00",
+    "status": "downloaded"
+  },
+  {
+    "title": "正官格举例",
+    "url": "https://www.iwzbz.com/artical/h5book/v5/3_1_100_49.html",
+    "sha256": "4329e4478b212d4a0b6c271b0c73e099ab446ad4e075f64db68e529eaf72f3f8",
+    "downloaded_at": "2026-11-16T14:06:54.937532+00:00",
+    "bytes": 37342,
+    "status": "read_public_html"
+  },
+  {
+    "title": "七杀格举例",
+    "url": "https://www.iwzbz.com/artical/h5book/v5/3_1_100_50.html",
+    "sha256": "655cfef7ad3fda77ad9f38ab3580bc8e21ede4c30180dbc687a318e5d472c7ba",
+    "downloaded_at": "2026-11-16T14:06:55.257067+00:00",
+    "bytes": 34869,
+    "status": "read_public_html"
+  },
+  {
+    "title": "印格举例",
+    "url": "https://www.iwzbz.com/artical/h5book/v5/3_1_100_51.html",
+    "sha256": "d8cca0fee26e85e31342db562c4868af3b1c85672894fd16612a14f5181a0ff2",
+    "downloaded_at": "2026-11-16T14:06:55.572064+00:00",
+    "bytes": 34058,
+    "status": "read_public_html"
+  }
+]

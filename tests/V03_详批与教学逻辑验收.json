@@ -1,0 +1,392 @@
+{
+  "createdAt": "2026-11-16T15:48:11.993Z",
+  "passed": 96,
+  "failed": 0,
+  "scope": "传统查表、时间分段、内容覆盖与证据边界检查，不认证人生预测有效性",
+  "results": [
+    {
+      "name": "辛日十神事实与初筛争点",
+      "passed": true
+    },
+    {
+      "name": "春癸无水根偏弱候选保留暗印",
+      "passed": true
+    },
+    {
+      "name": "夏己偏强候选",
+      "passed": true
+    },
+    {
+      "name": "男女性别不改旺衰事实",
+      "passed": true
+    },
+    {
+      "name": "男女首运与伴侣星分开",
+      "passed": true
+    },
+    {
+      "name": "stemCombine 甲己",
+      "passed": true
+    },
+    {
+      "name": "stemCombine 己甲",
+      "passed": true
+    },
+    {
+      "name": "stemCombine 乙庚",
+      "passed": true
+    },
+    {
+      "name": "stemCombine 庚乙",
+      "passed": true
+    },
+    {
+      "name": "stemCombine 丙辛",
+      "passed": true
+    },
+    {
+      "name": "stemCombine 辛丙",
+      "passed": true
+    },
+    {
+      "name": "stemCombine 丁壬",
+      "passed": true
+    },
+    {
+      "name": "stemCombine 壬丁",
+      "passed": true
+    },
+    {
+      "name": "stemCombine 戊癸",
+      "passed": true
+    },
+    {
+      "name": "stemCombine 癸戊",
+      "passed": true
+    },
+    {
+      "name": "stemClash 甲庚",
+      "passed": true
+    },
+    {
+      "name": "stemClash 庚甲",
+      "passed": true
+    },
+    {
+      "name": "stemClash 乙辛",
+      "passed": true
+    },
+    {
+      "name": "stemClash 辛乙",
+      "passed": true
+    },
+    {
+      "name": "stemClash 丙壬",
+      "passed": true
+    },
+    {
+      "name": "stemClash 壬丙",
+      "passed": true
+    },
+    {
+      "name": "stemClash 丁癸",
+      "passed": true
+    },
+    {
+      "name": "stemClash 癸丁",
+      "passed": true
+    },
+    {
+      "name": "combine 子丑",
+      "passed": true
+    },
+    {
+      "name": "combine 丑子",
+      "passed": true
+    },
+    {
+      "name": "combine 寅亥",
+      "passed": true
+    },
+    {
+      "name": "combine 亥寅",
+      "passed": true
+    },
+    {
+      "name": "combine 卯戌",
+      "passed": true
+    },
+    {
+      "name": "combine 戌卯",
+      "passed": true
+    },
+    {
+      "name": "combine 辰酉",
+      "passed": true
+    },
+    {
+      "name": "combine 酉辰",
+      "passed": true
+    },
+    {
+      "name": "combine 巳申",
+      "passed": true
+    },
+    {
+      "name": "combine 申巳",
+      "passed": true
+    },
+    {
+      "name": "combine 午未",
+      "passed": true
+    },
+    {
+      "name": "combine 未午",
+      "passed": true
+    },
+    {
+      "name": "clash 子午",
+      "passed": true
+    },
+    {
+      "name": "clash 午子",
+      "passed": true
+    },
+    {
+      "name": "clash 丑未",
+      "passed": true
+    },
+    {
+      "name": "clash 未丑",
+      "passed": true
+    },
+    {
+      "name": "clash 寅申",
+      "passed": true
+    },
+    {
+      "name": "clash 申寅",
+      "passed": true
+    },
+    {
+      "name": "clash 卯酉",
+      "passed": true
+    },
+    {
+      "name": "clash 酉卯",
+      "passed": true
+    },
+    {
+      "name": "clash 辰戌",
+      "passed": true
+    },
+    {
+      "name": "clash 戌辰",
+      "passed": true
+    },
+    {
+      "name": "clash 巳亥",
+      "passed": true
+    },
+    {
+      "name": "clash 亥巳",
+      "passed": true
+    },
+    {
+      "name": "harm 子未",
+      "passed": true
+    },
+    {
+      "name": "harm 未子",
+      "passed": true
+    },
+    {
+      "name": "harm 丑午",
+      "passed": true
+    },
+    {
+      "name": "harm 午丑",
+      "passed": true
+    },
+    {
+      "name": "harm 寅巳",
+      "passed": true
+    },
+    {
+      "name": "harm 巳寅",
+      "passed": true
+    },
+    {
+      "name": "harm 卯辰",
+      "passed": true
+    },
+    {
+      "name": "harm 辰卯",
+      "passed": true
+    },
+    {
+      "name": "harm 申亥",
+      "passed": true
+    },
+    {
+      "name": "harm 亥申",
+      "passed": true
+    },
+    {
+      "name": "harm 酉戌",
+      "passed": true
+    },
+    {
+      "name": "harm 戌酉",
+      "passed": true
+    },
+    {
+      "name": "break 子酉",
+      "passed": true
+    },
+    {
+      "name": "break 酉子",
+      "passed": true
+    },
+    {
+      "name": "break 卯午",
+      "passed": true
+    },
+    {
+      "name": "break 午卯",
+      "passed": true
+    },
+    {
+      "name": "break 辰丑",
+      "passed": true
+    },
+    {
+      "name": "break 丑辰",
+      "passed": true
+    },
+    {
+      "name": "break 戌未",
+      "passed": true
+    },
+    {
+      "name": "break 未戌",
+      "passed": true
+    },
+    {
+      "name": "break 寅亥",
+      "passed": true
+    },
+    {
+      "name": "break 亥寅",
+      "passed": true
+    },
+    {
+      "name": "break 巳申",
+      "passed": true
+    },
+    {
+      "name": "break 申巳",
+      "passed": true
+    },
+    {
+      "name": "两支不自动生成完整三合三刑",
+      "passed": true
+    },
+    {
+      "name": "三合水三支齐见",
+      "passed": true
+    },
+    {
+      "name": "三合木三支齐见",
+      "passed": true
+    },
+    {
+      "name": "三合火三支齐见",
+      "passed": true
+    },
+    {
+      "name": "三合金三支齐见",
+      "passed": true
+    },
+    {
+      "name": "三会木三支齐见",
+      "passed": true
+    },
+    {
+      "name": "三会火三支齐见",
+      "passed": true
+    },
+    {
+      "name": "三会金三支齐见",
+      "passed": true
+    },
+    {
+      "name": "三会水三支齐见",
+      "passed": true
+    },
+    {
+      "name": "寅亥合破重叠保存",
+      "passed": true
+    },
+    {
+      "name": "八运时间完整且逐年无缝 2005-12-23 male Asia/Shanghai",
+      "passed": true
+    },
+    {
+      "name": "八运时间完整且逐年无缝 2005-12-23 female Asia/Shanghai",
+      "passed": true
+    },
+    {
+      "name": "八运时间完整且逐年无缝 1994-03-18 male Asia/Shanghai",
+      "passed": true
+    },
+    {
+      "name": "八运时间完整且逐年无缝 2002-06-20 female Asia/Shanghai",
+      "passed": true
+    },
+    {
+      "name": "八运时间完整且逐年无缝 1998-09-18 female Asia/Shanghai",
+      "passed": true
+    },
+    {
+      "name": "八运时间完整且逐年无缝 1901-01-06 female Asia/Shanghai",
+      "passed": true
+    },
+    {
+      "name": "八运时间完整且逐年无缝 2099-12-30 male Asia/Shanghai",
+      "passed": true
+    },
+    {
+      "name": "八运时间完整且逐年无缝 1988-08-08 male America/New_York",
+      "passed": true
+    },
+    {
+      "name": "八运时间完整且逐年无缝 1990-07-12 male Pacific/Auckland",
+      "passed": true
+    },
+    {
+      "name": "2021跨运年分段精确相接",
+      "passed": true
+    },
+    {
+      "name": "流年文本随天干藏干和关系变化",
+      "passed": true
+    },
+    {
+      "name": "78课唯一且小测齐全",
+      "passed": true
+    },
+    {
+      "name": "新增30课有可答确定题",
+      "passed": true
+    },
+    {
+      "name": "新增教学及详批引用全部确有原文段落",
+      "passed": true
+    },
+    {
+      "name": "病名金额不冒充个体推断",
+      "passed": true
+    }
+  ]
+}

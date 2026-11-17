@@ -1,0 +1,48 @@
+{
+  "createdAt": "2026-11-16T15:08:41.706Z",
+  "passed": 10,
+  "failed": 0,
+  "errors": [],
+  "checks": [
+    {
+      "name": "D盘直接文件末段 BK01",
+      "passed": true
+    },
+    {
+      "name": "D盘直接文件末段 BK02",
+      "passed": true
+    },
+    {
+      "name": "D盘直接文件末段 BK03",
+      "passed": true
+    },
+    {
+      "name": "D盘直接文件末段 BK04",
+      "passed": true
+    },
+    {
+      "name": "D盘直接文件末段 BK05",
+      "passed": true
+    },
+    {
+      "name": "D盘直接文件末段 BK06",
+      "passed": true
+    },
+    {
+      "name": "D盘直接文件末段 BK07",
+      "passed": true
+    },
+    {
+      "name": "D盘启动服务48讲与女命专题",
+      "passed": true
+    },
+    {
+      "name": "D盘启动服务完整书籍",
+      "passed": true
+    },
+    {
+      "name": "D盘实训十二步",
+      "passed": true
+    }
+  ]
+}

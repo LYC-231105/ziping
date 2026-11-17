@@ -1,0 +1,41 @@
+{
+  "createdAt": "2026-11-16T15:59:29.684386+00:00",
+  "checks": [
+    {
+      "url": "https://api.github.com/repos/china-testing/bazi",
+      "status": "read",
+      "result": {
+        "full_name": "china-testing/bazi",
+        "description": "python八字排盘软件。清晰看出冲刑合会、阴阳等关系，并有凝聚大师多年经验的评判。另有合婚、风水等功能及手相教程。",
+        "license": null
+      }
+    },
+    {
+      "url": "https://api.github.com/repos/china-testing/bazi/license",
+      "status": "failed",
+      "error": "HTTP Error 404: Not Found"
+    },
+    {
+      "url": "https://api.github.com/repos/daizhige-org/daizhigev20",
+      "status": "read",
+      "result": {
+        "full_name": "daizhige-org/daizhigev20",
+        "description": "「殆知阁」中国古代文献原始数据（2026-10-28 更新）",
+        "license": null
+      }
+    },
+    {
+      "url": "https://api.github.com/repos/daizhige-org/daizhigev20/license",
+      "status": "failed",
+      "error": "HTTP Error 404: Not Found"
+    }
+  ],
+  "user_authorization": "仅公开已确认可公开的语料",
+  "decision": "已查两个GitHub上游未检出明确LICENSE；点藏网版本亦未确认再分发条件。暂不公开任何整部语料封装或段落索引。没有LICENSE不等于作品必受保护，也不等于获准公开；此处保留待核状态。",
+  "excluded": [
+    "books/BK*.js",
+    "private/passages.jsonl"
+  ],
+  "local_impact": "本机原有全文不删除，D盘网页继续可用。",
+  "published": "项目程序、原创教学、书目和来源、许可明确的第三方历法库（保留MIT许可）、测试与说明。"
+}

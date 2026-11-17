@@ -1,0 +1,88 @@
+{
+  "createdAt": "2026-11-16T15:47:17.985Z",
+  "passed": 20,
+  "failed": 0,
+  "checks": [
+    {
+      "name": "D盘直接打开18节8运88流年",
+      "passed": true
+    },
+    {
+      "name": "D盘直接打开年份定位跨运两段",
+      "passed": true
+    },
+    {
+      "name": "D盘直接打开打印前展开全部正文并恢复",
+      "passed": true
+    },
+    {
+      "name": "D盘直接打开每年8类正文",
+      "passed": true
+    },
+    {
+      "name": "D盘直接打开78讲及新增父母原文",
+      "passed": true
+    },
+    {
+      "name": "D盘直接打开旺衰总表可用",
+      "passed": true
+    },
+    {
+      "name": "D盘直接打开手动地点可以输入并安全显示",
+      "passed": true
+    },
+    {
+      "name": "D盘直接打开7书全文末段可读",
+      "passed": true
+    },
+    {
+      "name": "D盘直接打开整盘实训仍有十二步",
+      "passed": true
+    },
+    {
+      "name": "D盘本机服务18节8运88流年",
+      "passed": true
+    },
+    {
+      "name": "D盘本机服务年份定位跨运两段",
+      "passed": true
+    },
+    {
+      "name": "D盘本机服务打印前展开全部正文并恢复",
+      "passed": true
+    },
+    {
+      "name": "D盘本机服务每年8类正文",
+      "passed": true
+    },
+    {
+      "name": "D盘本机服务78讲及新增父母原文",
+      "passed": true
+    },
+    {
+      "name": "D盘本机服务旺衰总表可用",
+      "passed": true
+    },
+    {
+      "name": "D盘本机服务手动地点可以输入并安全显示",
+      "passed": true
+    },
+    {
+      "name": "D盘本机服务7书全文末段可读",
+      "passed": true
+    },
+    {
+      "name": "D盘本机服务整盘实训仍有十二步",
+      "passed": true
+    },
+    {
+      "name": "本机服务已加载0.3版",
+      "passed": true
+    },
+    {
+      "name": "无浏览器脚本异常",
+      "passed": true
+    }
+  ],
+  "errors": []
+}

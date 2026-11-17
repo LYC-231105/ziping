@@ -1,0 +1,40 @@
+{
+  "createdAt": "2026-11-16T16:00:26.576680+00:00",
+  "scope": "临时本地Git仓库端到端检查，不修改GitHub正式仓库",
+  "passed": 8,
+  "failed": 0,
+  "checks": [
+    {
+      "name": "首次上传创建main且忽略.env",
+      "passed": true
+    },
+    {
+      "name": "后续上传覆盖同名、新增并同步删除",
+      "passed": true
+    },
+    {
+      "name": "旧提交及内容仍可读取",
+      "passed": true
+    },
+    {
+      "name": "远端有新改动仍以本地快照覆盖",
+      "passed": true
+    },
+    {
+      "name": "保留远端历史且正常快进而非强推",
+      "passed": true
+    },
+    {
+      "name": "本地main和远端提交一致且工作目录干净",
+      "passed": true
+    },
+    {
+      "name": "内容相同不产生重复提交",
+      "passed": true
+    },
+    {
+      "name": "目标仓库不符会阻止上传",
+      "passed": true
+    }
+  ]
+}

@@ -1,0 +1,55 @@
+{
+  "paragraphs": 13448,
+  "method": "逐段原样封装；保留段落ID、原行号、SHA256和质量状态；未知章名仅按阅读分段导航。",
+  "books": [
+    {
+      "id": "BK01",
+      "paragraphs": 348,
+      "sha256": "b09159e00f4e751fe83102e2d30c58b22b6f234d644fec308d1856a4cb6e3424",
+      "bytes": 216452,
+      "sections": 48
+    },
+    {
+      "id": "BK02",
+      "paragraphs": 6076,
+      "sha256": "6948f5c692ee3aaabacbc1066bc11166b6b063e43c4b255fb2c46cb0fc7fe97a",
+      "bytes": 3694494,
+      "sections": 174
+    },
+    {
+      "id": "BK03",
+      "paragraphs": 2342,
+      "sha256": "0437d605238e1b2431491c008d649247cfc8f9e627c4138ec365763046a1883c",
+      "bytes": 1055178,
+      "sections": 67
+    },
+    {
+      "id": "BK04",
+      "paragraphs": 966,
+      "sha256": "81c57aa7840f9abbf18db4185608c229e0e2346e67a4ff4480127ab75bc2f054",
+      "bytes": 723130,
+      "sections": 28
+    },
+    {
+      "id": "BK05",
+      "paragraphs": 681,
+      "sha256": "51a06cf2dd5f4d1136648bb6ca5667ce95695bfa664637e9b0a9eb07dd8dded6",
+      "bytes": 344090,
+      "sections": 20
+    },
+    {
+      "id": "BK06",
+      "paragraphs": 2774,
+      "sha256": "a2b0bb85141de6194725f3dbb4e5bd815c8d3b8774c4e0f264c240990ceb7193",
+      "bytes": 1496403,
+      "sections": 80
+    },
+    {
+      "id": "BK07",
+      "paragraphs": 261,
+      "sha256": "528fe6767b5213e79bff50d4fbbef562639bdade699e142e4264ebfd6c4d580e",
+      "bytes": 268311,
+      "sections": 8
+    }
+  ]
+}

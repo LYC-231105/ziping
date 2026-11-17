@@ -1,0 +1,2004 @@
+[
+  {
+    "name": "立春",
+    "input_utc8": "1901-02-04 19:37:51",
+    "seconds_from_sxtwl_term": -120,
+    "expected_month_zhi": "丑",
+    "source": "sxtwl 2.0.7；容差外样本"
+  },
+  {
+    "name": "立春",
+    "input_utc8": "1901-02-04 19:41:51",
+    "seconds_from_sxtwl_term": 120,
+    "expected_month_zhi": "寅",
+    "source": "sxtwl 2.0.7；容差外样本"
+  },
+  {
+    "name": "惊蛰",
+    "input_utc8": "1901-03-06 14:08:52",
+    "seconds_from_sxtwl_term": -120,
+    "expected_month_zhi": "寅",
+    "source": "sxtwl 2.0.7；容差外样本"
+  },
+  {
+    "name": "惊蛰",
+    "input_utc8": "1901-03-06 14:12:52",
+    "seconds_from_sxtwl_term": 120,
+    "expected_month_zhi": "卯",
+    "source": "sxtwl 2.0.7；容差外样本"
+  },
+  {
+    "name": "清明",
+    "input_utc8": "1901-04-05 19:42:20",
+    "seconds_from_sxtwl_term": -120,
+    "expected_month_zhi": "卯",
+    "source": "sxtwl 2.0.7；容差外样本"
+  },
+  {
+    "name": "清明",
+    "input_utc8": "1901-04-05 19:46:20",
+    "seconds_from_sxtwl_term": 120,
+    "expected_month_zhi": "辰",
+    "source": "sxtwl 2.0.7；容差外样本"
+  },
+  {
+    "name": "立夏",
+    "input_utc8": "1901-05-06 13:48:23",
+    "seconds_from_sxtwl_term": -120,
+    "expected_month_zhi": "辰",
+    "source": "sxtwl 2.0.7；容差外样本"
+  },
+  {
+    "name": "立夏",
+    "input_utc8": "1901-05-06 13:52:23",
+    "seconds_from_sxtwl_term": 120,
+    "expected_month_zhi": "巳",
+    "source": "sxtwl 2.0.7；容差外样本"
+  },
+  {
+    "name": "芒种",
+    "input_utc8": "1901-06-06 18:34:26",
+    "seconds_from_sxtwl_term": -120,
+    "expected_month_zhi": "巳",
+    "source": "sxtwl 2.0.7；容差外样本"
+  },
+  {
+    "name": "芒种",
+    "input_utc8": "1901-06-06 18:38:26",
+    "seconds_from_sxtwl_term": 120,
+    "expected_month_zhi": "午",
+    "source": "sxtwl 2.0.7；容差外样本"
+  },
+  {
+    "name": "小暑",
+    "input_utc8": "1901-07-08 05:05:34",
+    "seconds_from_sxtwl_term": -120,
+    "expected_month_zhi": "午",
+    "source": "sxtwl 2.0.7；容差外样本"
+  },
+  {
+    "name": "小暑",
+    "input_utc8": "1901-07-08 05:09:34",
+    "seconds_from_sxtwl_term": 120,
+    "expected_month_zhi": "未",
+    "source": "sxtwl 2.0.7；容差外样本"
+  },
+  {
+    "name": "立秋",
+    "input_utc8": "1901-08-08 14:44:06",
+    "seconds_from_sxtwl_term": -120,
+    "expected_month_zhi": "未",
+    "source": "sxtwl 2.0.7；容差外样本"
+  },
+  {
+    "name": "立秋",
+    "input_utc8": "1901-08-08 14:48:06",
+    "seconds_from_sxtwl_term": 120,
+    "expected_month_zhi": "申",
+    "source": "sxtwl 2.0.7；容差外样本"
+  },
+  {
+    "name": "白露",
+    "input_utc8": "1901-09-08 17:08:14",
+    "seconds_from_sxtwl_term": -120,
+    "expected_month_zhi": "申",
+    "source": "sxtwl 2.0.7；容差外样本"
+  },
+  {
+    "name": "白露",
+    "input_utc8": "1901-09-08 17:12:14",
+    "seconds_from_sxtwl_term": 120,
+    "expected_month_zhi": "酉",
+    "source": "sxtwl 2.0.7；容差外样本"
+  },
+  {
+    "name": "寒露",
+    "input_utc8": "1901-10-09 08:04:27",
+    "seconds_from_sxtwl_term": -120,
+    "expected_month_zhi": "酉",
+    "source": "sxtwl 2.0.7；容差外样本"
+  },
+  {
+    "name": "寒露",
+    "input_utc8": "1901-10-09 08:08:27",
+    "seconds_from_sxtwl_term": 120,
+    "expected_month_zhi": "戌",
+    "source": "sxtwl 2.0.7；容差外样本"
+  },
+  {
+    "name": "立冬",
+    "input_utc8": "1901-11-08 10:32:29",
+    "seconds_from_sxtwl_term": -120,
+    "expected_month_zhi": "戌",
+    "source": "sxtwl 2.0.7；容差外样本"
+  },
+  {
+    "name": "立冬",
+    "input_utc8": "1901-11-08 10:36:29",
+    "seconds_from_sxtwl_term": 120,
+    "expected_month_zhi": "亥",
+    "source": "sxtwl 2.0.7；容差外样本"
+  },
+  {
+    "name": "大雪",
+    "input_utc8": "1901-12-08 02:50:37",
+    "seconds_from_sxtwl_term": -120,
+    "expected_month_zhi": "亥",
+    "source": "sxtwl 2.0.7；容差外样本"
+  },
+  {
+    "name": "大雪",
+    "input_utc8": "1901-12-08 02:54:37",
+    "seconds_from_sxtwl_term": 120,
+    "expected_month_zhi": "子",
+    "source": "sxtwl 2.0.7；容差外样本"
+  },
+  {
+    "name": "小寒",
+    "input_utc8": "1902-01-06 13:49:33",
+    "seconds_from_sxtwl_term": -120,
+    "expected_month_zhi": "子",
+    "source": "sxtwl 2.0.7；容差外样本"
+  },
+  {
+    "name": "小寒",
+    "input_utc8": "1902-01-06 13:53:33",
+    "seconds_from_sxtwl_term": 120,
+    "expected_month_zhi": "丑",
+    "source": "sxtwl 2.0.7；容差外样本"
+  },
+  {
+    "name": "立春",
+    "input_utc8": "1902-02-05 01:36:09",
+    "seconds_from_sxtwl_term": -120,
+    "expected_month_zhi": "丑",
+    "source": "sxtwl 2.0.7；容差外样本"
+  },
+  {
+    "name": "立春",
+    "input_utc8": "1902-02-05 01:40:09",
+    "seconds_from_sxtwl_term": 120,
+    "expected_month_zhi": "寅",
+    "source": "sxtwl 2.0.7；容差外样本"
+  },
+  {
+    "name": "立春",
+    "input_utc8": "1950-02-04 17:18:45",
+    "seconds_from_sxtwl_term": -120,
+    "expected_month_zhi": "丑",
+    "source": "sxtwl 2.0.7；容差外样本"
+  },
+  {
+    "name": "立春",
+    "input_utc8": "1950-02-04 17:22:45",
+    "seconds_from_sxtwl_term": 120,
+    "expected_month_zhi": "寅",
+    "source": "sxtwl 2.0.7；容差外样本"
+  },
+  {
+    "name": "惊蛰",
+    "input_utc8": "1950-03-06 11:33:26",
+    "seconds_from_sxtwl_term": -120,
+    "expected_month_zhi": "寅",
+    "source": "sxtwl 2.0.7；容差外样本"
+  },
+  {
+    "name": "惊蛰",
+    "input_utc8": "1950-03-06 11:37:26",
+    "seconds_from_sxtwl_term": 120,
+    "expected_month_zhi": "卯",
+    "source": "sxtwl 2.0.7；容差外样本"
+  },
+  {
+    "name": "清明",
+    "input_utc8": "1950-04-05 16:42:27",
+    "seconds_from_sxtwl_term": -120,
+    "expected_month_zhi": "卯",
+    "source": "sxtwl 2.0.7；容差外样本"
+  },
+  {
+    "name": "清明",
+    "input_utc8": "1950-04-05 16:46:27",
+    "seconds_from_sxtwl_term": 120,
+    "expected_month_zhi": "辰",
+    "source": "sxtwl 2.0.7；容差外样本"
+  },
+  {
+    "name": "立夏",
+    "input_utc8": "1950-05-06 10:22:41",
+    "seconds_from_sxtwl_term": -120,
+    "expected_month_zhi": "辰",
+    "source": "sxtwl 2.0.7；容差外样本"
+  },
+  {
+    "name": "立夏",
+    "input_utc8": "1950-05-06 10:26:41",
+    "seconds_from_sxtwl_term": 120,
+    "expected_month_zhi": "巳",
+    "source": "sxtwl 2.0.7；容差外样本"
+  },
+  {
+    "name": "芒种",
+    "input_utc8": "1950-06-06 14:48:59",
+    "seconds_from_sxtwl_term": -120,
+    "expected_month_zhi": "巳",
+    "source": "sxtwl 2.0.7；容差外样本"
+  },
+  {
+    "name": "芒种",
+    "input_utc8": "1950-06-06 14:52:59",
+    "seconds_from_sxtwl_term": 120,
+    "expected_month_zhi": "午",
+    "source": "sxtwl 2.0.7；容差外样本"
+  },
+  {
+    "name": "小暑",
+    "input_utc8": "1950-07-08 01:11:17",
+    "seconds_from_sxtwl_term": -120,
+    "expected_month_zhi": "午",
+    "source": "sxtwl 2.0.7；容差外样本"
+  },
+  {
+    "name": "小暑",
+    "input_utc8": "1950-07-08 01:15:17",
+    "seconds_from_sxtwl_term": 120,
+    "expected_month_zhi": "未",
+    "source": "sxtwl 2.0.7；容差外样本"
+  },
+  {
+    "name": "立秋",
+    "input_utc8": "1950-08-08 10:53:11",
+    "seconds_from_sxtwl_term": -120,
+    "expected_month_zhi": "未",
+    "source": "sxtwl 2.0.7；容差外样本"
+  },
+  {
+    "name": "立秋",
+    "input_utc8": "1950-08-08 10:57:11",
+    "seconds_from_sxtwl_term": 120,
+    "expected_month_zhi": "申",
+    "source": "sxtwl 2.0.7；容差外样本"
+  },
+  {
+    "name": "白露",
+    "input_utc8": "1950-09-08 13:31:38",
+    "seconds_from_sxtwl_term": -120,
+    "expected_month_zhi": "申",
+    "source": "sxtwl 2.0.7；容差外样本"
+  },
+  {
+    "name": "白露",
+    "input_utc8": "1950-09-08 13:35:38",
+    "seconds_from_sxtwl_term": 120,
+    "expected_month_zhi": "酉",
+    "source": "sxtwl 2.0.7；容差外样本"
+  },
+  {
+    "name": "寒露",
+    "input_utc8": "1950-10-09 04:49:39",
+    "seconds_from_sxtwl_term": -120,
+    "expected_month_zhi": "酉",
+    "source": "sxtwl 2.0.7；容差外样本"
+  },
+  {
+    "name": "寒露",
+    "input_utc8": "1950-10-09 04:53:39",
+    "seconds_from_sxtwl_term": 120,
+    "expected_month_zhi": "戌",
+    "source": "sxtwl 2.0.7；容差外样本"
+  },
+  {
+    "name": "立冬",
+    "input_utc8": "1950-11-08 07:41:43",
+    "seconds_from_sxtwl_term": -120,
+    "expected_month_zhi": "戌",
+    "source": "sxtwl 2.0.7；容差外样本"
+  },
+  {
+    "name": "立冬",
+    "input_utc8": "1950-11-08 07:45:43",
+    "seconds_from_sxtwl_term": 120,
+    "expected_month_zhi": "亥",
+    "source": "sxtwl 2.0.7；容差外样本"
+  },
+  {
+    "name": "大雪",
+    "input_utc8": "1950-12-08 00:19:39",
+    "seconds_from_sxtwl_term": -120,
+    "expected_month_zhi": "亥",
+    "source": "sxtwl 2.0.7；容差外样本"
+  },
+  {
+    "name": "大雪",
+    "input_utc8": "1950-12-08 00:23:39",
+    "seconds_from_sxtwl_term": 120,
+    "expected_month_zhi": "子",
+    "source": "sxtwl 2.0.7；容差外样本"
+  },
+  {
+    "name": "小寒",
+    "input_utc8": "1951-01-06 11:28:22",
+    "seconds_from_sxtwl_term": -120,
+    "expected_month_zhi": "子",
+    "source": "sxtwl 2.0.7；容差外样本"
+  },
+  {
+    "name": "小寒",
+    "input_utc8": "1951-01-06 11:32:22",
+    "seconds_from_sxtwl_term": 120,
+    "expected_month_zhi": "丑",
+    "source": "sxtwl 2.0.7；容差外样本"
+  },
+  {
+    "name": "立春",
+    "input_utc8": "1951-02-04 23:11:25",
+    "seconds_from_sxtwl_term": -120,
+    "expected_month_zhi": "丑",
+    "source": "sxtwl 2.0.7；容差外样本"
+  },
+  {
+    "name": "立春",
+    "input_utc8": "1951-02-04 23:15:25",
+    "seconds_from_sxtwl_term": 120,
+    "expected_month_zhi": "寅",
+    "source": "sxtwl 2.0.7；容差外样本"
+  },
+  {
+    "name": "立春",
+    "input_utc8": "1988-02-04 22:40:49",
+    "seconds_from_sxtwl_term": -120,
+    "expected_month_zhi": "丑",
+    "source": "sxtwl 2.0.7；容差外样本"
+  },
+  {
+    "name": "立春",
+    "input_utc8": "1988-02-04 22:44:49",
+    "seconds_from_sxtwl_term": 120,
+    "expected_month_zhi": "寅",
+    "source": "sxtwl 2.0.7；容差外样本"
+  },
+  {
+    "name": "惊蛰",
+    "input_utc8": "1988-03-05 16:44:32",
+    "seconds_from_sxtwl_term": -120,
+    "expected_month_zhi": "寅",
+    "source": "sxtwl 2.0.7；容差外样本"
+  },
+  {
+    "name": "惊蛰",
+    "input_utc8": "1988-03-05 16:48:32",
+    "seconds_from_sxtwl_term": 120,
+    "expected_month_zhi": "卯",
+    "source": "sxtwl 2.0.7；容差外样本"
+  },
+  {
+    "name": "清明",
+    "input_utc8": "1988-04-04 21:37:04",
+    "seconds_from_sxtwl_term": -120,
+    "expected_month_zhi": "卯",
+    "source": "sxtwl 2.0.7；容差外样本"
+  },
+  {
+    "name": "清明",
+    "input_utc8": "1988-04-04 21:41:04",
+    "seconds_from_sxtwl_term": 120,
+    "expected_month_zhi": "辰",
+    "source": "sxtwl 2.0.7；容差外样本"
+  },
+  {
+    "name": "立夏",
+    "input_utc8": "1988-05-05 14:59:43",
+    "seconds_from_sxtwl_term": -120,
+    "expected_month_zhi": "辰",
+    "source": "sxtwl 2.0.7；容差外样本"
+  },
+  {
+    "name": "立夏",
+    "input_utc8": "1988-05-05 15:03:43",
+    "seconds_from_sxtwl_term": 120,
+    "expected_month_zhi": "巳",
+    "source": "sxtwl 2.0.7；容差外样本"
+  },
+  {
+    "name": "芒种",
+    "input_utc8": "1988-06-05 19:12:52",
+    "seconds_from_sxtwl_term": -120,
+    "expected_month_zhi": "巳",
+    "source": "sxtwl 2.0.7；容差外样本"
+  },
+  {
+    "name": "芒种",
+    "input_utc8": "1988-06-05 19:16:52",
+    "seconds_from_sxtwl_term": 120,
+    "expected_month_zhi": "午",
+    "source": "sxtwl 2.0.7；容差外样本"
+  },
+  {
+    "name": "小暑",
+    "input_utc8": "1988-07-07 05:30:54",
+    "seconds_from_sxtwl_term": -120,
+    "expected_month_zhi": "午",
+    "source": "sxtwl 2.0.7；容差外样本"
+  },
+  {
+    "name": "小暑",
+    "input_utc8": "1988-07-07 05:34:54",
+    "seconds_from_sxtwl_term": 120,
+    "expected_month_zhi": "未",
+    "source": "sxtwl 2.0.7；容差外样本"
+  },
+  {
+    "name": "立秋",
+    "input_utc8": "1988-08-07 15:18:15",
+    "seconds_from_sxtwl_term": -120,
+    "expected_month_zhi": "未",
+    "source": "sxtwl 2.0.7；容差外样本"
+  },
+  {
+    "name": "立秋",
+    "input_utc8": "1988-08-07 15:22:15",
+    "seconds_from_sxtwl_term": 120,
+    "expected_month_zhi": "申",
+    "source": "sxtwl 2.0.7；容差外样本"
+  },
+  {
+    "name": "白露",
+    "input_utc8": "1988-09-07 18:09:30",
+    "seconds_from_sxtwl_term": -120,
+    "expected_month_zhi": "申",
+    "source": "sxtwl 2.0.7；容差外样本"
+  },
+  {
+    "name": "白露",
+    "input_utc8": "1988-09-07 18:13:30",
+    "seconds_from_sxtwl_term": 120,
+    "expected_month_zhi": "酉",
+    "source": "sxtwl 2.0.7；容差外样本"
+  },
+  {
+    "name": "寒露",
+    "input_utc8": "1988-10-08 09:42:30",
+    "seconds_from_sxtwl_term": -120,
+    "expected_month_zhi": "酉",
+    "source": "sxtwl 2.0.7；容差外样本"
+  },
+  {
+    "name": "寒露",
+    "input_utc8": "1988-10-08 09:46:30",
+    "seconds_from_sxtwl_term": 120,
+    "expected_month_zhi": "戌",
+    "source": "sxtwl 2.0.7；容差外样本"
+  },
+  {
+    "name": "立冬",
+    "input_utc8": "1988-11-07 12:46:55",
+    "seconds_from_sxtwl_term": -120,
+    "expected_month_zhi": "戌",
+    "source": "sxtwl 2.0.7；容差外样本"
+  },
+  {
+    "name": "立冬",
+    "input_utc8": "1988-11-07 12:50:55",
+    "seconds_from_sxtwl_term": 120,
+    "expected_month_zhi": "亥",
+    "source": "sxtwl 2.0.7；容差外样本"
+  },
+  {
+    "name": "大雪",
+    "input_utc8": "1988-12-07 05:32:28",
+    "seconds_from_sxtwl_term": -120,
+    "expected_month_zhi": "亥",
+    "source": "sxtwl 2.0.7；容差外样本"
+  },
+  {
+    "name": "大雪",
+    "input_utc8": "1988-12-07 05:36:28",
+    "seconds_from_sxtwl_term": 120,
+    "expected_month_zhi": "子",
+    "source": "sxtwl 2.0.7；容差外样本"
+  },
+  {
+    "name": "小寒",
+    "input_utc8": "1989-01-05 16:43:55",
+    "seconds_from_sxtwl_term": -120,
+    "expected_month_zhi": "子",
+    "source": "sxtwl 2.0.7；容差外样本"
+  },
+  {
+    "name": "小寒",
+    "input_utc8": "1989-01-05 16:47:55",
+    "seconds_from_sxtwl_term": 120,
+    "expected_month_zhi": "丑",
+    "source": "sxtwl 2.0.7；容差外样本"
+  },
+  {
+    "name": "立春",
+    "input_utc8": "1989-02-04 04:25:08",
+    "seconds_from_sxtwl_term": -120,
+    "expected_month_zhi": "丑",
+    "source": "sxtwl 2.0.7；容差外样本"
+  },
+  {
+    "name": "立春",
+    "input_utc8": "1989-02-04 04:29:08",
+    "seconds_from_sxtwl_term": 120,
+    "expected_month_zhi": "寅",
+    "source": "sxtwl 2.0.7；容差外样本"
+  },
+  {
+    "name": "立春",
+    "input_utc8": "1991-02-04 16:06:24",
+    "seconds_from_sxtwl_term": -120,
+    "expected_month_zhi": "丑",
+    "source": "sxtwl 2.0.7；容差外样本"
+  },
+  {
+    "name": "立春",
+    "input_utc8": "1991-02-04 16:10:24",
+    "seconds_from_sxtwl_term": 120,
+    "expected_month_zhi": "寅",
+    "source": "sxtwl 2.0.7；容差外样本"
+  },
+  {
+    "name": "惊蛰",
+    "input_utc8": "1991-03-06 10:10:15",
+    "seconds_from_sxtwl_term": -120,
+    "expected_month_zhi": "寅",
+    "source": "sxtwl 2.0.7；容差外样本"
+  },
+  {
+    "name": "惊蛰",
+    "input_utc8": "1991-03-06 10:14:15",
+    "seconds_from_sxtwl_term": 120,
+    "expected_month_zhi": "卯",
+    "source": "sxtwl 2.0.7；容差外样本"
+  },
+  {
+    "name": "清明",
+    "input_utc8": "1991-04-05 15:02:42",
+    "seconds_from_sxtwl_term": -120,
+    "expected_month_zhi": "卯",
+    "source": "sxtwl 2.0.7；容差外样本"
+  },
+  {
+    "name": "清明",
+    "input_utc8": "1991-04-05 15:06:42",
+    "seconds_from_sxtwl_term": 120,
+    "expected_month_zhi": "辰",
+    "source": "sxtwl 2.0.7；容差外样本"
+  },
+  {
+    "name": "立夏",
+    "input_utc8": "1991-05-06 08:24:53",
+    "seconds_from_sxtwl_term": -120,
+    "expected_month_zhi": "辰",
+    "source": "sxtwl 2.0.7；容差外样本"
+  },
+  {
+    "name": "立夏",
+    "input_utc8": "1991-05-06 08:28:53",
+    "seconds_from_sxtwl_term": 120,
+    "expected_month_zhi": "巳",
+    "source": "sxtwl 2.0.7；容差外样本"
+  },
+  {
+    "name": "芒种",
+    "input_utc8": "1991-06-06 12:36:17",
+    "seconds_from_sxtwl_term": -120,
+    "expected_month_zhi": "巳",
+    "source": "sxtwl 2.0.7；容差外样本"
+  },
+  {
+    "name": "芒种",
+    "input_utc8": "1991-06-06 12:40:17",
+    "seconds_from_sxtwl_term": 120,
+    "expected_month_zhi": "午",
+    "source": "sxtwl 2.0.7；容差外样本"
+  },
+  {
+    "name": "小暑",
+    "input_utc8": "1991-07-07 22:50:59",
+    "seconds_from_sxtwl_term": -120,
+    "expected_month_zhi": "午",
+    "source": "sxtwl 2.0.7；容差外样本"
+  },
+  {
+    "name": "小暑",
+    "input_utc8": "1991-07-07 22:54:59",
+    "seconds_from_sxtwl_term": 120,
+    "expected_month_zhi": "未",
+    "source": "sxtwl 2.0.7；容差外样本"
+  },
+  {
+    "name": "立秋",
+    "input_utc8": "1991-08-08 08:35:14",
+    "seconds_from_sxtwl_term": -120,
+    "expected_month_zhi": "未",
+    "source": "sxtwl 2.0.7；容差外样本"
+  },
+  {
+    "name": "立秋",
+    "input_utc8": "1991-08-08 08:39:14",
+    "seconds_from_sxtwl_term": 120,
+    "expected_month_zhi": "申",
+    "source": "sxtwl 2.0.7；容差外样本"
+  },
+  {
+    "name": "白露",
+    "input_utc8": "1991-09-08 11:25:21",
+    "seconds_from_sxtwl_term": -120,
+    "expected_month_zhi": "申",
+    "source": "sxtwl 2.0.7；容差外样本"
+  },
+  {
+    "name": "白露",
+    "input_utc8": "1991-09-08 11:29:21",
+    "seconds_from_sxtwl_term": 120,
+    "expected_month_zhi": "酉",
+    "source": "sxtwl 2.0.7；容差外样本"
+  },
+  {
+    "name": "寒露",
+    "input_utc8": "1991-10-09 02:59:07",
+    "seconds_from_sxtwl_term": -120,
+    "expected_month_zhi": "酉",
+    "source": "sxtwl 2.0.7；容差外样本"
+  },
+  {
+    "name": "寒露",
+    "input_utc8": "1991-10-09 03:03:07",
+    "seconds_from_sxtwl_term": 120,
+    "expected_month_zhi": "戌",
+    "source": "sxtwl 2.0.7；容差外样本"
+  },
+  {
+    "name": "立冬",
+    "input_utc8": "1991-11-08 06:05:50",
+    "seconds_from_sxtwl_term": -120,
+    "expected_month_zhi": "戌",
+    "source": "sxtwl 2.0.7；容差外样本"
+  },
+  {
+    "name": "立冬",
+    "input_utc8": "1991-11-08 06:09:50",
+    "seconds_from_sxtwl_term": 120,
+    "expected_month_zhi": "亥",
+    "source": "sxtwl 2.0.7；容差外样本"
+  },
+  {
+    "name": "大雪",
+    "input_utc8": "1991-12-07 22:54:00",
+    "seconds_from_sxtwl_term": -120,
+    "expected_month_zhi": "亥",
+    "source": "sxtwl 2.0.7；容差外样本"
+  },
+  {
+    "name": "大雪",
+    "input_utc8": "1991-12-07 22:58:00",
+    "seconds_from_sxtwl_term": 120,
+    "expected_month_zhi": "子",
+    "source": "sxtwl 2.0.7；容差外样本"
+  },
+  {
+    "name": "小寒",
+    "input_utc8": "1992-01-06 10:06:30",
+    "seconds_from_sxtwl_term": -120,
+    "expected_month_zhi": "子",
+    "source": "sxtwl 2.0.7；容差外样本"
+  },
+  {
+    "name": "小寒",
+    "input_utc8": "1992-01-06 10:10:30",
+    "seconds_from_sxtwl_term": 120,
+    "expected_month_zhi": "丑",
+    "source": "sxtwl 2.0.7；容差外样本"
+  },
+  {
+    "name": "立春",
+    "input_utc8": "1992-02-04 21:46:16",
+    "seconds_from_sxtwl_term": -120,
+    "expected_month_zhi": "丑",
+    "source": "sxtwl 2.0.7；容差外样本"
+  },
+  {
+    "name": "立春",
+    "input_utc8": "1992-02-04 21:50:16",
+    "seconds_from_sxtwl_term": 120,
+    "expected_month_zhi": "寅",
+    "source": "sxtwl 2.0.7；容差外样本"
+  },
+  {
+    "name": "立春",
+    "input_utc8": "2000-02-04 20:38:24",
+    "seconds_from_sxtwl_term": -120,
+    "expected_month_zhi": "丑",
+    "source": "sxtwl 2.0.7；容差外样本"
+  },
+  {
+    "name": "立春",
+    "input_utc8": "2000-02-04 20:42:24",
+    "seconds_from_sxtwl_term": 120,
+    "expected_month_zhi": "寅",
+    "source": "sxtwl 2.0.7；容差外样本"
+  },
+  {
+    "name": "惊蛰",
+    "input_utc8": "2000-03-05 14:40:39",
+    "seconds_from_sxtwl_term": -120,
+    "expected_month_zhi": "寅",
+    "source": "sxtwl 2.0.7；容差外样本"
+  },
+  {
+    "name": "惊蛰",
+    "input_utc8": "2000-03-05 14:44:39",
+    "seconds_from_sxtwl_term": 120,
+    "expected_month_zhi": "卯",
+    "source": "sxtwl 2.0.7；容差外样本"
+  },
+  {
+    "name": "清明",
+    "input_utc8": "2000-04-04 19:29:58",
+    "seconds_from_sxtwl_term": -120,
+    "expected_month_zhi": "卯",
+    "source": "sxtwl 2.0.7；容差外样本"
+  },
+  {
+    "name": "清明",
+    "input_utc8": "2000-04-04 19:33:58",
+    "seconds_from_sxtwl_term": 120,
+    "expected_month_zhi": "辰",
+    "source": "sxtwl 2.0.7；容差外样本"
+  },
+  {
+    "name": "立夏",
+    "input_utc8": "2000-05-05 12:48:09",
+    "seconds_from_sxtwl_term": -120,
+    "expected_month_zhi": "辰",
+    "source": "sxtwl 2.0.7；容差外样本"
+  },
+  {
+    "name": "立夏",
+    "input_utc8": "2000-05-05 12:52:09",
+    "seconds_from_sxtwl_term": 120,
+    "expected_month_zhi": "巳",
+    "source": "sxtwl 2.0.7；容差外样本"
+  },
+  {
+    "name": "芒种",
+    "input_utc8": "2000-06-05 16:56:34",
+    "seconds_from_sxtwl_term": -120,
+    "expected_month_zhi": "巳",
+    "source": "sxtwl 2.0.7；容差外样本"
+  },
+  {
+    "name": "芒种",
+    "input_utc8": "2000-06-05 17:00:34",
+    "seconds_from_sxtwl_term": 120,
+    "expected_month_zhi": "午",
+    "source": "sxtwl 2.0.7；容差外样本"
+  },
+  {
+    "name": "小暑",
+    "input_utc8": "2000-07-07 03:11:56",
+    "seconds_from_sxtwl_term": -120,
+    "expected_month_zhi": "午",
+    "source": "sxtwl 2.0.7；容差外样本"
+  },
+  {
+    "name": "小暑",
+    "input_utc8": "2000-07-07 03:15:56",
+    "seconds_from_sxtwl_term": 120,
+    "expected_month_zhi": "未",
+    "source": "sxtwl 2.0.7；容差外样本"
+  },
+  {
+    "name": "立秋",
+    "input_utc8": "2000-08-07 13:00:59",
+    "seconds_from_sxtwl_term": -120,
+    "expected_month_zhi": "未",
+    "source": "sxtwl 2.0.7；容差外样本"
+  },
+  {
+    "name": "立秋",
+    "input_utc8": "2000-08-07 13:04:59",
+    "seconds_from_sxtwl_term": 120,
+    "expected_month_zhi": "申",
+    "source": "sxtwl 2.0.7；容差外样本"
+  },
+  {
+    "name": "白露",
+    "input_utc8": "2000-09-07 15:57:09",
+    "seconds_from_sxtwl_term": -120,
+    "expected_month_zhi": "申",
+    "source": "sxtwl 2.0.7；容差外样本"
+  },
+  {
+    "name": "白露",
+    "input_utc8": "2000-09-07 16:01:09",
+    "seconds_from_sxtwl_term": 120,
+    "expected_month_zhi": "酉",
+    "source": "sxtwl 2.0.7；容差外样本"
+  },
+  {
+    "name": "寒露",
+    "input_utc8": "2000-10-08 07:36:12",
+    "seconds_from_sxtwl_term": -120,
+    "expected_month_zhi": "酉",
+    "source": "sxtwl 2.0.7；容差外样本"
+  },
+  {
+    "name": "寒露",
+    "input_utc8": "2000-10-08 07:40:12",
+    "seconds_from_sxtwl_term": 120,
+    "expected_month_zhi": "戌",
+    "source": "sxtwl 2.0.7；容差外样本"
+  },
+  {
+    "name": "立冬",
+    "input_utc8": "2000-11-07 10:46:03",
+    "seconds_from_sxtwl_term": -120,
+    "expected_month_zhi": "戌",
+    "source": "sxtwl 2.0.7；容差外样本"
+  },
+  {
+    "name": "立冬",
+    "input_utc8": "2000-11-07 10:50:03",
+    "seconds_from_sxtwl_term": 120,
+    "expected_month_zhi": "亥",
+    "source": "sxtwl 2.0.7；容差外样本"
+  },
+  {
+    "name": "大雪",
+    "input_utc8": "2000-12-07 03:35:02",
+    "seconds_from_sxtwl_term": -120,
+    "expected_month_zhi": "亥",
+    "source": "sxtwl 2.0.7；容差外样本"
+  },
+  {
+    "name": "大雪",
+    "input_utc8": "2000-12-07 03:39:02",
+    "seconds_from_sxtwl_term": 120,
+    "expected_month_zhi": "子",
+    "source": "sxtwl 2.0.7；容差外样本"
+  },
+  {
+    "name": "小寒",
+    "input_utc8": "2001-01-05 14:47:15",
+    "seconds_from_sxtwl_term": -120,
+    "expected_month_zhi": "子",
+    "source": "sxtwl 2.0.7；容差外样本"
+  },
+  {
+    "name": "小寒",
+    "input_utc8": "2001-01-05 14:51:15",
+    "seconds_from_sxtwl_term": 120,
+    "expected_month_zhi": "丑",
+    "source": "sxtwl 2.0.7；容差外样本"
+  },
+  {
+    "name": "立春",
+    "input_utc8": "2001-02-04 02:26:49",
+    "seconds_from_sxtwl_term": -120,
+    "expected_month_zhi": "丑",
+    "source": "sxtwl 2.0.7；容差外样本"
+  },
+  {
+    "name": "立春",
+    "input_utc8": "2001-02-04 02:30:49",
+    "seconds_from_sxtwl_term": 120,
+    "expected_month_zhi": "寅",
+    "source": "sxtwl 2.0.7；容差外样本"
+  },
+  {
+    "name": "立春",
+    "input_utc8": "2012-02-04 18:20:22",
+    "seconds_from_sxtwl_term": -120,
+    "expected_month_zhi": "丑",
+    "source": "sxtwl 2.0.7；容差外样本"
+  },
+  {
+    "name": "立春",
+    "input_utc8": "2012-02-04 18:24:22",
+    "seconds_from_sxtwl_term": 120,
+    "expected_month_zhi": "寅",
+    "source": "sxtwl 2.0.7；容差外样本"
+  },
+  {
+    "name": "惊蛰",
+    "input_utc8": "2012-03-05 12:19:02",
+    "seconds_from_sxtwl_term": -120,
+    "expected_month_zhi": "寅",
+    "source": "sxtwl 2.0.7；容差外样本"
+  },
+  {
+    "name": "惊蛰",
+    "input_utc8": "2012-03-05 12:23:02",
+    "seconds_from_sxtwl_term": 120,
+    "expected_month_zhi": "卯",
+    "source": "sxtwl 2.0.7；容差外样本"
+  },
+  {
+    "name": "清明",
+    "input_utc8": "2012-04-04 17:03:36",
+    "seconds_from_sxtwl_term": -120,
+    "expected_month_zhi": "卯",
+    "source": "sxtwl 2.0.7；容差外样本"
+  },
+  {
+    "name": "清明",
+    "input_utc8": "2012-04-04 17:07:36",
+    "seconds_from_sxtwl_term": 120,
+    "expected_month_zhi": "辰",
+    "source": "sxtwl 2.0.7；容差外样本"
+  },
+  {
+    "name": "立夏",
+    "input_utc8": "2012-05-05 10:17:40",
+    "seconds_from_sxtwl_term": -120,
+    "expected_month_zhi": "辰",
+    "source": "sxtwl 2.0.7；容差外样本"
+  },
+  {
+    "name": "立夏",
+    "input_utc8": "2012-05-05 10:21:40",
+    "seconds_from_sxtwl_term": 120,
+    "expected_month_zhi": "巳",
+    "source": "sxtwl 2.0.7；容差外样本"
+  },
+  {
+    "name": "芒种",
+    "input_utc8": "2012-06-05 14:23:53",
+    "seconds_from_sxtwl_term": -120,
+    "expected_month_zhi": "巳",
+    "source": "sxtwl 2.0.7；容差外样本"
+  },
+  {
+    "name": "芒种",
+    "input_utc8": "2012-06-05 14:27:53",
+    "seconds_from_sxtwl_term": 120,
+    "expected_month_zhi": "午",
+    "source": "sxtwl 2.0.7；容差外样本"
+  },
+  {
+    "name": "小暑",
+    "input_utc8": "2012-07-07 00:38:42",
+    "seconds_from_sxtwl_term": -120,
+    "expected_month_zhi": "午",
+    "source": "sxtwl 2.0.7；容差外样本"
+  },
+  {
+    "name": "小暑",
+    "input_utc8": "2012-07-07 00:42:42",
+    "seconds_from_sxtwl_term": 120,
+    "expected_month_zhi": "未",
+    "source": "sxtwl 2.0.7；容差外样本"
+  },
+  {
+    "name": "立秋",
+    "input_utc8": "2012-08-07 10:28:32",
+    "seconds_from_sxtwl_term": -120,
+    "expected_month_zhi": "未",
+    "source": "sxtwl 2.0.7；容差外样本"
+  },
+  {
+    "name": "立秋",
+    "input_utc8": "2012-08-07 10:32:32",
+    "seconds_from_sxtwl_term": 120,
+    "expected_month_zhi": "申",
+    "source": "sxtwl 2.0.7；容差外样本"
+  },
+  {
+    "name": "白露",
+    "input_utc8": "2012-09-07 13:26:59",
+    "seconds_from_sxtwl_term": -120,
+    "expected_month_zhi": "申",
+    "source": "sxtwl 2.0.7；容差外样本"
+  },
+  {
+    "name": "白露",
+    "input_utc8": "2012-09-07 13:30:59",
+    "seconds_from_sxtwl_term": 120,
+    "expected_month_zhi": "酉",
+    "source": "sxtwl 2.0.7；容差外样本"
+  },
+  {
+    "name": "寒露",
+    "input_utc8": "2012-10-08 05:09:42",
+    "seconds_from_sxtwl_term": -120,
+    "expected_month_zhi": "酉",
+    "source": "sxtwl 2.0.7；容差外样本"
+  },
+  {
+    "name": "寒露",
+    "input_utc8": "2012-10-08 05:13:42",
+    "seconds_from_sxtwl_term": 120,
+    "expected_month_zhi": "戌",
+    "source": "sxtwl 2.0.7；容差外样本"
+  },
+  {
+    "name": "立冬",
+    "input_utc8": "2012-11-07 08:23:56",
+    "seconds_from_sxtwl_term": -120,
+    "expected_month_zhi": "戌",
+    "source": "sxtwl 2.0.7；容差外样本"
+  },
+  {
+    "name": "立冬",
+    "input_utc8": "2012-11-07 08:27:56",
+    "seconds_from_sxtwl_term": 120,
+    "expected_month_zhi": "亥",
+    "source": "sxtwl 2.0.7；容差外样本"
+  },
+  {
+    "name": "大雪",
+    "input_utc8": "2012-12-07 01:16:54",
+    "seconds_from_sxtwl_term": -120,
+    "expected_month_zhi": "亥",
+    "source": "sxtwl 2.0.7；容差外样本"
+  },
+  {
+    "name": "大雪",
+    "input_utc8": "2012-12-07 01:20:54",
+    "seconds_from_sxtwl_term": 120,
+    "expected_month_zhi": "子",
+    "source": "sxtwl 2.0.7；容差外样本"
+  },
+  {
+    "name": "小寒",
+    "input_utc8": "2013-01-05 12:31:37",
+    "seconds_from_sxtwl_term": -120,
+    "expected_month_zhi": "子",
+    "source": "sxtwl 2.0.7；容差外样本"
+  },
+  {
+    "name": "小寒",
+    "input_utc8": "2013-01-05 12:35:37",
+    "seconds_from_sxtwl_term": 120,
+    "expected_month_zhi": "丑",
+    "source": "sxtwl 2.0.7；容差外样本"
+  },
+  {
+    "name": "立春",
+    "input_utc8": "2013-02-04 00:11:24",
+    "seconds_from_sxtwl_term": -120,
+    "expected_month_zhi": "丑",
+    "source": "sxtwl 2.0.7；容差外样本"
+  },
+  {
+    "name": "立春",
+    "input_utc8": "2013-02-04 00:15:24",
+    "seconds_from_sxtwl_term": 120,
+    "expected_month_zhi": "寅",
+    "source": "sxtwl 2.0.7；容差外样本"
+  },
+  {
+    "name": "立春",
+    "input_utc8": "2024-02-04 16:24:53",
+    "seconds_from_sxtwl_term": -120,
+    "expected_month_zhi": "丑",
+    "source": "sxtwl 2.0.7；容差外样本"
+  },
+  {
+    "name": "立春",
+    "input_utc8": "2024-02-04 16:28:53",
+    "seconds_from_sxtwl_term": 120,
+    "expected_month_zhi": "寅",
+    "source": "sxtwl 2.0.7；容差外样本"
+  },
+  {
+    "name": "惊蛰",
+    "input_utc8": "2024-03-05 10:20:31",
+    "seconds_from_sxtwl_term": -120,
+    "expected_month_zhi": "寅",
+    "source": "sxtwl 2.0.7；容差外样本"
+  },
+  {
+    "name": "惊蛰",
+    "input_utc8": "2024-03-05 10:24:31",
+    "seconds_from_sxtwl_term": 120,
+    "expected_month_zhi": "卯",
+    "source": "sxtwl 2.0.7；容差外样本"
+  },
+  {
+    "name": "清明",
+    "input_utc8": "2024-04-04 15:00:03",
+    "seconds_from_sxtwl_term": -120,
+    "expected_month_zhi": "卯",
+    "source": "sxtwl 2.0.7；容差外样本"
+  },
+  {
+    "name": "清明",
+    "input_utc8": "2024-04-04 15:04:03",
+    "seconds_from_sxtwl_term": 120,
+    "expected_month_zhi": "辰",
+    "source": "sxtwl 2.0.7；容差外样本"
+  },
+  {
+    "name": "立夏",
+    "input_utc8": "2024-05-05 08:07:51",
+    "seconds_from_sxtwl_term": -120,
+    "expected_month_zhi": "辰",
+    "source": "sxtwl 2.0.7；容差外样本"
+  },
+  {
+    "name": "立夏",
+    "input_utc8": "2024-05-05 08:11:51",
+    "seconds_from_sxtwl_term": 120,
+    "expected_month_zhi": "巳",
+    "source": "sxtwl 2.0.7；容差外样本"
+  },
+  {
+    "name": "芒种",
+    "input_utc8": "2024-06-05 12:07:39",
+    "seconds_from_sxtwl_term": -120,
+    "expected_month_zhi": "巳",
+    "source": "sxtwl 2.0.7；容差外样本"
+  },
+  {
+    "name": "芒种",
+    "input_utc8": "2024-06-05 12:11:39",
+    "seconds_from_sxtwl_term": 120,
+    "expected_month_zhi": "午",
+    "source": "sxtwl 2.0.7；容差外样本"
+  },
+  {
+    "name": "小暑",
+    "input_utc8": "2024-07-06 22:17:48",
+    "seconds_from_sxtwl_term": -120,
+    "expected_month_zhi": "午",
+    "source": "sxtwl 2.0.7；容差外样本"
+  },
+  {
+    "name": "小暑",
+    "input_utc8": "2024-07-06 22:21:48",
+    "seconds_from_sxtwl_term": 120,
+    "expected_month_zhi": "未",
+    "source": "sxtwl 2.0.7；容差外样本"
+  },
+  {
+    "name": "立秋",
+    "input_utc8": "2024-08-07 08:07:01",
+    "seconds_from_sxtwl_term": -120,
+    "expected_month_zhi": "未",
+    "source": "sxtwl 2.0.7；容差外样本"
+  },
+  {
+    "name": "立秋",
+    "input_utc8": "2024-08-07 08:11:01",
+    "seconds_from_sxtwl_term": 120,
+    "expected_month_zhi": "申",
+    "source": "sxtwl 2.0.7；容差外样本"
+  },
+  {
+    "name": "白露",
+    "input_utc8": "2024-09-07 11:09:05",
+    "seconds_from_sxtwl_term": -120,
+    "expected_month_zhi": "申",
+    "source": "sxtwl 2.0.7；容差外样本"
+  },
+  {
+    "name": "白露",
+    "input_utc8": "2024-09-07 11:13:05",
+    "seconds_from_sxtwl_term": 120,
+    "expected_month_zhi": "酉",
+    "source": "sxtwl 2.0.7；容差外样本"
+  },
+  {
+    "name": "寒露",
+    "input_utc8": "2024-10-08 02:57:42",
+    "seconds_from_sxtwl_term": -120,
+    "expected_month_zhi": "酉",
+    "source": "sxtwl 2.0.7；容差外样本"
+  },
+  {
+    "name": "寒露",
+    "input_utc8": "2024-10-08 03:01:42",
+    "seconds_from_sxtwl_term": 120,
+    "expected_month_zhi": "戌",
+    "source": "sxtwl 2.0.7；容差外样本"
+  },
+  {
+    "name": "立冬",
+    "input_utc8": "2024-11-07 06:17:49",
+    "seconds_from_sxtwl_term": -120,
+    "expected_month_zhi": "戌",
+    "source": "sxtwl 2.0.7；容差外样本"
+  },
+  {
+    "name": "立冬",
+    "input_utc8": "2024-11-07 06:21:49",
+    "seconds_from_sxtwl_term": 120,
+    "expected_month_zhi": "亥",
+    "source": "sxtwl 2.0.7；容差外样本"
+  },
+  {
+    "name": "大雪",
+    "input_utc8": "2024-12-06 23:14:47",
+    "seconds_from_sxtwl_term": -120,
+    "expected_month_zhi": "亥",
+    "source": "sxtwl 2.0.7；容差外样本"
+  },
+  {
+    "name": "大雪",
+    "input_utc8": "2024-12-06 23:18:47",
+    "seconds_from_sxtwl_term": 120,
+    "expected_month_zhi": "子",
+    "source": "sxtwl 2.0.7；容差外样本"
+  },
+  {
+    "name": "小寒",
+    "input_utc8": "2025-01-05 10:30:31",
+    "seconds_from_sxtwl_term": -120,
+    "expected_month_zhi": "子",
+    "source": "sxtwl 2.0.7；容差外样本"
+  },
+  {
+    "name": "小寒",
+    "input_utc8": "2025-01-05 10:34:31",
+    "seconds_from_sxtwl_term": 120,
+    "expected_month_zhi": "丑",
+    "source": "sxtwl 2.0.7；容差外样本"
+  },
+  {
+    "name": "立春",
+    "input_utc8": "2025-02-03 22:08:13",
+    "seconds_from_sxtwl_term": -120,
+    "expected_month_zhi": "丑",
+    "source": "sxtwl 2.0.7；容差外样本"
+  },
+  {
+    "name": "立春",
+    "input_utc8": "2025-02-03 22:12:13",
+    "seconds_from_sxtwl_term": 120,
+    "expected_month_zhi": "寅",
+    "source": "sxtwl 2.0.7；容差外样本"
+  },
+  {
+    "name": "立春",
+    "input_utc8": "2025-02-03 22:08:13",
+    "seconds_from_sxtwl_term": -120,
+    "expected_month_zhi": "丑",
+    "source": "sxtwl 2.0.7；容差外样本"
+  },
+  {
+    "name": "立春",
+    "input_utc8": "2025-02-03 22:12:13",
+    "seconds_from_sxtwl_term": 120,
+    "expected_month_zhi": "寅",
+    "source": "sxtwl 2.0.7；容差外样本"
+  },
+  {
+    "name": "惊蛰",
+    "input_utc8": "2025-03-05 16:05:02",
+    "seconds_from_sxtwl_term": -120,
+    "expected_month_zhi": "寅",
+    "source": "sxtwl 2.0.7；容差外样本"
+  },
+  {
+    "name": "惊蛰",
+    "input_utc8": "2025-03-05 16:09:02",
+    "seconds_from_sxtwl_term": 120,
+    "expected_month_zhi": "卯",
+    "source": "sxtwl 2.0.7；容差外样本"
+  },
+  {
+    "name": "清明",
+    "input_utc8": "2025-04-04 20:46:20",
+    "seconds_from_sxtwl_term": -120,
+    "expected_month_zhi": "卯",
+    "source": "sxtwl 2.0.7；容差外样本"
+  },
+  {
+    "name": "清明",
+    "input_utc8": "2025-04-04 20:50:20",
+    "seconds_from_sxtwl_term": 120,
+    "expected_month_zhi": "辰",
+    "source": "sxtwl 2.0.7；容差外样本"
+  },
+  {
+    "name": "立夏",
+    "input_utc8": "2025-05-05 13:54:57",
+    "seconds_from_sxtwl_term": -120,
+    "expected_month_zhi": "辰",
+    "source": "sxtwl 2.0.7；容差外样本"
+  },
+  {
+    "name": "立夏",
+    "input_utc8": "2025-05-05 13:58:57",
+    "seconds_from_sxtwl_term": 120,
+    "expected_month_zhi": "巳",
+    "source": "sxtwl 2.0.7；容差外样本"
+  },
+  {
+    "name": "芒种",
+    "input_utc8": "2025-06-05 17:54:16",
+    "seconds_from_sxtwl_term": -120,
+    "expected_month_zhi": "巳",
+    "source": "sxtwl 2.0.7；容差外样本"
+  },
+  {
+    "name": "芒种",
+    "input_utc8": "2025-06-05 17:58:16",
+    "seconds_from_sxtwl_term": 120,
+    "expected_month_zhi": "午",
+    "source": "sxtwl 2.0.7；容差外样本"
+  },
+  {
+    "name": "小暑",
+    "input_utc8": "2025-07-07 04:02:43",
+    "seconds_from_sxtwl_term": -120,
+    "expected_month_zhi": "午",
+    "source": "sxtwl 2.0.7；容差外样本"
+  },
+  {
+    "name": "小暑",
+    "input_utc8": "2025-07-07 04:06:43",
+    "seconds_from_sxtwl_term": 120,
+    "expected_month_zhi": "未",
+    "source": "sxtwl 2.0.7；容差外样本"
+  },
+  {
+    "name": "立秋",
+    "input_utc8": "2025-08-07 13:49:18",
+    "seconds_from_sxtwl_term": -120,
+    "expected_month_zhi": "未",
+    "source": "sxtwl 2.0.7；容差外样本"
+  },
+  {
+    "name": "立秋",
+    "input_utc8": "2025-08-07 13:53:18",
+    "seconds_from_sxtwl_term": 120,
+    "expected_month_zhi": "申",
+    "source": "sxtwl 2.0.7；容差外样本"
+  },
+  {
+    "name": "白露",
+    "input_utc8": "2025-09-07 16:49:41",
+    "seconds_from_sxtwl_term": -120,
+    "expected_month_zhi": "申",
+    "source": "sxtwl 2.0.7；容差外样本"
+  },
+  {
+    "name": "白露",
+    "input_utc8": "2025-09-07 16:53:41",
+    "seconds_from_sxtwl_term": 120,
+    "expected_month_zhi": "酉",
+    "source": "sxtwl 2.0.7；容差外样本"
+  },
+  {
+    "name": "寒露",
+    "input_utc8": "2025-10-08 08:38:56",
+    "seconds_from_sxtwl_term": -120,
+    "expected_month_zhi": "酉",
+    "source": "sxtwl 2.0.7；容差外样本"
+  },
+  {
+    "name": "寒露",
+    "input_utc8": "2025-10-08 08:42:56",
+    "seconds_from_sxtwl_term": 120,
+    "expected_month_zhi": "戌",
+    "source": "sxtwl 2.0.7；容差外样本"
+  },
+  {
+    "name": "立冬",
+    "input_utc8": "2025-11-07 12:01:47",
+    "seconds_from_sxtwl_term": -120,
+    "expected_month_zhi": "戌",
+    "source": "sxtwl 2.0.7；容差外样本"
+  },
+  {
+    "name": "立冬",
+    "input_utc8": "2025-11-07 12:05:47",
+    "seconds_from_sxtwl_term": 120,
+    "expected_month_zhi": "亥",
+    "source": "sxtwl 2.0.7；容差外样本"
+  },
+  {
+    "name": "大雪",
+    "input_utc8": "2025-12-07 05:02:19",
+    "seconds_from_sxtwl_term": -120,
+    "expected_month_zhi": "亥",
+    "source": "sxtwl 2.0.7；容差外样本"
+  },
+  {
+    "name": "大雪",
+    "input_utc8": "2025-12-07 05:06:19",
+    "seconds_from_sxtwl_term": 120,
+    "expected_month_zhi": "子",
+    "source": "sxtwl 2.0.7；容差外样本"
+  },
+  {
+    "name": "小寒",
+    "input_utc8": "2026-01-05 16:20:53",
+    "seconds_from_sxtwl_term": -120,
+    "expected_month_zhi": "子",
+    "source": "sxtwl 2.0.7；容差外样本"
+  },
+  {
+    "name": "小寒",
+    "input_utc8": "2026-01-05 16:24:53",
+    "seconds_from_sxtwl_term": 120,
+    "expected_month_zhi": "丑",
+    "source": "sxtwl 2.0.7；容差外样本"
+  },
+  {
+    "name": "立春",
+    "input_utc8": "2026-02-04 03:59:51",
+    "seconds_from_sxtwl_term": -120,
+    "expected_month_zhi": "丑",
+    "source": "sxtwl 2.0.7；容差外样本"
+  },
+  {
+    "name": "立春",
+    "input_utc8": "2026-02-04 04:03:51",
+    "seconds_from_sxtwl_term": 120,
+    "expected_month_zhi": "寅",
+    "source": "sxtwl 2.0.7；容差外样本"
+  },
+  {
+    "name": "立春",
+    "input_utc8": "2026-02-04 03:59:51",
+    "seconds_from_sxtwl_term": -120,
+    "expected_month_zhi": "丑",
+    "source": "sxtwl 2.0.7；容差外样本"
+  },
+  {
+    "name": "立春",
+    "input_utc8": "2026-02-04 04:03:51",
+    "seconds_from_sxtwl_term": 120,
+    "expected_month_zhi": "寅",
+    "source": "sxtwl 2.0.7；容差外样本"
+  },
+  {
+    "name": "惊蛰",
+    "input_utc8": "2026-03-05 21:56:42",
+    "seconds_from_sxtwl_term": -120,
+    "expected_month_zhi": "寅",
+    "source": "sxtwl 2.0.7；容差外样本"
+  },
+  {
+    "name": "惊蛰",
+    "input_utc8": "2026-03-05 22:00:42",
+    "seconds_from_sxtwl_term": 120,
+    "expected_month_zhi": "卯",
+    "source": "sxtwl 2.0.7；容差外样本"
+  },
+  {
+    "name": "清明",
+    "input_utc8": "2026-04-05 02:37:42",
+    "seconds_from_sxtwl_term": -120,
+    "expected_month_zhi": "卯",
+    "source": "sxtwl 2.0.7；容差外样本"
+  },
+  {
+    "name": "清明",
+    "input_utc8": "2026-04-05 02:41:42",
+    "seconds_from_sxtwl_term": 120,
+    "expected_month_zhi": "辰",
+    "source": "sxtwl 2.0.7；容差外样本"
+  },
+  {
+    "name": "立夏",
+    "input_utc8": "2026-05-05 19:46:26",
+    "seconds_from_sxtwl_term": -120,
+    "expected_month_zhi": "辰",
+    "source": "sxtwl 2.0.7；容差外样本"
+  },
+  {
+    "name": "立夏",
+    "input_utc8": "2026-05-05 19:50:26",
+    "seconds_from_sxtwl_term": 120,
+    "expected_month_zhi": "巳",
+    "source": "sxtwl 2.0.7；容差外样本"
+  },
+  {
+    "name": "芒种",
+    "input_utc8": "2026-06-05 23:46:03",
+    "seconds_from_sxtwl_term": -120,
+    "expected_month_zhi": "巳",
+    "source": "sxtwl 2.0.7；容差外样本"
+  },
+  {
+    "name": "芒种",
+    "input_utc8": "2026-06-05 23:50:03",
+    "seconds_from_sxtwl_term": 120,
+    "expected_month_zhi": "午",
+    "source": "sxtwl 2.0.7；容差外样本"
+  },
+  {
+    "name": "小暑",
+    "input_utc8": "2026-07-07 09:54:39",
+    "seconds_from_sxtwl_term": -120,
+    "expected_month_zhi": "午",
+    "source": "sxtwl 2.0.7；容差外样本"
+  },
+  {
+    "name": "小暑",
+    "input_utc8": "2026-07-07 09:58:39",
+    "seconds_from_sxtwl_term": 120,
+    "expected_month_zhi": "未",
+    "source": "sxtwl 2.0.7；容差外样本"
+  },
+  {
+    "name": "立秋",
+    "input_utc8": "2026-08-07 19:40:25",
+    "seconds_from_sxtwl_term": -120,
+    "expected_month_zhi": "未",
+    "source": "sxtwl 2.0.7；容差外样本"
+  },
+  {
+    "name": "立秋",
+    "input_utc8": "2026-08-07 19:44:25",
+    "seconds_from_sxtwl_term": 120,
+    "expected_month_zhi": "申",
+    "source": "sxtwl 2.0.7；容差外样本"
+  },
+  {
+    "name": "白露",
+    "input_utc8": "2026-09-07 22:38:58",
+    "seconds_from_sxtwl_term": -120,
+    "expected_month_zhi": "申",
+    "source": "sxtwl 2.0.7；容差外样本"
+  },
+  {
+    "name": "白露",
+    "input_utc8": "2026-09-07 22:42:58",
+    "seconds_from_sxtwl_term": 120,
+    "expected_month_zhi": "酉",
+    "source": "sxtwl 2.0.7；容差外样本"
+  },
+  {
+    "name": "寒露",
+    "input_utc8": "2026-10-08 14:26:59",
+    "seconds_from_sxtwl_term": -120,
+    "expected_month_zhi": "酉",
+    "source": "sxtwl 2.0.7；容差外样本"
+  },
+  {
+    "name": "寒露",
+    "input_utc8": "2026-10-08 14:30:59",
+    "seconds_from_sxtwl_term": 120,
+    "expected_month_zhi": "戌",
+    "source": "sxtwl 2.0.7；容差外样本"
+  },
+  {
+    "name": "立冬",
+    "input_utc8": "2026-11-07 17:49:46",
+    "seconds_from_sxtwl_term": -120,
+    "expected_month_zhi": "戌",
+    "source": "sxtwl 2.0.7；容差外样本"
+  },
+  {
+    "name": "立冬",
+    "input_utc8": "2026-11-07 17:53:46",
+    "seconds_from_sxtwl_term": 120,
+    "expected_month_zhi": "亥",
+    "source": "sxtwl 2.0.7；容差外样本"
+  },
+  {
+    "name": "大雪",
+    "input_utc8": "2026-12-07 10:50:13",
+    "seconds_from_sxtwl_term": -120,
+    "expected_month_zhi": "亥",
+    "source": "sxtwl 2.0.7；容差外样本"
+  },
+  {
+    "name": "大雪",
+    "input_utc8": "2026-12-07 10:54:13",
+    "seconds_from_sxtwl_term": 120,
+    "expected_month_zhi": "子",
+    "source": "sxtwl 2.0.7；容差外样本"
+  },
+  {
+    "name": "小寒",
+    "input_utc8": "2027-01-05 22:07:39",
+    "seconds_from_sxtwl_term": -120,
+    "expected_month_zhi": "子",
+    "source": "sxtwl 2.0.7；容差外样本"
+  },
+  {
+    "name": "小寒",
+    "input_utc8": "2027-01-05 22:11:39",
+    "seconds_from_sxtwl_term": 120,
+    "expected_month_zhi": "丑",
+    "source": "sxtwl 2.0.7；容差外样本"
+  },
+  {
+    "name": "立春",
+    "input_utc8": "2027-02-04 09:43:59",
+    "seconds_from_sxtwl_term": -120,
+    "expected_month_zhi": "丑",
+    "source": "sxtwl 2.0.7；容差外样本"
+  },
+  {
+    "name": "立春",
+    "input_utc8": "2027-02-04 09:47:59",
+    "seconds_from_sxtwl_term": 120,
+    "expected_month_zhi": "寅",
+    "source": "sxtwl 2.0.7；容差外样本"
+  },
+  {
+    "name": "立春",
+    "input_utc8": "2033-02-03 20:39:08",
+    "seconds_from_sxtwl_term": -120,
+    "expected_month_zhi": "丑",
+    "source": "sxtwl 2.0.7；容差外样本"
+  },
+  {
+    "name": "立春",
+    "input_utc8": "2033-02-03 20:43:08",
+    "seconds_from_sxtwl_term": 120,
+    "expected_month_zhi": "寅",
+    "source": "sxtwl 2.0.7；容差外样本"
+  },
+  {
+    "name": "惊蛰",
+    "input_utc8": "2033-03-05 14:29:54",
+    "seconds_from_sxtwl_term": -120,
+    "expected_month_zhi": "寅",
+    "source": "sxtwl 2.0.7；容差外样本"
+  },
+  {
+    "name": "惊蛰",
+    "input_utc8": "2033-03-05 14:33:54",
+    "seconds_from_sxtwl_term": 120,
+    "expected_month_zhi": "卯",
+    "source": "sxtwl 2.0.7；容差外样本"
+  },
+  {
+    "name": "清明",
+    "input_utc8": "2033-04-04 19:05:40",
+    "seconds_from_sxtwl_term": -120,
+    "expected_month_zhi": "卯",
+    "source": "sxtwl 2.0.7；容差外样本"
+  },
+  {
+    "name": "清明",
+    "input_utc8": "2033-04-04 19:09:40",
+    "seconds_from_sxtwl_term": 120,
+    "expected_month_zhi": "辰",
+    "source": "sxtwl 2.0.7；容差外样本"
+  },
+  {
+    "name": "立夏",
+    "input_utc8": "2033-05-05 12:11:18",
+    "seconds_from_sxtwl_term": -120,
+    "expected_month_zhi": "辰",
+    "source": "sxtwl 2.0.7；容差外样本"
+  },
+  {
+    "name": "立夏",
+    "input_utc8": "2033-05-05 12:15:18",
+    "seconds_from_sxtwl_term": 120,
+    "expected_month_zhi": "巳",
+    "source": "sxtwl 2.0.7；容差外样本"
+  },
+  {
+    "name": "芒种",
+    "input_utc8": "2033-06-05 16:10:58",
+    "seconds_from_sxtwl_term": -120,
+    "expected_month_zhi": "巳",
+    "source": "sxtwl 2.0.7；容差外样本"
+  },
+  {
+    "name": "芒种",
+    "input_utc8": "2033-06-05 16:14:58",
+    "seconds_from_sxtwl_term": 120,
+    "expected_month_zhi": "午",
+    "source": "sxtwl 2.0.7；容差外样本"
+  },
+  {
+    "name": "小暑",
+    "input_utc8": "2033-07-07 02:22:28",
+    "seconds_from_sxtwl_term": -120,
+    "expected_month_zhi": "午",
+    "source": "sxtwl 2.0.7；容差外样本"
+  },
+  {
+    "name": "小暑",
+    "input_utc8": "2033-07-07 02:26:28",
+    "seconds_from_sxtwl_term": 120,
+    "expected_month_zhi": "未",
+    "source": "sxtwl 2.0.7；容差外样本"
+  },
+  {
+    "name": "立秋",
+    "input_utc8": "2033-08-07 12:13:17",
+    "seconds_from_sxtwl_term": -120,
+    "expected_month_zhi": "未",
+    "source": "sxtwl 2.0.7；容差外样本"
+  },
+  {
+    "name": "立秋",
+    "input_utc8": "2033-08-07 12:17:17",
+    "seconds_from_sxtwl_term": 120,
+    "expected_month_zhi": "申",
+    "source": "sxtwl 2.0.7；容差外样本"
+  },
+  {
+    "name": "白露",
+    "input_utc8": "2033-09-07 15:17:53",
+    "seconds_from_sxtwl_term": -120,
+    "expected_month_zhi": "申",
+    "source": "sxtwl 2.0.7；容差外样本"
+  },
+  {
+    "name": "白露",
+    "input_utc8": "2033-09-07 15:21:53",
+    "seconds_from_sxtwl_term": 120,
+    "expected_month_zhi": "酉",
+    "source": "sxtwl 2.0.7；容差外样本"
+  },
+  {
+    "name": "寒露",
+    "input_utc8": "2033-10-08 07:11:27",
+    "seconds_from_sxtwl_term": -120,
+    "expected_month_zhi": "酉",
+    "source": "sxtwl 2.0.7；容差外样本"
+  },
+  {
+    "name": "寒露",
+    "input_utc8": "2033-10-08 07:15:27",
+    "seconds_from_sxtwl_term": 120,
+    "expected_month_zhi": "戌",
+    "source": "sxtwl 2.0.7；容差外样本"
+  },
+  {
+    "name": "立冬",
+    "input_utc8": "2033-11-07 10:38:36",
+    "seconds_from_sxtwl_term": -120,
+    "expected_month_zhi": "戌",
+    "source": "sxtwl 2.0.7；容差外样本"
+  },
+  {
+    "name": "立冬",
+    "input_utc8": "2033-11-07 10:42:36",
+    "seconds_from_sxtwl_term": 120,
+    "expected_month_zhi": "亥",
+    "source": "sxtwl 2.0.7；容差外样本"
+  },
+  {
+    "name": "大雪",
+    "input_utc8": "2033-12-07 03:42:26",
+    "seconds_from_sxtwl_term": -120,
+    "expected_month_zhi": "亥",
+    "source": "sxtwl 2.0.7；容差外样本"
+  },
+  {
+    "name": "大雪",
+    "input_utc8": "2033-12-07 03:46:26",
+    "seconds_from_sxtwl_term": 120,
+    "expected_month_zhi": "子",
+    "source": "sxtwl 2.0.7；容差外样本"
+  },
+  {
+    "name": "小寒",
+    "input_utc8": "2034-01-05 15:02:01",
+    "seconds_from_sxtwl_term": -120,
+    "expected_month_zhi": "子",
+    "source": "sxtwl 2.0.7；容差外样本"
+  },
+  {
+    "name": "小寒",
+    "input_utc8": "2034-01-05 15:06:01",
+    "seconds_from_sxtwl_term": 120,
+    "expected_month_zhi": "丑",
+    "source": "sxtwl 2.0.7；容差外样本"
+  },
+  {
+    "name": "立春",
+    "input_utc8": "2034-02-04 02:38:40",
+    "seconds_from_sxtwl_term": -120,
+    "expected_month_zhi": "丑",
+    "source": "sxtwl 2.0.7；容差外样本"
+  },
+  {
+    "name": "立春",
+    "input_utc8": "2034-02-04 02:42:40",
+    "seconds_from_sxtwl_term": 120,
+    "expected_month_zhi": "寅",
+    "source": "sxtwl 2.0.7；容差外样本"
+  },
+  {
+    "name": "立春",
+    "input_utc8": "2098-02-03 15:26:26",
+    "seconds_from_sxtwl_term": -120,
+    "expected_month_zhi": "丑",
+    "source": "sxtwl 2.0.7；容差外样本"
+  },
+  {
+    "name": "立春",
+    "input_utc8": "2098-02-03 15:30:26",
+    "seconds_from_sxtwl_term": 120,
+    "expected_month_zhi": "寅",
+    "source": "sxtwl 2.0.7；容差外样本"
+  },
+  {
+    "name": "惊蛰",
+    "input_utc8": "2098-03-05 09:01:27",
+    "seconds_from_sxtwl_term": -120,
+    "expected_month_zhi": "寅",
+    "source": "sxtwl 2.0.7；容差外样本"
+  },
+  {
+    "name": "惊蛰",
+    "input_utc8": "2098-03-05 09:05:27",
+    "seconds_from_sxtwl_term": 120,
+    "expected_month_zhi": "卯",
+    "source": "sxtwl 2.0.7；容差外样本"
+  },
+  {
+    "name": "清明",
+    "input_utc8": "2098-04-04 13:10:43",
+    "seconds_from_sxtwl_term": -120,
+    "expected_month_zhi": "卯",
+    "source": "sxtwl 2.0.7；容差外样本"
+  },
+  {
+    "name": "清明",
+    "input_utc8": "2098-04-04 13:14:43",
+    "seconds_from_sxtwl_term": 120,
+    "expected_month_zhi": "辰",
+    "source": "sxtwl 2.0.7；容差外样本"
+  },
+  {
+    "name": "立夏",
+    "input_utc8": "2098-05-05 05:46:19",
+    "seconds_from_sxtwl_term": -120,
+    "expected_month_zhi": "辰",
+    "source": "sxtwl 2.0.7；容差外样本"
+  },
+  {
+    "name": "立夏",
+    "input_utc8": "2098-05-05 05:50:19",
+    "seconds_from_sxtwl_term": 120,
+    "expected_month_zhi": "巳",
+    "source": "sxtwl 2.0.7；容差外样本"
+  },
+  {
+    "name": "芒种",
+    "input_utc8": "2098-06-05 09:20:50",
+    "seconds_from_sxtwl_term": -120,
+    "expected_month_zhi": "巳",
+    "source": "sxtwl 2.0.7；容差外样本"
+  },
+  {
+    "name": "芒种",
+    "input_utc8": "2098-06-05 09:24:50",
+    "seconds_from_sxtwl_term": 120,
+    "expected_month_zhi": "午",
+    "source": "sxtwl 2.0.7；容差外样本"
+  },
+  {
+    "name": "小暑",
+    "input_utc8": "2098-07-06 19:19:48",
+    "seconds_from_sxtwl_term": -120,
+    "expected_month_zhi": "午",
+    "source": "sxtwl 2.0.7；容差外样本"
+  },
+  {
+    "name": "小暑",
+    "input_utc8": "2098-07-06 19:23:48",
+    "seconds_from_sxtwl_term": 120,
+    "expected_month_zhi": "未",
+    "source": "sxtwl 2.0.7；容差外样本"
+  },
+  {
+    "name": "立秋",
+    "input_utc8": "2098-08-07 05:13:59",
+    "seconds_from_sxtwl_term": -120,
+    "expected_month_zhi": "未",
+    "source": "sxtwl 2.0.7；容差外样本"
+  },
+  {
+    "name": "立秋",
+    "input_utc8": "2098-08-07 05:17:59",
+    "seconds_from_sxtwl_term": 120,
+    "expected_month_zhi": "申",
+    "source": "sxtwl 2.0.7；容差外样本"
+  },
+  {
+    "name": "白露",
+    "input_utc8": "2098-09-07 08:36:08",
+    "seconds_from_sxtwl_term": -120,
+    "expected_month_zhi": "申",
+    "source": "sxtwl 2.0.7；容差外样本"
+  },
+  {
+    "name": "白露",
+    "input_utc8": "2098-09-07 08:40:08",
+    "seconds_from_sxtwl_term": 120,
+    "expected_month_zhi": "酉",
+    "source": "sxtwl 2.0.7；容差外样本"
+  },
+  {
+    "name": "寒露",
+    "input_utc8": "2098-10-08 00:55:23",
+    "seconds_from_sxtwl_term": -120,
+    "expected_month_zhi": "酉",
+    "source": "sxtwl 2.0.7；容差外样本"
+  },
+  {
+    "name": "寒露",
+    "input_utc8": "2098-10-08 00:59:23",
+    "seconds_from_sxtwl_term": 120,
+    "expected_month_zhi": "戌",
+    "source": "sxtwl 2.0.7；容差外样本"
+  },
+  {
+    "name": "立冬",
+    "input_utc8": "2098-11-07 04:48:07",
+    "seconds_from_sxtwl_term": -120,
+    "expected_month_zhi": "戌",
+    "source": "sxtwl 2.0.7；容差外样本"
+  },
+  {
+    "name": "立冬",
+    "input_utc8": "2098-11-07 04:52:07",
+    "seconds_from_sxtwl_term": 120,
+    "expected_month_zhi": "亥",
+    "source": "sxtwl 2.0.7；容差外样本"
+  },
+  {
+    "name": "大雪",
+    "input_utc8": "2098-12-06 22:10:21",
+    "seconds_from_sxtwl_term": -120,
+    "expected_month_zhi": "亥",
+    "source": "sxtwl 2.0.7；容差外样本"
+  },
+  {
+    "name": "大雪",
+    "input_utc8": "2098-12-06 22:14:21",
+    "seconds_from_sxtwl_term": 120,
+    "expected_month_zhi": "子",
+    "source": "sxtwl 2.0.7；容差外样本"
+  },
+  {
+    "name": "小寒",
+    "input_utc8": "2099-01-05 09:36:43",
+    "seconds_from_sxtwl_term": -120,
+    "expected_month_zhi": "子",
+    "source": "sxtwl 2.0.7；容差外样本"
+  },
+  {
+    "name": "小寒",
+    "input_utc8": "2099-01-05 09:40:43",
+    "seconds_from_sxtwl_term": 120,
+    "expected_month_zhi": "丑",
+    "source": "sxtwl 2.0.7；容差外样本"
+  },
+  {
+    "name": "立春",
+    "input_utc8": "2099-02-03 21:06:56",
+    "seconds_from_sxtwl_term": -120,
+    "expected_month_zhi": "丑",
+    "source": "sxtwl 2.0.7；容差外样本"
+  },
+  {
+    "name": "立春",
+    "input_utc8": "2099-02-03 21:10:56",
+    "seconds_from_sxtwl_term": 120,
+    "expected_month_zhi": "寅",
+    "source": "sxtwl 2.0.7；容差外样本"
+  }
+]

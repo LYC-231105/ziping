@@ -1,0 +1,71 @@
+{
+  "created_at": "2026-11-16T15:37:24.819Z",
+  "passed": 1994,
+  "failed": 0,
+  "groups": {
+    "基础": {
+      "passed": 2,
+      "failed": 0
+    },
+    "十神100映射": {
+      "passed": 100,
+      "failed": 0
+    },
+    "晚子时": {
+      "passed": 5,
+      "failed": 0
+    },
+    "输入核验": {
+      "passed": 7,
+      "failed": 0
+    },
+    "时区": {
+      "passed": 5,
+      "failed": 0
+    },
+    "海外交节统一UTC": {
+      "passed": 6,
+      "failed": 0
+    },
+    "太阳时": {
+      "passed": 4,
+      "failed": 0
+    },
+    "交运库对照": {
+      "passed": 10,
+      "failed": 0
+    },
+    "未知时间": {
+      "passed": 2,
+      "failed": 0
+    },
+    "时间误差传播": {
+      "passed": 3,
+      "failed": 0
+    },
+    "关系": {
+      "passed": 1,
+      "failed": 0
+    },
+    "藏干与十二长生": {
+      "passed": 60,
+      "failed": 0
+    },
+    "海外与夏令时交运": {
+      "passed": 3,
+      "failed": 0
+    },
+    "sxtwl参考四柱": {
+      "passed": 1500,
+      "failed": 0
+    },
+    "十二节边界": {
+      "passed": 286,
+      "failed": 0
+    }
+  },
+  "failures": [],
+  "node": "v24.20.0",
+  "tz": "2026c",
+  "scope": "本版计算程序的回归与集成检查；不验证命理预测有效性。部分对照与主引擎共享算法谱系，不是完全独立天文真值。"
+}
