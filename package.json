@@ -1,11 +1,11 @@
 {
   "name": "ziping-study",
-  "version": "0.7.2",
+  "version": "0.8.1",
   "private": true,
   "description": "本地子平排盘、结构详析与独立教学网页",
   "scripts": {
     "start": "node server.cjs",
-    "test": "node tests/engine.test.cjs && node tests/reading.test.cjs && node tests/extra.test.cjs && node tests/accuracy.test.cjs && node tests/teach.test.cjs"
+    "test": "node tests/engine.test.cjs && node tests/reading.test.cjs && node tests/extra.test.cjs && node tests/accuracy.test.cjs && node tests/teach.test.cjs && node tests/tables.test.cjs && node tests/cases.test.cjs"
   },
   "engines": {
     "node": ">=20"

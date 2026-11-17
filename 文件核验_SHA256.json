@@ -1,6 +1,6 @@
 {
- "version": "0.7.2",
- "createdAt": "2026-11-17T04:19:28.362Z",
+ "version": "0.8.1",
+ "createdAt": "2026-11-17T14:31:42Z",
  "scope": "网页交付文件完整性；不认证预测效果",
  "files": [
   {
@@ -35,8 +35,8 @@
   },
   {
    "path": "app.js",
-   "bytes": 151200,
-   "sha256": "65d2d587530831b91a3360511d226a5b564a67054f6cc67308206efc6feee4c8"
+   "bytes": 181430,
+   "sha256": "c19f6190e65750d2b6a5aec1acd5d29a2d3f3cdd6329a9c21e433cf0c5a0ea5f"
   },
   {
    "path": "assets/seal.svg",
@@ -79,14 +79,24 @@
    "sha256": "528fe6767b5213e79bff50d4fbbef562639bdade699e142e4264ebfd6c4d580e"
   },
   {
+   "path": "case-map.js",
+   "bytes": 47438,
+   "sha256": "d37108052b965af7411b6185c94e875261cbc973b7c7f7fbb3275848233e0594"
+  },
+  {
    "path": "cases-deep.js",
    "bytes": 38204,
    "sha256": "66ab0f3751a2656770eb494a30a851107c95c90b1d527cb208546a69f8e05269"
   },
   {
+   "path": "cases-more.js",
+   "bytes": 74297,
+   "sha256": "cda7470994620a8c105f4bea80ecf08badb60a32b8d639ca8092b82c5ecc21dc"
+  },
+  {
    "path": "content.js",
-   "bytes": 276424,
-   "sha256": "610e637d6a9f31f4ed56a1dc1b0a307876de5d6c370d31eede5464c84dd15a8d"
+   "bytes": 276763,
+   "sha256": "e3fe562df53b25ed5c9bfadd7c475173ee6998de885ede24823df887a8bc151b"
   },
   {
    "path": "engine.js",
@@ -99,14 +109,19 @@
    "sha256": "166bafa9195a9038cd9dfef8192c54d62b1f0972f239baba74a692c8d4bd632f"
   },
   {
+   "path": "geo.js",
+   "bytes": 64775,
+   "sha256": "a59e13afcddc8d9aec80f621c98c7c53d9c650c98ec90a216961f95e0559f5c9"
+  },
+  {
    "path": "index.html",
-   "bytes": 3591,
-   "sha256": "2059d023064efde56c4f330865028a1b73878118b333322df3cc988a86f2c80d"
+   "bytes": 3879,
+   "sha256": "0c679b8d4fc698317d55a655ba293aefac05c18aac94cb7bb648906e0cef4278"
   },
   {
    "path": "lessons-deep.js",
-   "bytes": 156729,
-   "sha256": "ff5292675dee1688131f6ce11e604fa3e610c418a5aabdddd9dd3209b0a0925b"
+   "bytes": 157821,
+   "sha256": "bba81dcc268e2c90839679af286dd0bf441b26873293c54510715621c71f485d"
   },
   {
    "path": "lessons-order.js",
@@ -115,8 +130,8 @@
   },
   {
    "path": "package.json",
-   "bytes": 437,
-   "sha256": "1f8b2f5488b7690d9167ba3ddb2945af2f96260360e3e697ca71e9420212126b"
+   "bytes": 496,
+   "sha256": "cd76a5a993cb51697e4ac9602b2f3f03d436e0500deb157353fabb72a02723f2"
   },
   {
    "path": "places.js",
@@ -175,13 +190,18 @@
   },
   {
    "path": "server.cjs",
-   "bytes": 4792,
-   "sha256": "7fea3211a8355818582427e2a1b92cdf9f251d346db67e2c28dfe059a2413fbb"
+   "bytes": 4847,
+   "sha256": "09ed7bfa2bd90f7fb229c954ce3f402503029e562597304cc04cf4a3b1ebc4f4"
   },
   {
    "path": "styles.css",
-   "bytes": 58198,
-   "sha256": "bb875a7626363c4b63d0b8c92e597ef4be98b4586aa84e6682b9a322562276d1"
+   "bytes": 68663,
+   "sha256": "f056909d6e5f258c14fede595bea7b39a0a2d05216e7cd8966ae575308bedb33"
+  },
+  {
+   "path": "tables.js",
+   "bytes": 20837,
+   "sha256": "e2c870194c9a6470fd64a19b09a730b8d076d75d01e7f8d535e7cb2101e66691"
   },
   {
    "path": "tests/GitHub同步规则验收.json",
@@ -224,6 +244,11 @@
    "sha256": "3fbb35aaa52c6c7842b6d7888ab402f0bce4d94af4985bbadbfca0f42114a17d"
   },
   {
+   "path": "tests/cases.test.cjs",
+   "bytes": 5178,
+   "sha256": "bfa57e8078249993176baec3c41b13d6d3d5926c95edc593c3dba8009cb40ce1"
+  },
+  {
    "path": "tests/engine.test.cjs",
    "bytes": 9178,
    "sha256": "0f8155a9f87916f91511fb79c96fc28ace8432fd5929cb7d525ea56a0dd175bf"
@@ -249,6 +274,11 @@
    "sha256": "45d0df025031dce98b8ae3d9333390d788fb8f186efa69a0bd66e4f26c80d75d"
   },
   {
+   "path": "tests/tables.test.cjs",
+   "bytes": 3157,
+   "sha256": "65894e998daa0d417f3db1adac5c78bd8ac240404085f4ba2c1600276e404955"
+  },
+  {
    "path": "tests/teach.test.cjs",
    "bytes": 10316,
    "sha256": "6b4ec95cddfd80babf6d5a315b7d0fbb721c4138532afe19cf0d1637c5a4df09"
@@ -262,6 +292,16 @@
    "path": "tests/计算测试结果.json",
    "bytes": 1350,
    "sha256": "96f6c1095774dcf7f66ab3b46397726a555fc05710be481b059828c14ad92441"
+  },
+  {
+   "path": "tools/gen-case-map.cjs",
+   "bytes": 17656,
+   "sha256": "f6efa0e72af3a11bafa1e9a018ee13effd09f34131e87d8b92b24e4457380ab2"
+  },
+  {
+   "path": "tools/gen-cases.cjs",
+   "bytes": 21197,
+   "sha256": "ea7b4a18e35edb058919a234dc25c779d0c4cdc7c9f26e72e3a6a112481e358f"
   },
   {
    "path": "upload-github.ps1",
@@ -285,8 +325,8 @@
   },
   {
    "path": "使用说明.md",
-   "bytes": 12588,
-   "sha256": "40ba27be7522d9cc89438ba4dcd76d3a07957d07c51bd7be5c7b822061c89cbf"
+   "bytes": 14709,
+   "sha256": "d8c4e6c4a8ee6742f1f8b50eb2cb20461c13ca35dcc2048885988f62fdcb5ac8"
   },
   {
    "path": "启动网页.cmd",
@@ -329,9 +369,24 @@
    "sha256": "020bd278a04149380f9faec99d02fcaf7943d60a311f90d914a479110e40db91"
   },
   {
+   "path": "更新说明_V0.7.3.md",
+   "bytes": 3426,
+   "sha256": "aa29e5efff92a72bf4c5e947136e6461056557e964ad2d98fd8e0f86eb82f47e"
+  },
+  {
    "path": "更新说明_V0.7.md",
    "bytes": 7067,
    "sha256": "c4d3ab36e5313fc1ed3c98e85f94efecf365d6c8e9566d77384f16c7f16ee7b9"
+  },
+  {
+   "path": "更新说明_V0.8.0.md",
+   "bytes": 6430,
+   "sha256": "3c8780b00e7d6d84827857867a02cc641efa33d02b56fc5a65a8c69be0ea733d"
+  },
+  {
+   "path": "更新说明_V0.8.1.md",
+   "bytes": 2920,
+   "sha256": "bd9130114306301aabc9dd7da3ad6499dc2289fa122efb0617baf33446091f56"
   },
   {
    "path": "验收截图/01_排盘_桌面.png",

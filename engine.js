@@ -199,5 +199,11 @@
   }
   function annual(year){if(!Number.isInteger(year)||year<1901||year>2199)throw Error('流年年份超出范围。');return GAN[mod(year-4,10)]+ZHI[mod(year-4,12)];}
   function seasonal(branch){return '寅卯辰'.includes(branch)?'春':'巳午未'.includes(branch)?'夏':'申酉戌'.includes(branch)?'秋':'冬';}
-  return {calculate,resolveLocal,zonedParts,offsetAt,eot,god,element,polar,relations,annual,seasonal,termsAround,formatWall,wallStamp,calendarDate,GAN,ZHI,HIDDEN,ELEMENTS,JIE,mod};
+  // 任意天干在某支的十二长生（自坐、他柱星运都可用）
+  function lifeOf(stem,branch){
+    const starts=[11,6,2,9,2,9,5,0,8,3],i=GAN.indexOf(stem),b=ZHI.indexOf(branch);
+    if(i<0||b<0)return '';
+    return ['长生','沐浴','冠带','临官','帝旺','衰','病','死','墓','绝','胎','养'][mod((b-starts[i])*(i%2?-1:1),12)];
+  }
+  return {calculate,resolveLocal,zonedParts,offsetAt,eot,god,element,polar,relations,annual,seasonal,termsAround,formatWall,wallStamp,calendarDate,lifeOf,GAN,ZHI,HIDDEN,ELEMENTS,JIE,mod};
 });

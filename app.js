@@ -10,9 +10,9 @@
  const branchElement=b=>Z.element(Z.HIDDEN[Z.ZHI.indexOf(b)][0]);
  const pairHTML=(p,tag='')=>{const s=String(p||'');if(s.length<2)return `<span class="pillar-pair ${tag}"><i class="${cls(Z.element(s))}">${esc(s)}</i></span>`;
    return `<span class="pillar-pair ${tag}"><i class="${cls(Z.element(s[0]))}">${s[0]}</i><i class="${cls(Z.element(Z.HIDDEN[Z.ZHI.indexOf(s[1])][0]))}">${s[1]}</i></span>`;};
- const titles={chart:'八字排盘',analysis:'八字详批',work:'批盘带练',learn:'子平学堂',library:'古籍书斋',cases:'命例研读',saved:'我的命盘',about:'计算与依据'};
+ const titles={chart:'八字排盘',analysis:'八字详批',work:'批盘带练',learn:'子平学堂',tables:'干支速查',library:'古籍书斋',cases:'命例研读',saved:'我的命盘',about:'计算与依据'};
  const locations=[['北京','Asia/Shanghai',116.4074],['上海','Asia/Shanghai',121.4737],['杭州','Asia/Shanghai',120.1551],['广州','Asia/Shanghai',113.2644],['成都','Asia/Shanghai',104.0665],['西安','Asia/Shanghai',108.9398],['乌鲁木齐（北京时间）','Asia/Shanghai',87.6168],['香港','Asia/Hong_Kong',114.1694],['台北','Asia/Taipei',121.5654],['新加坡','Asia/Singapore',103.8198],['吉隆坡','Asia/Kuala_Lumpur',101.6869],['纽约','America/New_York',-74.006],['洛杉矶','America/Los_Angeles',-118.2437],['伦敦','Europe/London',-0.1276],['东京','Asia/Tokyo',139.6917],['檀香山','Pacific/Honolulu',-157.8583]];
- const demo={name:'研习示例',date:'2005-12-23',time:'08:37',calendar:'solar',leap:false,gender:'male',place:'杭州',timezone:'Asia/Shanghai',longitude:120.1551,clock:'true',dayBoundary:0,ziStem:'next',ambiguity:'',unknownTime:false,demo:true};
+ const demo={name:'研习示例',date:'2005-12-23',time:'08:37',calendar:'solar',leap:false,gender:'male',place:'浙江省杭州市',geoProv:'浙江省',geoCity:'杭州市',geoDist:'',placeOther:'',timezone:'Asia/Shanghai',longitude:120.1551,clock:'true',dayBoundary:0,ziStem:'next',ambiguity:'',unknownTime:false,demo:true};
  const storage={read(k,fallback){try{return JSON.parse(localStorage.getItem('ziping.'+k))??fallback;}catch{return fallback;}},write(k,v){try{localStorage.setItem('ziping.'+k,JSON.stringify(v));return true;}catch{toast('浏览器未允许保存；当前页面仍可使用。');return false;}}};
  const state={route:'chart',input:{...demo},draft:{...demo},chart:null,error:'',luckIndex:0,annualYear:null,lesson:'L01',completed:storage.read('completed',[]),notes:storage.read('notes',{}),saved:storage.read('saved',[]),steps:storage.read('steps',[]),work:storage.read('work',{}),workStep:0,libraryBook:'',libraryQ:'',libraryOffset:0,libraryResults:[],libraryTotal:0,serverLibrary:false,libraryLoading:false};
  Object.assign(state,{readerBook:'',readerAt:0,readerError:'',learnMode:'lesson',practiceId:'winter-m',practiceMode:'guided'});
@@ -25,11 +25,36 @@
  function field(label,control,small=''){return `<label class="field"><span class="field-label">${label}${small?`<small>${small}</small>`:''}</span>${control}</label>`;}
  const selected=(a,b)=>a===b?'selected':'';
  const checked=v=>v?'checked':'';
+ const GEO=()=>window.ZipingGeo||{provinces:()=>[],cities:()=>[],districts:()=>[],entry:()=>null};
+ function geoEntry(i){
+   const name=[i.geoProv,i.geoCity,i.geoDist].filter(Boolean).join('');
+   if(!i.geoProv)return null;
+   const e=GEO().entry(i.geoProv,i.geoCity||'');
+   if(!e)return null;
+   const apx=e.a?1:0;
+   return {found:true,name,geo:true,lon:e.x,lat:e.y,tz:'Asia/Shanghai',level:apx?3:(e.l||2),
+     levelText:apx?'省直辖／近似坐标':'行政区划坐标',matchedBy:i.geoDist?`${i.geoProv} / ${i.geoCity} / ${i.geoDist}`:`${i.geoProv} / ${i.geoCity}`,coordsFrom:i.geoDist?`${i.geoCity}行政中心（区县共用市坐标，误差通常在 3 分钟内）`:`${i.geoCity}行政中心`};
+ }
+ function optionsHTML(list,cur,placeholder){
+   return `<option value="">${esc(placeholder)}</option>`+list.map(n=>`<option value="${esc(n)}"${n===cur?' selected':''}>${esc(n)}</option>`).join('');
+ }
+ function geoHTML(i){
+   const provs=GEO().provinces();
+   const cities=i.geoProv?GEO().cities(i.geoProv):[];
+   const dists=i.geoProv&&i.geoCity?GEO().districts(i.geoProv,i.geoCity):[];
+   return `<div class="geo-grid">
+     <label class="geo-cell"><span>省 / 自治区 / 直辖市</span><select name="geoProv" data-geo="prov" aria-label="省份">${optionsHTML(provs,i.geoProv,'请选择省份')}</select></label>
+     <label class="geo-cell"><span>市 / 地区 / 州</span><select name="geoCity" data-geo="city" aria-label="城市"${i.geoProv?'':' disabled'}>${i.geoProv?optionsHTML(cities,i.geoCity,'请选择城市'):'<option value="">先选省份</option>'}</select></label>
+     <label class="geo-cell"><span>区 / 县（可不选）</span><select name="geoDist" data-geo="dist" aria-label="区县"${i.geoCity?'':' disabled'}>${i.geoCity?optionsHTML(dists,i.geoDist,'不选区县（按市计算）'):'<option value="">先选城市</option>'}</select></label>
+   </div>
+   <input name="placeOther" aria-label="其他地点" class="geo-other" maxlength="60" value="${esc(i.placeOther||'')}" placeholder="海外或列表里没有？直接填地名，如「吉隆坡」" autocomplete="off">`;
+ }
  function placeMatchHTML(i){
-   const hit=P.resolve(i.place);
+   const hit=String(i.placeOther||'').trim()?P.resolve(i.placeOther):(geoEntry(i)||P.resolve(i.place));
    if(!hit.found)return `<div class="place-hit miss"><b>未匹配到地名</b><span>换个写法试试（如「苏州」「乌鲁木齐」「吉隆坡」），或在下方高级设置里直接填出生地经度。真太阳时按经度换算，经度不对，时柱就会错。</span></div>`;
    const warn=hit.level>=3?`<em>仅识别到${hit.admin||'省级'}，用的是${hit.name}坐标，误差可能达半小时以上。建议补填区县级地名或精确经度。</em>`:'';
-   return `<div class="place-hit ok"><b>已匹配：${esc(hit.name)}</b><span>东经 ${hit.lon.toFixed(4)}° ／ 北纬 ${hit.lat.toFixed(4)}° · ${esc(hit.tz)} · ${esc(hit.levelText)}${hit.level>=3?'':` · ${esc(hit.matchedBy)}`}</span>${warn}</div>`;
+   const from=hit.coordsFrom?` · 坐标取自${esc(hit.coordsFrom)}`:'';
+   return `<div class="place-hit ok"><b>已匹配：${esc(hit.name||hit.matchedBy)}</b><span>东经 ${hit.lon.toFixed(4)}° ／ 北纬 ${hit.lat.toFixed(4)}° · ${esc(hit.tz)} · ${esc(hit.levelText)}${hit.geo?from:` · ${esc(hit.matchedBy)}`}</span>${warn}</div>`;
  }
  function formHTML(){const i=state.draft;
    return `<div><section class="card input-card"><div class="card-head"><h2 class="card-title">出生信息</h2><span class="card-kicker">建立一张命盘</span></div><form id="birth-form" class="form-body" novalidate>
@@ -38,7 +63,7 @@
    ${field('传统男女参数',`<div class="segmented"><button type="button" data-gender="male" class="${i.gender==='male'?'selected':''}" aria-pressed="${i.gender==='male'}">男 · 乾造</button><button type="button" data-gender="female" class="${i.gender==='female'?'selected':''}" aria-pressed="${i.gender==='female'}">女 · 坤造</button></div>`)}
    ${field('出生日期',`<div class="segmented" style="margin-bottom:9px"><button type="button" data-calendar="solar" class="${i.calendar==='solar'?'selected':''}" aria-pressed="${i.calendar==='solar'}">公历</button><button type="button" data-calendar="lunar" class="${i.calendar==='lunar'?'selected':''}" aria-pressed="${i.calendar==='lunar'}">农历</button></div><input name="date" aria-label="出生日期" type="${i.calendar==='lunar'?'text':'date'}" value="${esc(i.date)}" min="1901-01-01" max="2099-12-31" placeholder="YYYY-MM-DD" required>${i.calendar==='lunar'?`<span class="check-label"><input type="checkbox" name="leap" ${checked(i.leap)}>该月为闰月</span>`:''}`)}
    ${field('出生时间',`<input name="time" aria-label="出生时间" type="time" step="60" value="${esc(i.time)}" ${i.unknownTime?'disabled':''}><span class="check-label"><input type="checkbox" name="unknownTime" ${checked(i.unknownTime)}>出生时刻不详，保留候选盘</span>`,'记录到分钟')}
-   ${field('出生地点',`<input name="place" aria-label="出生地点" list="place-list" maxlength="60" value="${esc(i.place)}" placeholder="例如：江苏省苏州市吴中区" autocomplete="off"><datalist id="place-list">${P.list.map(p=>`<option value="${esc(p.name)}">${esc(p.admin)}</option>`).join('')}</datalist><div id="place-hit-box">${placeMatchHTML(i)}</div>`,'填到区县，自动取经度')}
+   <div class="field"><span class="field-label">出生地点<small>省 → 市 → 区县，自动取经度</small></span><div id="geo-wrap">${geoHTML(i)}</div><div id="place-hit-box">${placeMatchHTML(i)}</div><input type="hidden" name="place" value="${esc(i.place)}"></div>
    ${field('排盘时间口径',`<div class="segmented"><button type="button" data-clock="true" class="${i.clock==='true'?'selected':''}" aria-pressed="${i.clock==='true'}">真太阳时</button><button type="button" data-clock="mean" class="${i.clock==='mean'?'selected':''}" aria-pressed="${i.clock==='mean'}">平太阳时</button><button type="button" data-clock="civil" class="${i.clock==='civil'?'selected':''}" aria-pressed="${i.clock==='civil'}">钟表时</button></div><p class="micro-note">真太阳时＝钟表时＋（出生地经度−时区标准经线）×4分钟＋均时差。子平以太阳实际位置定时辰，默认启用；想对照原钟表读数时可切到「钟表时」。</p>`)}
    <details class="advanced" ${state.error?'open':''}><summary>高级设置与计算约定</summary>
    ${field('IANA 时区',`<input name="timezone" aria-label="IANA时区" value="${esc(i.timezone)}" list="zones"><datalist id="zones">${[...new Set([...locations.map(p=>p[1]),...P.list.map(p=>p.tz)])].map(z=>`<option value="${z}">`).join('')}</datalist>`,'由地点自动带入，可改')}
@@ -54,13 +79,17 @@
  function getForm(){
    const f=$('#birth-form');if(!f)return {...state.draft};
    const v=new FormData(f);
-   const place=String(v.get('place')||'').trim();
-   const hit=P.resolve(place);
+   const geoProv=String(v.get('geoProv')||'').trim(),geoCity=String(v.get('geoCity')||'').trim(),geoDist=String(v.get('geoDist')||'').trim();
+   const placeOther=String(v.get('placeOther')||'').trim();
+   const place=placeOther||[geoProv,geoCity,geoDist].filter(Boolean).join('');
+   const geoDraft={...state.draft,geoProv,geoCity,geoDist,placeOther,place};
+   const hit=placeOther?P.resolve(placeOther):(geoEntry(geoDraft)||P.resolve(place));
    let timezone=String(v.get('timezone')||'').trim();
    let longitude=v.get('longitude');
    const changed=place!==String(state.draft.place||'');
-   if(hit.found&&(changed||longitude===''||longitude==null)){timezone=hit.tz;longitude=hit.lon;}
-   return {...state.draft,name:String(v.get('name')||'未命名命盘').trim(),date:String(v.get('date')||''),time:String(v.get('time')||''),leap:v.has('leap'),unknownTime:v.has('unknownTime'),place,placeHit:hit,clock:String(state.draft.clock||'true'),timezone,longitude,dayBoundary:Number(v.get('dayBoundary')),ziStem:String(v.get('ziStem')||'next'),timeUncertainty:Number(v.get('timeUncertainty')||0),ambiguity:String(v.get('ambiguity')||'')};
+   const geoChanged=geoProv!==String(state.draft.geoProv||'')||geoCity!==String(state.draft.geoCity||'')||geoDist!==String(state.draft.geoDist||'')||placeOther!==String(state.draft.placeOther||'');
+   if(hit.found&&(changed||geoChanged||longitude===''||longitude==null)){timezone=hit.tz;longitude=hit.lon;}
+   return {...state.draft,name:String(v.get('name')||'未命名命盘').trim(),date:String(v.get('date')||''),time:String(v.get('time')||''),leap:v.has('leap'),unknownTime:v.has('unknownTime'),place,geoProv,geoCity,geoDist,placeOther,placeHit:hit,clock:String(state.draft.clock||'true'),timezone,longitude,dayBoundary:Number(v.get('dayBoundary')),ziStem:String(v.get('ziStem')||'next'),timeUncertainty:Number(v.get('timeUncertainty')||0),ambiguity:String(v.get('ambiguity')||'')};
  }
  function calc(input){try{if(!String(input.place||'').trim())throw Error('请填写出生地点：真太阳时要用它换算出生地经度。');state.chart=Z.calculate(input);state.input={...input};state.error='';state.luckIndex=0;state.annualYear=null;return true;}catch(e){state.error=e.message;return false;}}
  const TERMS={
@@ -68,6 +97,10 @@
    '天干':'露在上面的字，主外在、公开、易被看见的一面。',
    '地支':'藏在下面的字，主内在、处境与实际承载；地支本身按其本气参与十神换算。',
    '藏干':'地支内部所藏的天干，分本气、中气、余气。判旺衰看根，主要看这里。',
+   '副星':'藏干相对日主换算出的十神，标在藏干下方，用来判断地支里藏着什么关系。',
+   '星运':'日主在本柱地支的十二长生状态，看的是「我在这里有没有气」。',
+   '自坐':'本柱天干坐自己地支的十二长生，看这一柱自身根基厚薄，与日主无关。',
+   '神煞':'按本页 18 组神煞表检索到的标记，只作线索，不单独断事。',
    '星运':'日主在本柱地支上的十二长生状态（长生、沐浴……养），描述气势强弱，不等同吉凶。',
    '空亡':'旬空。由所在旬推得的两个空位，传统视为该支力量减弱，但不作事件断言。',
    '纳音':'六十甲子两两相配的纳音五行，多用于合婚、择日与辅助描述，与正五行并行。',
@@ -89,15 +122,23 @@
    <div class="checklist">${steps.map(([mark,title,desc,lesson],i)=>{const on=done.includes(String(i));return `<div class="check-row"><button type="button" class="check-step ${on?'done':''}" data-step="${i}" aria-pressed="${on}"><span class="check-mark">${on?'✓':mark}</span><span class="check-body"><b>${i+1}. ${esc(title)}</b><em>${esc(desc)}</em></span></button><a class="check-link" href="#learn/${lesson}">${lesson}</a></div>`;}).join('')}</div>
    <p class="micro-note">勾选只存在本机，用来提醒哪几步还没核；点右侧编号可跳到对应课程。<a href="#learn/L01">→ L01 先区分五种“正确”</a></p></section>`;
  }
- function chartTable(c){const labels=['年柱','月柱','日柱','时柱'];const th=k=>`<td class="term" title="${esc(TERMS[k]||'')}">${k}</td>`;return `<table class="chart-table" aria-label="四柱命盘"><thead><tr><th>四柱</th>${labels.map((x,i)=>`<th class="${i===2?'day-col':''}">${x}</th>`).join('')}</tr></thead><tbody>
+ function chartTable(c){
+   const labels=['年柱','月柱','日柱','时柱'],th=k=>`<td class="term" title="${esc(TERMS[k]||'')}">${k}</td>`;
+   const ss=X.shensha(c),pos=['年','月','日','时'];
+   const ssAt=pos.map((p,i)=>ss.filter(r=>r.found.some(f=>f.pos===p+'干'||f.pos===p+'支')).map(r=>r.name));
+   return `<table class="chart-table" aria-label="四柱命盘"><thead><tr><th>四柱</th>${labels.map((x,i)=>`<th class="${i===2?'day-col':''}">${x}</th>`).join('')}</tr></thead><tbody>
    <tr class="gods">${th('主星')}${c.details.map((p,i)=>`<td class="${i===2?'day-col':''}">${i===2?'日主 · '+(c.input.gender==='male'?'乾':'坤'):p.god}</td>`).join('')}</tr>
    <tr class="stems">${th('天干')}${c.details.map((p,i)=>`<td class="${cls(p.element)} ${i===2?'day-col':''}">${p.stem}</td>`).join('')}</tr>
    <tr class="branches">${th('地支')}${c.details.map((p,i)=>`<td class="${cls(p.hidden[0].element)} ${i===2?'day-col':''}">${p.branch}</td>`).join('')}</tr>
-   <tr>${th('藏干')}${c.details.map((p,i)=>`<td class="${i===2?'day-col':''}">${p.hidden.map(h=>`<span class="hidden-stem ${cls(h.element)}">${h.stem}<small>${h.god}</small></span>`).join('')}</td>`).join('')}</tr>
+   <tr>${th('藏干')}${c.details.map((p,i)=>`<td class="${i===2?'day-col':''}">${p.hidden.map((h,k)=>`<span class="hidden-stem ${cls(h.element)}" title="${esc(['本气','中气','余气'][k]||'余气')}">${h.stem}<small>${['本','中','余'][k]||'余'}</small></span>`).join('')}</td>`).join('')}</tr>
+   <tr>${th('副星')}${c.details.map((p,i)=>`<td class="${i===2?'day-col':''}"><span class="sub-gods">${p.hidden.map(h=>`<em>${h.god}</em>`).join('')}</span></td>`).join('')}</tr>
    <tr>${th('星运')}${c.life.map((s,i)=>`<td class="${i===2?'day-col':''}">${s}</td>`).join('')}</tr>
+   <tr>${th('自坐')}${c.details.map((p,i)=>`<td class="${i===2?'day-col':''}">${Z.lifeOf(p.stem,p.branch)}</td>`).join('')}</tr>
    <tr>${th('空亡')}${c.details.map((p,i)=>`<td class="${i===2?'day-col':''}">${p.void}</td>`).join('')}</tr>
    <tr>${th('纳音')}${c.details.map((p,i)=>`<td class="${i===2?'day-col':''}">${p.nayin}</td>`).join('')}</tr>
-   </tbody></table>`;}
+   <tr>${th('神煞')}${ssAt.map((list,i)=>`<td class="${i===2?'day-col':''}"><span class="ss-inline">${list.length?list.map(n=>`<em>${esc(n)}</em>`).join(''):'—'}</span></td>`).join('')}</tr>
+   </tbody></table>`;
+ }
  function localString(t){return Z.formatWall(Z.wallStamp(Z.zonedParts(t,state.input.timezone)));}
  function clockName(c){return c.input.clock==='civil'?'民用钟表时':c.input.clock==='mean'?'地方平太阳时':'地方真太阳时（近似）';}
  const hourOf=t=>Number(String(t).slice(11,13));
@@ -240,6 +281,99 @@
    <p class="work-pitfall"><b>常见错误</b>${esc(pitfall)}${lesson?'　<a href="#learn/'+lesson+'">→ '+lesson+'</a>':''}</p>
    </div></section>`;
  }
+ /* ===== 结论摘要：先给判断，再给依据 ===== */
+ const GOD_VIBE={
+  '比肩':'自己能扛，认死理，不爱欠人情','劫财':'敢冲、爱争，出手快过想','食神':'温和、会享受，手上要有活儿','伤官':'脑子快、嘴也快，不服管',
+  '正财':'务实、算得清，喜欢稳稳当当','偏财':'大方、会来事，机会来了敢下手','正官':'守规矩、要体面，怕出错','七杀':'扛得住压力，脾气也硬',
+  '正印':'念旧、好学，想得多做得慢','偏印':'敏感、挑，专挑冷门的路走'
+ };
+ const GROUP_FACE={peer:'同辈与自我',output:'表达与手艺',wealth:'钱与资源',power:'规矩与压力',resource:'学习与靠山'};
+ const GROUP_USE={peer:'比劫',output:'食伤',wealth:'财星',power:'官杀',resource:'印星'};
+ const GROUP_LUCK={peer:'帮身、合伙，也分你的钱',output:'适合输出、学手艺、换赛道',wealth:'财路打开，但要防摊子铺太大',power:'责任压上来，位置和是非一起来',resource:'读书、资历、贵人，节奏偏慢'};
+ function godsOfElement(dm,el){const rep=['甲','丙','戊','庚','壬'][Z.ELEMENTS.indexOf(el)];const g=Z.god(dm,rep);return g;}
+ function groupOf(god){return Object.keys(GROUPS).find(k=>GROUPS[k].includes(god));}
+ const GROUPS={peer:['比肩','劫财'],output:['食神','伤官'],wealth:['正财','偏财'],power:['正官','七杀'],resource:['正印','偏印']};
+ function conclusionData(c){
+  const sc=X.strengthScore(c),rs=R.strength(c),gj=X.geju(c),tm=X.threeMethods(c),en=X.tenGodEnergy(c);
+  const weak=sc.total<45,strong=sc.total>55;
+  const favor=new Set(weak?['正印','偏印','比肩','劫财']:strong?['食神','伤官','正财','偏财','正官','七杀']:[]);
+  const hot=(tm.climate==='暖'||tm.climate==='温')&&(c.counts['火']||0)>=3&&(c.counts['水']||0)<=2;
+  const climateEl=tm.climate==='寒'?'火':hot?'水':null;
+  const climateGod=climateEl?godsOfElement(c.dayMaster,climateEl):'';
+  if(climateGod)favor.add(climateGod);
+  if(!weak&&!strong){ // 中和：补最弱的一组
+    const low=[...en.list].sort((a,b)=>a.val-b.val)[0];
+    if(low)favor.add(low.god);
+  }
+  const top=[...en.list].sort((a,b)=>b.val-a.val).slice(0,2);
+  const baseFavor=[...favor].filter(g=>g!==climateGod);
+  const luck=c.luck.rows.slice(0,8).map(r=>{
+    const sg=Z.god(c.dayMaster,r.pillar[0]),bg=Z.god(c.dayMaster,Z.HIDDEN[Z.ZHI.indexOf(r.pillar[1])][0]);
+    const score=(favor.has(sg)?1:0)+(favor.has(bg)?1:0)+(climateGod&&(sg===climateGod||bg===climateGod)?1:0);
+    return {...r,stemGod:sg,branchGod:bg,score,verdict:score>=2?'顺':score===1?'平':'逆'};
+  });
+  return {sc,rs,gj,tm,en,weak,strong,favor:[...favor],baseFavor,climateEl,climateGod,top,luck};
+ }
+ function conclusionHTML(c){
+  const d=conclusionData(c),sc=d.sc,gj=d.gj,tm=d.tm,rs=d.rs,bf=d.baseFavor;
+  const dayRel=R.relationFacts(c.pillars).filter(r=>r.indices.includes(2)),dayRelText=R.relationText(dayRel)||'未见合冲';
+  const side=sc.total>=60?'偏强':sc.total>=52?'略强':sc.total>44?'中和':sc.total>36?'中和偏弱':'偏弱';
+  const topGods=d.top.map(x=>x.god);
+  const spouseGod=c.input.gender==='male'?'正财':'正官';
+  const spouseAlt=c.input.gender==='male'?'偏财':'七杀';
+  const spouseFound=c.details.filter(p=>p.god===spouseGod||p.god===spouseAlt).map(p=>p.stem+p.god);
+  const dayHidden=c.details[2].hidden.map(h=>h.stem+h.god).join('、');
+  const goodLuck=d.luck.filter(l=>l.verdict==='顺'),badLuck=d.luck.filter(l=>l.verdict==='逆');
+  const favText=d.favor.length?d.favor.join('、'):'顺其最旺者微调';
+  const item=(label,verdict,basis,tag,tone='')=>`<div class="verdict-item ${tone}"><div class="verdict-label">${label}<span class="verdict-tag">${tag}</span></div><p class="verdict-say">${verdict}</p><p class="verdict-basis">${basis}</p></div>`;
+  const lead=`${c.dayMaster}${Z.element(c.dayMaster)}生在${c.pillars[1][1]}月，${sc.total} 分，${side}。${d.weak?'底子不算厚，但也没到虚的地步：有人帮、有根，只是不多。':d.strong?'底子厚，力气大，怕的是憋着没处使。':'不好不坏，属于看运走的一类。'}${d.climateEl?`格局偏${tm.climate==='寒'?'冷':'燥'}，先要${d.climateEl}来调，再谈别的。`:''}`;
+  return `<section class="card conclusion-card" id="report-conclusion"><div class="card-head"><h2 class="card-title">结论摘要</h2><span class="card-kicker">先看判断，再看依据</span></div><div class="conclusion-body">
+    <p class="conclusion-lead">${esc(lead)}</p>
+    <div class="verdict-grid">
+      ${item('日主强弱',`按本页加权是「${side}」，规则初筛给的是「${rs.label}」。${d.weak?'这个盘我按偏弱用，但不作从格论——有印有根，从不了。':d.strong?'按偏强用，取克泄耗，不取印比。':'两套口径都没走到极端，按中和处理，运来定方向。'}`,`得令 ${sc.items[0].score}/40、得地 ${sc.items[1].score}/35、得势 ${sc.items[2].score}/25`,d.weak?'明确':'倾向','')}
+      ${item('格局',`月令${c.pillars[1][1]}，本气${c.details[1].hidden[0].stem}为${gj.primary.name.replace('格','')}，先按「${gj.primary.name}」看。${gj.primary.tou.length?'已透，成格的门开着。':'未透，只能算有力，成格还差一口气。'}`,`${gj.basis.slice(0,60)}…`,gj.primary.tou.length?'倾向':'待辨','')}
+      ${(()=>{const favMain=[...new Set(d.favor.filter(g=>g!==d.climateGod).map(g=>groupOf(g)).filter(Boolean))];const climGrp=d.climateGod?groupOf(d.climateGod):'';const same=climGrp&&favMain.includes(climGrp);const useTxt=favMain.map(g=>GROUP_USE[g]).join('、')||'不限';const say=d.climateEl?(same?`扶抑要${useTxt}，调候要${d.climateEl}，两条线指同一个方向，用起来不别扭。`:`扶抑要${useTxt}，调候却要${d.climateEl}——对${c.dayMaster}日主是${d.climateGod}，两法打架。传统做法是先救急：${tm.climate==='寒'?'寒局先暖':'燥局先润'}，暖过来再补扶抑，不要一味补身。`):`调候不急，只看扶抑：${useTxt}。`;return item('用神方向',say,`调候：${tm.climate}（宜${d.climateEl||'不急'}）；扶抑：${useTxt}；通关：${tm.tongguan.length?tm.tongguan[0].pair+'（'+tm.tongguan[0].status+'）':'未见两强相持'}`,d.climateEl?'明确':'倾向','')})()}
+      ${item('性情',`${topGods.join('、')}最重：${topGods.map(g=>GOD_VIBE[g]||'').filter(Boolean).join('；')}。这是取象层面的说法，落到人身上还要看成长环境。`,`十神明面轻重：${d.en.list.slice(0,4).map(x=>x.god+x.val).join('、')}`,'倾向','')}
+      ${item('六亲与家庭',`日支${c.pillars[2][1]}藏${dayHidden}，夫妻宫看这里。${spouseFound.length?`伴侣星在${[...new Set(spouseFound)].join('、')}，明面上有位置。`:'伴侣星没在明面上露头，多半藏在支里或等运来引。'}`,`年柱${c.pillars[0]}看根基，月柱${c.pillars[1]}看父母兄弟`,spouseFound.length?'倾向':'待辨','')}
+      ${item('事业',`${bf.includes('食神')||bf.includes('伤官')?'靠手艺、表达、内容换钱的路子顺，靠关系的路子慢。':bf.includes('正官')||bf.includes('七杀')?'在有规矩、有考核的地方更稳，自己单干的成本高。':bf.includes('正财')||bf.includes('偏财')?'跟钱、资源、经营打交道顺手，纯技术会做得闷。':bf.includes('正印')||bf.includes('偏印')?'先在一个体系里把资历熬出来，比四处试快。':'先找能立住脚的一技之长，别急着换方向。'}`,`输出：${c.details.map(p=>p.god).filter(g=>['食神','伤官'].includes(g)).join('、')||'明面未见'}；约束：${c.details.map(p=>p.god).filter(g=>['正官','七杀'].includes(g)).join('、')||'明面未见'}`,'倾向','')}
+      ${item('财运',`财路${c.details.some(p=>['正财','偏财'].includes(p.god))?'明面上有':'主要在支里'}，${d.weak?'身不厚，赚得到也容易散，先把固定收入做稳，别急着上杠杆。':d.strong?'身有余力，能扛资产；比劫重时合伙容易分账不清，先把规则写下来。':bf.includes('正财')||bf.includes('偏财')?'运来财就动，运过就收，别把一时的行情当本事。':'看运，运来财就动，运过就收。'}`,`财星位置：${c.details.map((p,i)=>['年','月','日','时'][i]+p.god).filter(x=>/财/.test(x)).join('、')||'无'}`,'倾向','')}
+      ${item('婚恋',`${c.input.gender==='male'?'男命看财星与日支。':'女命看官杀与日支。'}${spouseFound.length?'星在明面，缘分来得早也来得直接。':'星藏，多数是先相处再定名分。'}${/冲|害|刑|破/.test(dayRelText)?'日支有冲害，关系里容易有拉扯，聚少离多也算应。':'日支安稳，感情里不太折腾。'}`,`日支${c.pillars[2][1]}相关关系：${esc(dayRelText)}`,'待辨','')}
+      ${item('身体与作息',`${d.climateEl==='火'?'局冷，怕冷、手脚凉、循环慢，秋冬要多动。':d.climateEl==='水'?'局燥，容易上火、口干、睡不好，少熬夜。':'寒热还算平均，留意作息与情绪。'}这只是五行偏枯对应的生活提示，不是病名。`,`五行统计：${Object.entries(c.counts).map(([k,v])=>k+v).join(' ')}`,'倾向','')}
+      ${item('运势走势',`${goodLuck.length?`顺的步子：${goodLuck.map(l=>`第${l.index+1}步${l.pillar}（${l.year}起）`).join('、')}。`:'八步运里没有明显顺的，靠本事和人稳。'}${badLuck.length?`逆的步子：${badLuck.map(l=>`第${l.index+1}步${l.pillar}（${l.year}起）`).join('、')}，这几年宜守。`:'没有明显逆的运，节奏比较平。'}`,`按每步运干支是否落在扶抑喜用（${favText}）或调候之需上计分，属结构判断，不是事件预测。`,'倾向','')}
+    </div>
+    <div class="conclusion-foot"><p>这些结论有明确口径：强弱按本页 40／35／25 加权，格局按月令本气取，用神按扶抑＋调候，运程按运干支是否落在喜用。用这套口径能算的到这里；口径之外的事（具体职业、金额、婚期、病名）这里不下判断，因为算不出来。</p><p class="micro-note">往下走先过三关：拿过去的运验两三条，对得上再谈现在和以后。<a href="#report-gates">→ 过三关</a>　<a href="#learn/L56">→ L56 身强身弱</a></p></div>
+  </div></section>`;
+ }
+ /* ===== 过三关：断过去、验现在、应未来 ===== */
+ function threeGatesHTML(c){
+  const d=conclusionData(c),now=Date.now(),tz=c.input.timezone;
+  const day=ms=>Z.formatWall(Z.wallStamp(Z.zonedParts(ms,tz))).slice(0,10);
+  const luck=d.luck;
+  const past=luck.filter(l=>l.endUTC<now).slice(-2);
+  const cur=luck.find(l=>l.startUTC<=now&&l.endUTC>now);
+  const ls=R.eightLuck(c),curRow=ls.find(l=>cur&&l.number===cur.index+1)||ls[0];
+  const thisYear=new Date().getFullYear();
+  const curYears=(curRow?curRow.years:[]).filter(y=>y.year>=thisYear).slice(0,3);
+  const gate=(no,title,q,body)=>`<div class="gate"><div class="gate-head"><span class="gate-no">${no}</span><h3>${title}</h3><span class="gate-q">${q}</span></div>${body}</div>`;
+  const ask=grp=>grp==='power'?'责任、考核、上级压力明显变重，或者位置换了':grp==='wealth'?'收入结构变了，或者为钱做过一次大决定':grp==='output'?'换过方向、学过手艺，或者靠表达、作品吃过饭':grp==='resource'?'读书、考证、靠人提携，或者被长辈按着走':'同辈、合伙、分家产这类事动过';
+  const pastBody=past.length?past.map(l=>{
+    const grp=groupOf(l.stemGod);
+    return `<div class="gate-item"><b>第${l.index+1}步 ${l.pillar}（${day(l.startUTC).slice(0,7)} — ${day(l.endUTC).slice(0,7)}）</b><p>这十年运干${l.pillar[0]}是${l.stemGod}，运支${l.pillar[1]}本气是${l.branchGod}，走的是${GROUP_FACE[grp]}这一路。${l.verdict==='顺'?'干支落在喜用上，这十年整体是往上走的。':l.verdict==='逆'?'干支不在喜用上，这十年多是顶着走。':'这十年不好不坏，事情照做，进展不快。'}</p><p class="gate-check">要核对的：那十年里，${ask(grp)}？——对得上，结构就认了一半；完全不是这么回事，就把这条划掉。</p></div>`;
+  }).join(''):'<p class="micro-note">这张盘还没有走完的整步大运。可以改看流年：挑一个已经过去的年份，按同样方法对。</p>';
+  const curBody=cur?`<div class="gate-item"><b>第${cur.index+1}步 ${cur.pillar}（${day(cur.startUTC).slice(0,7)} — ${day(cur.endUTC).slice(0,7)}）</b><p>现在这步运，运干${cur.pillar[0]}是${cur.stemGod}，运支${cur.pillar[1]}本气是${cur.branchGod}：${GROUP_LUCK[groupOf(cur.stemGod)]}。${cur.verdict==='顺'?'这几年顺手的比例高，该往前推的事别拖。':cur.verdict==='逆'?'这几年用力多、回声少，能守就守，别硬顶。':'这几年平平，靠积累。'}</p><p class="gate-check">要核对的：最近两三年，${ask(groupOf(cur.stemGod))}？有，就说明这套判法在这张盘上站得住；没有，先别急着往下断。</p></div>`:'<p class="micro-note">尚未起运，先看童限与家庭环境。</p>';
+  const futureBody=curYears.length?curYears.map(y=>{
+    const g=y.detail.god,grp=groupOf(g),rel=(y.relations||[]).slice(0,2).map(r=>`${r.positions.split('—')[0]}逢${r.type.replace('（所采口径）','')}`);
+    const tip=grp==='power'?'岗位、考核、上级有动作':grp==='wealth'?'收入、投资、大额支出有动作':grp==='output'?'转岗、作品、表达机会':grp==='resource'?'进修、长辈、靠山有变化':'合伙、朋友、同辈分账';
+    return `<div class="gate-item"><b>${y.year} ${y.pillar} · ${g}${y.partial?'（跨交运，前后两段分开看）':''}</b><p>${GROUP_LUCK[grp]}。${rel.length?`${rel.join('、')}，这一年这件事容易被推到台面上。`:'这一年与原局没有强关系，按平年过，别硬找事。'}</p><p class="gate-check">先把话撂下：如果${tip}，算应了；没有，就在本子上写“未应”。<b>不许事后改口</b>——过三关的意义就在于留下能被证伪的记录。</p></div>`;
+  }).join(''):'<p class="micro-note">没有可用的未来流年段。</p>';
+  return `<section class="card gates-card" id="report-gates"><div class="card-head"><h2 class="card-title">过三关 · 拿这张盘验一验</h2><span class="card-kicker">断过去 → 验现在 → 应未来</span></div><div class="gates-body">
+   <p class="gates-lead">批盘最怕自说自话。所以先不谈以后：从走过的运里挑两三条，把“那几年你身上大概发生了什么”说清楚，当事人点头了，再往下断。三关过不了两关，这套结构在这张盘上就不成立，得换口径重看。</p>
+   ${gate('一','验过去','对得上才算立住',pastBody)}
+   ${gate('二','验现在','当下这步运在讲什么',curBody)}
+   ${gate('三','应未来','先把话撂下，再等结果',futureBody)}
+   <div class="gate-note"><b>怎么算过关</b><p>三关不是三选一，是递进：过去对得上，才谈现在；现在对得上，才敢说以后。程序只负责按结构把话写清楚，<b>核对必须由当事人来做</b>——它不能替你确认某年是不是真的换了工作、搬了家、谈了对象。对不上就记“未应”，不要改口径去圆。</p></div>
+  </div></section>`;
+ }
  function workHTML(){
    const c=state.chart&&!state.chart.unknownTime&&!state.chart.uncertain?state.chart:null;
    if(!c)return head('批盘带练','对着真实盘面，按八步走完一次完整批盘；每一步都有可核对的数据和参考答案。','PRACTICE · 八步批盘')+`<div class="card empty"><h3>先建立一张命盘</h3><p>带练台用你排盘页的当前命盘。先去起一张盘，再回来按八步走。</p><a class="button primary" href="#chart">去排盘 →</a></div>`;
@@ -367,15 +501,34 @@
    ];
  }
 
+ function catCaseCard(c){
+   const r=caseChart(c);
+   return `<article class="case-card cat-case"><header class="case-head"><b>${esc(c.id)} ${esc(c.name)}</b><span class="case-kind">${esc(c.catName)}</span><span class="case-meta">${esc(c.birth.gender==='male'?'乾':'坤')} · ${esc(c.birth.date)} ${esc(c.birth.time)} · ${esc(c.birth.place)}</span></header>
+    ${r?`<div class="case-chart">${r.pillars.map((x,i)=>`<span class="cc-item">${pairHTML(x)}<em>${['年','月','日','时'][i]}</em><small>${esc(r.details[i].god)}</small></span>`).join('')}</div>`:''}
+    <div class="case-tags">${(c.tags||[]).map(t=>`<i>${esc(t)}</i>`).join('')}</div>
+    <div class="case-block"><b>判读示范</b><p>${esc(c.reading)}</p></div>
+    <div class="case-block chain"><b>推理链</b><p>${esc(c.chain)}</p></div>
+    <div class="case-block limit"><b>边界</b><p>${esc(c.limits)}</p></div>
+   </article>`;
+ }
+ function categoryCasesHTML(){
+   const gs=C.caseGroups||[];if(!gs.length)return '';
+   const all=C.teachingCases||[];
+   return `<section class="card tc-library" id="cat-cases" style="margin-top:22px"><div class="card-head"><h2 class="card-title">分类教学盘 · ${gs.length} 类 × 5 盘</h2><span class="card-kicker">每类五盘，配判读与反证</span></div>
+    <p class="micro-note">按结构检索生成，四柱与分数由本页引擎现算，不含生平事件。每一类给五盘，是为了让你看到「同一个结构在不同盘上长什么样」——同一句结论，落到不同日主、不同宫位上，写法可以完全不同。下面是分类索引，点类别可直接跳到该类五盘。</p>
+    <div class="cat-chips">${gs.map(g=>`<a href="#cases" data-scroll="cat-${g.key}">${esc(g.name)}<i>${g.ids.length}</i></a>`).join('')}</div>
+    ${gs.map(g=>`<div class="cat-group" id="cat-${g.key}"><h3 class="cat-title">${esc(g.name)}<span>${g.ids.length} 盘 · 对应 ${g.lessons.join('、')}</span></h3><div class="lesson-cases">${g.ids.map(id=>{const c=all.find(x=>x.id===id);return c?catCaseCard(c):'';}).join('')}</div></div>`).join('')}
+   </section>`;
+ }
  function teachingCasesHTML(){
    const cs=C.teachingCases||[];if(!cs.length)return '';
    const used={};(C.caseMap?Object.keys(C.caseMap):[]).forEach(k=>(C.caseMap[k]||[]).forEach(r=>{if(!used[r.id])used[r.id]=k;}));
    return `<section class="card tc-library" style="margin-top:22px"><div class="card-head"><h2 class="card-title">结构教学盘 · ${cs.length} 例</h2><span class="card-kicker">按结构检索生成，非真实人物</span></div><p class="micro-note">这些盘是按目标结构在 1974—2002 年的合法日期范围内检索出来的，四柱由本页引擎现算，用来练「看到这个结构该怎么写」。它们不含生平事件，也不能用来证明命理有效。每一例都标注了首次出现的讲次，点进去可看该讲的完整判读与练习。</p><div class="tc-grid">${cs.map(c=>{const r=caseChart(c);const link=used[c.id];return `<article class="tc-item"><header><b>${esc(c.id)} ${esc(c.name)}</b><span class="tc-kind">${esc(c.kind)}</span></header><div class="tc-pillars">${r?r.pillars.map((x,i)=>`<span>${pairHTML(x)}<em>${['年','月','日','时'][i]}</em></span>`).join(''):'—'}</div><div class="tc-meta">${esc(c.birth.gender==='male'?'乾':'坤')} · ${esc(c.birth.date)} ${esc(c.birth.time)} · ${esc(c.birth.place)}</div><div class="case-tags">${(c.tags||[]).map(t=>`<i>${esc(t)}</i>`).join('')}</div><details><summary>展开判读示范</summary><p>${esc(c.reading)}</p><p class="tc-chain"><b>推理链</b>${esc(c.chain)}</p><p class="tc-limit"><b>边界</b>${esc(c.limits)}</p></details>${link?`<a class="source-link" href="#learn/${esc(link)}">在 ${esc(link)} 中研读 →</a>`:''}</article>`;}).join('')}</div></section>`;
  }
- function casesHTML(){return head('命例研读','示范盘用于练方法，文献样本用于练证据；如实保留未知。','CASES · 证据与推演')+`<div class="warning" style="margin-bottom:22px">目前没有完成独立预测验证的案例。下列样本不用于宣称命理准确率；公开人物生平已知，属于回顾研读。</div><div class="case-grid"><article class="card case-card">${tag('可复算教学示例','green')}<h3>一张盘，从识字到结构</h3><div class="case-params">2005-12-23 08:37 · UTC+8 · 民用钟表时<br>乙酉　戊子　辛巳　壬辰</div><p>从辛日见乙为偏财、见戊为正印、见壬为伤官开始，练习将所有藏干都相对于同一日主换算。此为程序回归示例，未声称属于真实人物。</p><button class="button primary" data-action="demo">载入示范命盘 →</button></article><article class="card case-card">${tag('流派分歧教学')}<h3>23:30，为何出现不同日柱</h3><div class="case-params">1988-02-15 23:30 · UTC+8<br>午夜换日：庚子日　｜　23点换日：辛丑日</div><p>将换日设置与晚子时起时干分别调整，查看日柱和十神如何联动。比较规则，保留两种明确口径。</p><button class="button" data-action="zi-demo">载入晚子时示例 →</button></article>${C.caseFacts.map(c=>`<article class="card case-card">${tag('机构文献事实样本')}<h3>${esc(c.name)}</h3><div class="case-params">出生日期：${esc(c.birth.date)}<br>时刻：${esc(c.birth.time||'未知，不补造')} · ${esc(c.birth.place)}</div><p>${esc(c.review_status)}</p><p>${esc(c.reason)}</p><a class="source-link" target="_blank" rel="noreferrer" href="${safeUrl(c.birth.source)}">查看出生资料来源 ↗</a>${c.events.map(e=>`<p class="micro-note">${esc(e.date)} · ${esc(e.fact)} <a class="source-link" href="${safeUrl(e.source)}" target="_blank" rel="noreferrer">原始来源 ↗</a></p>`).join('')}<p class="micro-note">未作为独立预测验证；不把人物生平反推成已验证断法。</p></article>`).join('')}</div>${teachingCasesHTML()}`;}
+ function casesHTML(){return head('命例研读','示范盘用于练方法，文献样本用于练证据；如实保留未知。','CASES · 证据与推演')+`<div class="warning" style="margin-bottom:22px">目前没有完成独立预测验证的案例。下列样本不用于宣称命理准确率；公开人物生平已知，属于回顾研读。</div><div class="case-grid"><article class="card case-card">${tag('可复算教学示例','green')}<h3>一张盘，从识字到结构</h3><div class="case-params">2005-12-23 08:37 · UTC+8 · 民用钟表时<br>乙酉　戊子　辛巳　壬辰</div><p>从辛日见乙为偏财、见戊为正印、见壬为伤官开始，练习将所有藏干都相对于同一日主换算。此为程序回归示例，未声称属于真实人物。</p><button class="button primary" data-action="demo">载入示范命盘 →</button></article><article class="card case-card">${tag('流派分歧教学')}<h3>23:30，为何出现不同日柱</h3><div class="case-params">1988-02-15 23:30 · UTC+8<br>午夜换日：庚子日　｜　23点换日：辛丑日</div><p>将换日设置与晚子时起时干分别调整，查看日柱和十神如何联动。比较规则，保留两种明确口径。</p><button class="button" data-action="zi-demo">载入晚子时示例 →</button></article>${C.caseFacts.map(c=>`<article class="card case-card">${tag('机构文献事实样本')}<h3>${esc(c.name)}</h3><div class="case-params">出生日期：${esc(c.birth.date)}<br>时刻：${esc(c.birth.time||'未知，不补造')} · ${esc(c.birth.place)}</div><p>${esc(c.review_status)}</p><p>${esc(c.reason)}</p><a class="source-link" target="_blank" rel="noreferrer" href="${safeUrl(c.birth.source)}">查看出生资料来源 ↗</a>${c.events.map(e=>`<p class="micro-note">${esc(e.date)} · ${esc(e.fact)} <a class="source-link" href="${safeUrl(e.source)}" target="_blank" rel="noreferrer">原始来源 ↗</a></p>`).join('')}<p class="micro-note">未作为独立预测验证；不把人物生平反推成已验证断法。</p></article>`).join('')}</div>${teachingCasesHTML()}${categoryCasesHTML()}`;}
  function savedHTML(){return head('我的命盘','只在当前浏览器保存；可导出备份后再继续研习。','RECORDS · 本机收藏',btn('↓ 导出全部备份','export-saved'))+`${state.saved.length?state.saved.map(s=>`<article class="card saved-row"><div><h3>${esc(s.input.name)}</h3><p>${esc(s.input.date)} ${esc(s.input.unknownTime?'时刻未知':s.input.time)} · ${esc(s.input.place)} · ${esc(s.input.timezone)}</p></div><div class="actions"><button class="button primary small" data-load="${s.id}">打开命盘</button><button class="button small" data-delete="${s.id}">移除收藏</button></div></article>`).join(''):'<div class="card empty"><h3>留下一张值得研习的命盘</h3><p>在排盘页点击“保存命盘”，下次可在这里继续。浏览器清理可能清除记录，重要内容请导出备份。</p><a class="button primary" href="#chart">去排盘 →</a></div>'}<section class="card about-copy" style="margin-top:20px"><h2>从备份继续</h2><p>可导入本网页导出的单盘文件或命盘备份。导入后仍按当前版本重新计算，不执行文件中的任何代码。</p><label class="button">导入 JSON 备份<input id="import-file" type="file" accept="application/json,.json" style="display:none"></label></section>`;}
- function aboutHTML(){return head('计算与依据','知道程序算了什么，也知道哪些问题仍需核查。','METHOD · 有据可循')+`<section class="card about-copy"><h2>本机运行，三个独立功能</h2><p>八字排盘由固定版本历法库与时间处理程序计算；八字详批由这些结果和原创条件说明生成；子平学堂单独保存课程进度、笔记和练习。本版没有连接外部大模型，不上传出生资料。</p><h2>排盘采用的明确约定</h2><table class="definition-table"><tr><th>项目</th><th>本版行为</th></tr><tr><td>支持日期</td><td>1901—2099年出生日期；公历或农历输入，闰月单列</td></tr><tr><td>年、月柱</td><td>立春换年、十二节换月，统一UTC比较</td></tr><tr><td>地点与经度</td><td>内置 376 个地名（省／地级市／部分县级市／海外城市）离线解析为经度与时区；识别不到时可手填经度。地名只取城市中心坐标，区县级误差通常在数分以内</td></tr><tr><td>日、时柱</td><td>默认按地方真太阳时（钟表时＋经度时差＋均时差），可切换平太阳时或民用钟表时对照；支持0点或23点换日</td></tr><tr><td>真太阳时明细</td><td>逐项显示钟表时、经度时差、均时差、真太阳时与所落时辰，并对比校正前后时柱是否改变</td></tr><tr><td>神煞</td><td>18 组常用神煞，逐组标明查法口诀与命中位置；只作辅助标记，不单独断事</td></tr><tr><td>旺衰试算</td><td>月令40／通根35／天干帮扶25 的透明加权，合计100分并给出分级；权重为本页自定，可复算不等于定论</td></tr><tr><td>格局与用神</td><td>按「月令本气优先、本气不透取透出之中余气」列出取格候选与成格条件，不自动认证成败，不输出唯一喜用神</td></tr><tr><td>四柱宫位</td><td>年柱主根基与早年、月柱主父母兄弟与事业起点、日支为夫妻宫、时柱主子女晚景；宫位只作坐标，不凭一次冲合断定亲属事件</td></tr><tr><td>岁运互动</td><td>逐年检出伏吟（干支整体相同）、反吟（天干相克＋地支六冲）、岁运并临（大运与流年干支相同），并标出落在哪一宫、该柱管什么</td></tr><tr><td>取用三法</td><td>调候（寒暖燥湿）／扶抑（加权试算）／通关（十神两强相持时的中介）分栏呈现；调候按原则判断，非《穷通宝鉴》逐条照录</td></tr><tr><td>流月</td><td>按十二节排全年月建，月干依五虎遁推得，列出交节时刻；不以农历初一换月</td></tr><tr><td>晚子时</td><td>午夜换日时可另选当日或次日日干起时干</td></tr><tr><td>历史时区</td><td>当前浏览器Intl/IANA实现；回拨要求选择，前拨缺口拒绝；1970年前仍需历史文献核实</td></tr><tr><td>均时差</td><td>NOAA公开公式近似实现，未认证秒级精度；近时辰边界提示候选</td></tr><tr><td>大运</td><td>年干阴阳配男女参数定顺逆；顺取下一节、逆取上一节；分钟折算法</td></tr><tr><td>交运历日</td><td>UTC+8参考下先加年、月（月底截齐），再加日、时，最后转出生地时区</td></tr><tr><td>流年</td><td>以立春起止的一整段命理年；交运年须按具体瞬间分段</td></tr><tr><td>旺衰与关系口径</td><td>普通扶抑按得令、得地、得助、克泄耗透明初筛；天干四冲、六破、三刑自刑按基础总表声明的口径，不自动认证成化或特殊格局</td></tr><tr><td>详批范围</td><td>18节原局研读、前8步大运及每步全部立春流年；跨交运年按有效窗口分别列出</td></tr><tr><td>五行条形图</td><td>四天干+四地支本气各计1，展示数量，不能据此确定旺衰或喜用</td></tr></table><h2>参考问真的范围</h2><p>参考公开页面的四柱纵向排布、藏干与十神分层、五行着色、大运流年展开方式，另行制作本网页视觉和交互。未复制其品牌、付费课程或私人详批；尚未完成与问真实机所有设置的一致性认证。</p><h2>古籍与案例的状态</h2><p>7部核心书籍的13,448个可追溯段落供本地研读。书斋会显示网络本、行号、段落ID、质量标记与校勘状态。原文确实存在与原文足以支持某个判断是两件事；本版不会把待审段落自动升级为专家断语。</p><p>78讲包括基础总表、身强身弱、男女专题、分步讲解、示范、带练与独立作业。复杂解释与课程效果仍需具备相关能力的师资审阅和试学；目前没有完成独立预测验证的案例，不能承诺命理能准确预测人生。</p><h2>联网研究来源</h2><p>下面保存的是本次公开页面研究入口。学习其信息组织与方法层次，详批和课程文字为本项目原创。联网获取记录另存于项目的references目录。</p><ul>${C.research.map(r=>`<li><a href="${safeUrl(r.url)}" target="_blank" rel="noreferrer">${esc(r.name)} ↗</a></li>`).join('')}</ul><h2>如何继续改进</h2><p>已经补入时间歧义处理、计算口径、起运明细、原文检索、独立教学和纠错提示。人工校勘、专家复审、真实对象同意后的案例收集与独立验证，仍需实际执行，程序无法自动替代。</p><p>本地版本可以继续开发和检查；对外发布前应筛选已获授权的原文版本，并重新测试部署环境使用的时区版本与计算结果。</p></section>`;}
- function render(){document.title=titles[state.route]+' · 子平研习';$('#page-name').textContent=titles[state.route];document.querySelectorAll('[data-route]').forEach(a=>a.classList.toggle('active',a.dataset.route===state.route));$('#main').innerHTML=({chart:chartHTML,analysis:analysisHTML,work:workHTML,learn:lessonsHTML,library:libraryHTML,cases:casesHTML,saved:savedHTML,about:aboutHTML}[state.route]||chartHTML)();
+ function aboutHTML(){return head('计算与依据','知道程序算了什么，也知道哪些问题仍需核查。','METHOD · 有据可循')+`<section class="card about-copy"><h2>本机运行，四个独立模块</h2><p>八字排盘由固定版本历法库与时间处理程序计算；八字详批由这些结果和原创条件说明生成，先给结论再给依据；干支速查把散在各讲里的知识点排成表；子平学堂单独保存课程进度、笔记和练习。本版没有连接外部大模型，不上传出生资料。</p><h2>排盘采用的明确约定</h2><table class="definition-table"><tr><th>项目</th><th>本版行为</th></tr><tr><td>支持日期</td><td>1901—2099年出生日期；公历或农历输入，闰月单列</td></tr><tr><td>年、月柱</td><td>立春换年、十二节换月，统一UTC比较</td></tr><tr><td>地点与经度</td><td>省—市—区县三级联动，内置 34 个省级、358 个地级、3086 个区县的离线行政区划；选中即取行政中心经度，也可直接填海外地名（376 个城市坐标库）。区县共用所属市坐标，误差通常在 3 分钟以内，接近时辰边界时会提示复核</td></tr><tr><td>日、时柱</td><td>默认按地方真太阳时（钟表时＋经度时差＋均时差），可切换平太阳时或民用钟表时对照；支持0点或23点换日</td></tr><tr><td>真太阳时明细</td><td>逐项显示钟表时、经度时差、均时差、真太阳时与所落时辰，并对比校正前后时柱是否改变</td></tr><tr><td>排盘表</td><td>主星／天干／地支／藏干／副星／星运／自坐／空亡／纳音／神煞 十行，按问真式纵向排布；藏干标本气中气余气，副星为藏干十神，自坐为本柱天干坐本支的十二长生</td></tr><tr><td>结论与过三关</td><td>详批顶部给日主、格局、用神、性情、六亲、事业、财运、婚恋、身体、运程十项判断，标注明确／倾向／待辨；随后按「验过去—验现在—应未来」过三关，断语必须可证伪</td></tr><tr><td>神煞</td><td>18 组常用神煞，逐组标明查法口诀与命中位置；只作辅助标记，不单独断事</td></tr><tr><td>旺衰试算</td><td>月令40／通根35／天干帮扶25 的透明加权，合计100分并给出分级；权重为本页自定，可复算不等于定论</td></tr><tr><td>格局与用神</td><td>按「月令本气优先、本气不透取透出之中余气」列出取格候选与成格条件，不自动认证成败，不输出唯一喜用神</td></tr><tr><td>四柱宫位</td><td>年柱主根基与早年、月柱主父母兄弟与事业起点、日支为夫妻宫、时柱主子女晚景；宫位只作坐标，不凭一次冲合断定亲属事件</td></tr><tr><td>岁运互动</td><td>逐年检出伏吟（干支整体相同）、反吟（天干相克＋地支六冲）、岁运并临（大运与流年干支相同），并标出落在哪一宫、该柱管什么</td></tr><tr><td>取用三法</td><td>调候（寒暖燥湿）／扶抑（加权试算）／通关（十神两强相持时的中介）分栏呈现；调候按原则判断，非《穷通宝鉴》逐条照录</td></tr><tr><td>流月</td><td>按十二节排全年月建，月干依五虎遁推得，列出交节时刻；不以农历初一换月</td></tr><tr><td>晚子时</td><td>午夜换日时可另选当日或次日日干起时干</td></tr><tr><td>历史时区</td><td>当前浏览器Intl/IANA实现；回拨要求选择，前拨缺口拒绝；1970年前仍需历史文献核实</td></tr><tr><td>均时差</td><td>NOAA公开公式近似实现，未认证秒级精度；近时辰边界提示候选</td></tr><tr><td>大运</td><td>年干阴阳配男女参数定顺逆；顺取下一节、逆取上一节；分钟折算法</td></tr><tr><td>交运历日</td><td>UTC+8参考下先加年、月（月底截齐），再加日、时，最后转出生地时区</td></tr><tr><td>流年</td><td>以立春起止的一整段命理年；交运年须按具体瞬间分段</td></tr><tr><td>旺衰与关系口径</td><td>普通扶抑按得令、得地、得助、克泄耗透明初筛；天干四冲、六破、三刑自刑按基础总表声明的口径，不自动认证成化或特殊格局</td></tr><tr><td>详批范围</td><td>18节原局研读、前8步大运及每步全部立春流年；跨交运年按有效窗口分别列出</td></tr><tr><td>五行条形图</td><td>四天干+四地支本气各计1，展示数量，不能据此确定旺衰或喜用</td></tr></table><h2>参考问真的范围</h2><p>参考公开页面的四柱纵向排布、藏干与十神分层、五行着色、大运流年展开方式，另行制作本网页视觉和交互。未复制其品牌、付费课程或私人详批；尚未完成与问真实机所有设置的一致性认证。</p><h2>古籍与案例的状态</h2><p>7部核心书籍的13,448个可追溯段落供本地研读。书斋会显示网络本、行号、段落ID、质量标记与校勘状态。原文确实存在与原文足以支持某个判断是两件事；本版不会把待审段落自动升级为专家断语。</p><p>78讲包括基础总表、身强身弱、男女专题、分步讲解、示范、带练与独立作业。复杂解释与课程效果仍需具备相关能力的师资审阅和试学；目前没有完成独立预测验证的案例，不能承诺命理能准确预测人生。</p><h2>联网研究来源</h2><p>下面保存的是本次公开页面研究入口。学习其信息组织与方法层次，详批和课程文字为本项目原创。联网获取记录另存于项目的references目录。</p><ul>${C.research.map(r=>`<li><a href="${safeUrl(r.url)}" target="_blank" rel="noreferrer">${esc(r.name)} ↗</a></li>`).join('')}</ul><h2>如何继续改进</h2><p>已经补入时间歧义处理、计算口径、起运明细、原文检索、独立教学和纠错提示。人工校勘、专家复审、真实对象同意后的案例收集与独立验证，仍需实际执行，程序无法自动替代。</p><p>本地版本可以继续开发和检查；对外发布前应筛选已获授权的原文版本，并重新测试部署环境使用的时区版本与计算结果。</p></section>`;}
+ function render(){document.title=titles[state.route]+' · 子平研习';$('#page-name').textContent=titles[state.route];document.querySelectorAll('[data-route]').forEach(a=>a.classList.toggle('active',a.dataset.route===state.route));$('#main').innerHTML=({chart:chartHTML,analysis:analysisHTML,work:workHTML,learn:lessonsHTML,tables:tablesHTML,library:libraryHTML,cases:casesHTML,saved:savedHTML,about:aboutHTML}[state.route]||chartHTML)();
    localizeLessonRefs($('#main'));
    const _cl=$('.course-list'),_act=$('.lesson-button.active');
    if(_cl&&_act&&_cl.scrollHeight>_cl.clientHeight+4){_cl.scrollTop=Math.max(0,_act.offsetTop-_cl.clientHeight/2);}
@@ -400,7 +553,7 @@
    };
    walk(root);
  }
- function route(){if($('#birth-form'))state.draft=getForm();const raw=location.hash.slice(1).split('/'),r=raw[0]||'chart';state.route=Object.hasOwn(titles,r)?r:'chart';state.learnMode=r==='learn'&&raw[1]==='practice'?'practice':r==='learn'&&raw[1]==='basics'?'basics':'lesson';if(r==='learn'&&C.lessons.some(l=>l.id===raw[1]))state.lesson=raw[1];state.readerBook=r==='library'&&C.books.some(b=>b.id===raw[1])?raw[1]:'';state.readerAt=Math.max(0,Math.floor(Number(raw[2])||0));state.readerError='';render();window.scrollTo(0,0);}
+ function route(){if($('#birth-form'))state.draft=getForm();const raw=location.hash.slice(1).split('/'),r=raw[0]||'chart';state.route=Object.hasOwn(titles,r)?r:'chart';state.learnMode=r==='learn'&&raw[1]==='practice'?'practice':r==='learn'&&raw[1]==='basics'?'basics':r==='learn'&&raw[1]==='gates'?'gates':'lesson';if(r==='learn'&&C.lessons.some(l=>l.id===raw[1]))state.lesson=raw[1];state.readerBook=r==='library'&&C.books.some(b=>b.id===raw[1])?raw[1]:'';state.readerAt=Math.max(0,Math.floor(Number(raw[2])||0));state.readerError='';render();window.scrollTo(0,0);}
  function dialog(title,html){$('#dialog-title').textContent=title;$('#dialog-body').innerHTML=html;if(!$('#source-dialog').open)$('#source-dialog').showModal();}
  function sourceDialog(p){const b=C.books.find(b=>b.id===p.source_id);dialog(p.title,`<span class="tag">${esc(p.review_status)} · 网络整理本</span><p>${esc(p.chapter)} · 原文件第${p.line_start}行</p><blockquote>${esc(p.text)}</blockquote><p><button class="button small" data-original-id="${esc(p.id)}">打开完整原文及前后文 →</button></p><p>此处确认的是本地文本存在与定位关系。尚未逐字对照扫描本，也未认证它足以支持自动人生断语。</p>${p.quality_flags?.length?`<p>质量提示：${esc(p.quality_flags.join('；'))}</p>`:''}<p class="mono">段落：${esc(p.id)}<br>Unicode字符：${p.char_start}—${p.char_end}<br>段落SHA256：${esc(p.text_sha256)}<br>原文件SHA256：${esc(b?.sha256||'')}</p>${b?`<a class="source-link" href="${safeUrl(b.source_url)}" target="_blank" rel="noreferrer">查看该整理本来源 ↗</a>`:''}`);}
  function calculationDetails(){const c=state.chart;if(!c||c.unknownTime)return;const s=c.solar;dialog('本盘的计算链',`<div class="fact-box">${esc(c.pillars.join('　'))}</div><p>原始出生读数：${esc(c.civil)}<br>IANA时区：${esc(c.input.timezone)}<br>UTC瞬间：${new Date(c.utc).toISOString()}<br>当天UTC偏移：${c.offsetMinutes}分钟<br>日时采用读数：${esc(c.clock)}<br>时钟口径：${clockName(c)}</p>${s?`<p><b>太阳时换算链</b><br>钟表时 ${esc(s.clockWall)}<br>经度差 ${signed(s.longitudeCorrection)} 分（经度 ${s.LON.toFixed(4)}°，标准经线 ${(s.zoneMinutes/4).toFixed(2)}°）<br>均时差 ${signed(s.eotMinutes)} 分<br>地方平太阳时 ${esc(s.lmtWall)}<br>地方真太阳时 ${esc(s.trueWall)}${c.hourCompare?`<br>校正前后时柱：${c.hourCompare.civil[3]} → ${c.hourCompare.true[3]}${c.hourCompare.hourChanged?'（已变）':'（未变）'}`:''}</p>`:''}<p>前一节：${c.before.name}，${new Date(c.before.utc).toISOString()}<br>后一节：${c.after.name}，${new Date(c.after.utc).toISOString()}<br>起运取节：${c.luck.term.name}，间隔${c.luck.gapMinutes}整分钟。</p><p>${esc(c.luck.algorithm)}</p><p>引擎：${c.engine}<br>浏览器时区实现：Intl / 当前浏览器内置版本，前端无法可靠读取完整tzdb版本。</p>${c.ziAlternative?`<p>另一换日口径：${c.ziAlternative.join('　')}。晚子时起干仍依当前设置。</p>`:''}${c.solarAlternatives?.length?`<p>太阳时边界观察：${c.solarAlternatives.map(a=>`${a.shiftMinutes>0?'+':''}${a.shiftMinutes}分钟：${a.pillars.join(' ')}`).join('<br>')}</p>`:''}<p>没有完成问真实机兼容认证；节令90秒阈值用于提示复核，不是精度承诺。</p>`);}
@@ -433,16 +586,21 @@
  });
  document.addEventListener('change',async e=>{
    if(e.target.closest('#birth-form')){
-     const isPlace=e.target.name==='place';
+     const isPlace=e.target.dataset.geo||e.target.name==='placeOther';
      const i=getForm();
      if(isPlace&&i.placeHit&&i.placeHit.found){i.timezone=i.placeHit.tz;i.longitude=i.placeHit.lon;}
      state.draft=i;
      // 地点只做局部更新：避免重绘打断输入或吞掉回车提交
      if(isPlace){
-       const box=$('#place-hit-box');if(box)box.innerHTML=placeMatchHTML(i);
+       // 级联：选了省清空市，选了市清空区；只局部更新，不打断其他输入
+       if(e.target.dataset.geo==='prov'){state.draft.geoCity='';state.draft.geoDist='';}
+       if(e.target.dataset.geo==='city'){state.draft.geoDist='';}
+       const i2=getForm();state.draft=i2;
+       const wrap=$('#geo-wrap');if(wrap)wrap.innerHTML=geoHTML(i2);
+       const box=$('#place-hit-box');if(box)box.innerHTML=placeMatchHTML(i2);
        const form=$('#birth-form');
-       if(form&&form.elements.timezone)form.elements.timezone.value=i.timezone;
-       if(form&&form.elements.longitude)form.elements.longitude.value=i.longitude;
+       if(form&&form.elements.timezone)form.elements.timezone.value=i2.timezone;
+       if(form&&form.elements.longitude)form.elements.longitude.value=i2.longitude;
      }
      if(['unknownTime','dayBoundary'].includes(e.target.name))render();
      const hint=$('#form-hint');if(hint){hint.textContent='设置已修改，点击「起盘研习」更新右侧命盘';hint.style.color='#9e774e';}
@@ -464,6 +622,13 @@
  let readerTicket=0,searchTicket=0;
  function readerRoute(id,at){location.hash='library/'+id+'/'+Math.max(0,at||0);}
  async function prepareReader(id){const ticket=++readerTicket;state.readerError='';try{await loadBook(id);}catch(e){state.readerError=e.message;}if(ticket===readerTicket&&state.route==='library'&&state.readerBook===id)render();}
+ function tablesHTML(){
+   const T=window.ZipingTables;
+   if(!T)return head('干支速查','表还没载入。','REFERENCE · 表格速查')+'<div class="card empty"><h3>速查表未载入</h3><p>请确认 tables.js 与网页在同一目录，然后刷新。</p></div>';
+   const nav=T.nav().map(([id,label],i)=>`<a href="#tables" data-scroll="ref-${id}"><span>${String(i+1).padStart(2,'0')}</span>${label}</a>`).join('');
+   return head('干支速查','把干支、藏干、十神、长生、合冲刑害破、神煞、纳音排成表，查得到才用得上。','REFERENCE · 一表一查')+
+     `<div class="ref-layout"><aside class="card ref-toc"><h3>表格目录</h3>${nav}<small>机械性内容由引擎现算；解释性内容标为本页常见取法，各家有别处一并写明。</small></aside><div class="ref-main">${T.sections()}</div></div>`;
+ }
  function libraryHTML(){
    if(state.readerBook)return readerHTML();
    const marks=storage.read('readerMarks',{});
@@ -506,7 +671,7 @@
    const refs=(C.caseMap||{})[l.id]||[];
    if(!refs.length)return '';
    const KIND={'结构教学盘':'按结构检索生成','边界盘':'时间口径训练','公开档案':'官方记录'};
-   return `<h3>本节配套案例 · ${refs.length} 盘</h3><p class="micro-note">结构教学盘是按目标结构在合法日期范围内检索出来的盘，四柱由本页引擎现算，用于练习判读；它不是真实人物，不含生平事件。边界盘专门练时间口径。链接「命例研读」可看有官方记录的人物。</p><div class="lesson-cases">${refs.map(ref=>{
+   return `<h3>本节配套案例 · ${refs.length} 盘</h3><p class="micro-note">每一讲至少五盘：先从「与本讲的关系」看这张盘为什么要放在这里，再看判读、推理链与边界。结构教学盘是按目标结构在合法日期范围内检索出来的盘，四柱由本页引擎现算，用于练习判读；它不是真实人物，不含生平事件。边界盘专门练时间口径。</p><div class="lesson-cases">${refs.map(ref=>{
      const c=(C.teachingCases||[]).find(x=>x.id===ref.id);if(!c)return '';
      const r=caseChart(c);
      const head=r?`<div class="case-chart">${r.details.map((p,i)=>`<div class="cc-item"><em>${['年','月','日','时'][i]}</em>${pairHTML(p.stem+p.branch)}<small>${i===2?'日主':esc(p.god)}</small></div>`).join('')}</div>`:'<p class="micro-note">此盘未能完成计算。</p>';
@@ -514,10 +679,30 @@
    }).join('')}</div>`;
  }
  function lessonsHTML(){
-   if(state.learnMode==='practice')return practiceHTML();if(state.learnMode==='basics')return basicsHTML();
+   if(state.learnMode==='practice')return practiceHTML();if(state.learnMode==='basics')return basicsHTML();if(state.learnMode==='gates')return gatesHTML();
    const l=C.lessons.find(x=>x.id===state.lesson)||C.lessons[0],idx=C.lessons.indexOf(l),done=state.completed.includes(l.id),qs=C.questions.filter(q=>q.lesson===l.id),sample=qs.slice(0,4),depth=(C.depthMap&&C.depthMap[l.id])||C.depth[idx],pass=passedLessons()[l.id];
    const stage=C.studyStages.find(s=>idx+1>=s.from&&idx+1<=s.to);
-   return head('子平学堂','从核盘、结构到男女完整研读，通过示范、带练与陌生盘作业逐渐独立。','ACADEMY · 循序研习','<a class="button primary" href="#learn/practice">进入整盘实训 →</a>')+`<div class="course-summary"><div class="progress-circle">${state.completed.length}/${C.lessons.length}</div><div><h2>学会一套可以复核的传统读盘流程</h2><p>${C.lessons.length}讲 · 男命、女命分讲 · ${Object.keys(passedLessons()).length}讲确定题已通过；已读标记单独记录</p></div><button class="button" data-action="next-unfinished">继续未读课程 →</button></div><details class="card pathway" ${idx===0?'open':''}><summary>学习路线与结业材料 · 先看怎样才算学会</summary><div class="stage-grid">${C.studyStages.map(s=>`<section><b>${esc(s.title)}</b><p>第${s.from}—${s.to}讲 · ${esc(s.goal)}</p><p class="micro-note">交付：${esc(s.task)}</p><a class="source-link" href="#learn/${esc((C.lessons[s.from-1]||{}).id||'L01')}">开始这一阶段 →</a></section>`).join('')}</div><p class="micro-note">课程目标是独立组织有依据、可复算的传统研读；师资复审与试学仍待进行，学习进度不代表人生预测能力。</p></details><div class="academy-tabs"><a class="button primary" href="#learn/basics">基础总表与旺衰练习</a><a class="button" href="#learn/L49">干支与十神总表</a><a class="button" href="#learn/L56">旺衰四栏</a><a class="button" href="#learn/L61">婚姻事业与六亲</a><a class="button" href="#learn/L31">男女方法总表</a><a class="button" href="#learn/L33">男命专题</a><a class="button" href="#learn/L36">女命专题</a><a class="button" href="#learn/practice">完整示范 / 带练 / 独立作业</a><button class="button" data-action="export-study">导出学习备份</button><label class="button">导入学习备份<input id="import-study" type="file" accept=".json" hidden></label></div><div class="course-layout"><aside class="card course-list">${C.lessons.map((x,i)=>`${C.studyStages.some(s=>s.from===i+1)?`<div class="course-group">${C.studyStages.find(s=>s.from===i+1).title}</div>`:''}<button class="lesson-button ${x.id===l.id?'active':''}" data-lesson="${x.id}"><span>${i+1}</span><b>${esc(x.title)}</b>${state.completed.includes(x.id)?'<i title="已读">✓</i>':''}${passedLessons()[x.id]?'<i title="确定题通过">●</i>':''}</button>`).join('')}</aside><article class="card lesson-article"><div class="eyebrow">第 ${idx+1} 讲<span data-keep> · 编号 ${esc(l.id)}</span> · ${esc(l.track||'男女共通基础')} · 建议${l.estimated_minutes||25}分钟与另行练习</div><h2>${esc(l.title)}</h2><div class="lesson-objective">本课目标：${esc(l.objective)}</div><p class="micro-note">阶段任务：${esc(stage?.task)} ${l.prerequisites?.length?'建议先学 '+l.prerequisites.join('、'):''}</p><div class="lesson-lead"><p>${esc(l.body)}</p></div><h3>${esc(l.deep_heading)}</h3>${l.paragraphs.map(p=>`<p>${esc(p)}</p>`).join('')}<h3>按步骤动手推演</h3><ol class="lesson-steps">${l.steps.map(s=>`<li>${esc(s)}</li>`).join('')}</ol><h3>讲解示范</h3><div class="lesson-example">${esc(l.example)}</div>${depth?`<section class="depth-panel"><h3>${esc(depth[0])}</h3><p>${esc(depth[1])}</p><h4>先自己做</h4><p>${esc(depth[2])}</p><details><summary>展开纠错与检查重点</summary><p>${esc(depth[3])}</p></details></section>`:''}${l.references?.length?`<p>${l.references.map(r=>C.books.some(b=>b.id===String(r).split('-')[0])?`<button class="source-link" data-original-id="${esc(r)}">打开相关原文 ${esc(r)} ↗</button>`:'').join(' ')}</p>`:''}${lessonCasesHTML(l)}<h3>分项练习</h3><p>${esc(l.practice)}</p>${sample.map(q=>`<div class="question-card" data-question-card="${q.id}"><label for="answer-${q.id}">${q.id} · ${esc(q.question)}</label><div class="answer-row"><input id="answer-${q.id}" data-answer="${q.id}" aria-label="${esc(q.question)}" placeholder="先写答案，再核对"><button class="button small" data-check="${q.id}">核对答案</button></div><div class="question-feedback" id="feedback-${q.id}"></div></div>`).join('')}${qs.length>4?`<p class="micro-note">本课题库${qs.length}题。<button class="text-button" data-action="more-questions">换一组练习 ↻</button></p>`:''}<details class="question-card"><summary>开放任务自查与人工复审要点</summary><ol>${l.pass_criteria.map(p=>`<li>${esc(p)}</li>`).join('')}</ol><p>文字题不能由勾选或自动匹配认证精通。保留你的依据和反证，交同伴或教师复审。</p></details><section class="lesson-exam"><h3>本课确定题小测</h3><p class="micro-note">小测仅核查可明确判定的事实，答对后单独记为“确定题通过”。</p>${lessonExamHTML(l.id)}<p id="lesson-exam-feedback" aria-live="polite">${pass?'✓ 这讲确定题曾全部通过。':''}</p></section><h3>研习笔记与开放任务答案</h3><textarea class="lesson-note" id="lesson-note" data-note="${l.id}" aria-label="研习笔记" placeholder="写计算、取法、条件、原文定位、反证。">${esc(state.notes[l.id]||'')}</textarea><p class="micro-note">本浏览器自动保存，建议导出学习备份。当前为原创教学稿，尚待师资复审和试学。</p><div class="lesson-actions"><button class="button" data-lesson="${C.lessons[Math.max(0,idx-1)].id}" ${idx===0?'disabled':''}>← 上一讲</button><button class="button ${done?'':'primary'}" data-complete="${l.id}">${done?'✓ 已读 · 撤销标记':'标记本课已读 ✓'}</button><button class="button" data-lesson="${C.lessons[Math.min(idx+1,C.lessons.length-1)].id}" ${idx===C.lessons.length-1?'disabled':''}>下一讲 →</button></div><p><a class="button primary" href="#learn/practice">把本课方法放进整盘实训 →</a></p></article></div>`;
+   return head('子平学堂','从核盘、结构到男女完整研读，通过示范、带练与陌生盘作业逐渐独立。','ACADEMY · 循序研习','<a class="button primary" href="#learn/practice">进入整盘实训 →</a><a class="button" href="#learn/gates">过三关训练 →</a>')+`<div class="course-summary"><div class="progress-circle">${state.completed.length}/${C.lessons.length}</div><div><h2>学会一套可以复核的传统读盘流程</h2><p>${C.lessons.length}讲 · 男命、女命分讲 · ${Object.keys(passedLessons()).length}讲确定题已通过；已读标记单独记录</p></div><button class="button" data-action="next-unfinished">继续未读课程 →</button></div><details class="card pathway" ${idx===0?'open':''}><summary>学习路线与结业材料 · 先看怎样才算学会</summary><div class="stage-grid">${C.studyStages.map(s=>`<section><b>${esc(s.title)}</b><p>第${s.from}—${s.to}讲 · ${esc(s.goal)}</p><p class="micro-note">交付：${esc(s.task)}</p><a class="source-link" href="#learn/${esc((C.lessons[s.from-1]||{}).id||'L01')}">开始这一阶段 →</a></section>`).join('')}</div><p class="micro-note">课程目标是独立组织有依据、可复算的传统研读；师资复审与试学仍待进行，学习进度不代表人生预测能力。</p></details><div class="academy-tabs"><a class="button primary" href="#learn/basics">基础总表与旺衰练习</a><a class="button" href="#learn/L49">干支与十神总表</a><a class="button" href="#learn/L56">旺衰四栏</a><a class="button" href="#learn/L61">婚姻事业与六亲</a><a class="button" href="#learn/L31">男女方法总表</a><a class="button" href="#learn/L33">男命专题</a><a class="button" href="#learn/L36">女命专题</a><a class="button" href="#learn/practice">完整示范 / 带练 / 独立作业</a><button class="button" data-action="export-study">导出学习备份</button><label class="button">导入学习备份<input id="import-study" type="file" accept=".json" hidden></label></div><div class="course-layout"><aside class="card course-list">${C.lessons.map((x,i)=>`${C.studyStages.some(s=>s.from===i+1)?`<div class="course-group">${C.studyStages.find(s=>s.from===i+1).title}</div>`:''}<button class="lesson-button ${x.id===l.id?'active':''}" data-lesson="${x.id}"><span>${i+1}</span><b>${esc(x.title)}</b>${state.completed.includes(x.id)?'<i title="已读">✓</i>':''}${passedLessons()[x.id]?'<i title="确定题通过">●</i>':''}</button>`).join('')}</aside><article class="card lesson-article"><div class="eyebrow">第 ${idx+1} 讲<span data-keep> · 编号 ${esc(l.id)}</span> · ${esc(l.track||'男女共通基础')} · 建议${l.estimated_minutes||25}分钟与另行练习</div><h2>${esc(l.title)}</h2><div class="lesson-objective">本课目标：${esc(l.objective)}</div><p class="micro-note">阶段任务：${esc(stage?.task)} ${l.prerequisites?.length?'建议先学 '+l.prerequisites.join('、'):''}</p><div class="lesson-lead"><p>${esc(l.body)}</p></div><h3>${esc(l.deep_heading)}</h3>${l.paragraphs.map(p=>`<p>${esc(p)}</p>`).join('')}<h3>按步骤动手推演</h3><ol class="lesson-steps">${l.steps.map(s=>`<li>${esc(s)}</li>`).join('')}</ol><h3>讲解示范</h3><div class="lesson-example">${esc(l.example)}</div>${depth?`<section class="depth-panel"><h3>${esc(depth[0])}</h3><p>${esc(depth[1])}</p><h4>先自己做</h4><p>${esc(depth[2])}</p><details><summary>展开纠错与检查重点</summary><p>${esc(depth[3])}</p></details></section>`:''}${l.references?.length?`<p>${l.references.map(r=>C.books.some(b=>b.id===String(r).split('-')[0])?`<button class="source-link" data-original-id="${esc(r)}">打开相关原文 ${esc(r)} ↗</button>`:'').join(' ')}</p>`:''}${lessonCasesHTML(l)}<h3>分项练习</h3><p>${esc(l.practice)}</p>${sample.map(q=>`<div class="question-card" data-question-card="${q.id}"><label for="answer-${q.id}">${q.id} · ${esc(q.question)}</label><div class="answer-row"><input id="answer-${q.id}" data-answer="${q.id}" aria-label="${esc(q.question)}" placeholder="先写答案，再核对"><button class="button small" data-check="${q.id}">核对答案</button></div><div class="question-feedback" id="feedback-${q.id}"></div></div>`).join('')}${qs.length>4?`<p class="micro-note">本课题库${qs.length}题。<button class="text-button" data-action="more-questions">换一组练习 ↻</button></p>`:''}<details class="question-card"><summary>开放任务自查与人工复审要点</summary><ol>${l.pass_criteria.map(p=>`<li>${esc(p)}</li>`).join('')}</ol><p>文字题不能由勾选或自动匹配认证精通。保留你的依据和反证，交同伴或教师复审。</p></details><section class="lesson-exam"><h3>本课确定题小测</h3><p class="micro-note">小测仅核查可明确判定的事实，答对后单独记为“确定题通过”。</p>${lessonExamHTML(l.id)}<p id="lesson-exam-feedback" aria-live="polite">${pass?'✓ 这讲确定题曾全部通过。':''}</p></section><h3>研习笔记与开放任务答案</h3><textarea class="lesson-note" id="lesson-note" data-note="${l.id}" aria-label="研习笔记" placeholder="写计算、取法、条件、原文定位、反证。">${esc(state.notes[l.id]||'')}</textarea><p class="micro-note">本浏览器自动保存，建议导出学习备份。当前为原创教学稿，尚待师资复审和试学。</p><div class="lesson-actions"><button class="button" data-lesson="${C.lessons[Math.max(0,idx-1)].id}" ${idx===0?'disabled':''}>← 上一讲</button><button class="button ${done?'':'primary'}" data-complete="${l.id}">${done?'✓ 已读 · 撤销标记':'标记本课已读 ✓'}</button><button class="button" data-lesson="${C.lessons[Math.min(idx+1,C.lessons.length-1)].id}" ${idx===C.lessons.length-1?'disabled':''}>下一讲 →</button></div><p><a class="button primary" href="#learn/practice">把本课方法放进整盘实训 →</a></p></article></div>`;
+ }
+ function gateTable(headers,rows){return `<div class="ref-table-wrap"><table class="ref-table"><thead><tr>${headers.map(h=>`<th>${esc(h)}</th>`).join('')}</tr></thead><tbody>${rows.map(r=>`<tr>${r.map((x,i)=>`<td${i===0?' class="row-head"':''}>${esc(x)}</td>`).join('')}</tr>`).join('')}</tbody></table></div>`;}
+ function gatesHTML(){
+  const c=state.chart;
+  const rows=[
+    ['第一关 · 验过去','挑两件已经发生的事，说清年份区间、什么事、为什么这么断','当事人点头，且不是“放之四海皆准”的话'],
+    ['第二关 · 验现在','说清当下这步运的主题、正在推的事、该防的坑','当事人能对上主线，细节可以偏'],
+    ['第三关 · 应未来','给一个时间窗、一个具体方向、一个可证伪的标志','到点能判“应”或“未应”，不许含糊'],
+  ];
+  const traps=[
+    ['巴纳姆话术','“你有时外向有时内向”“你早年有过一次变动”——谁都对，等于没说。'],
+    ['事后改口','没应就说“时候未到”“被别的字化了”。改口径之前先记下原话。'],
+    ['只报喜','顺着当事人想听的说。批盘不是哄人，先说不好的那部分。'],
+    ['拿术语挡','说不清就说“格局复杂”。真复杂就写清复杂在哪两层。'],
+  ];
+  return head('过三关','把断语放在能被证明、也能被推翻的位置上。','ACADEMY · 三关训练','<a class="button" href="#learn">← 回到课程</a>')+
+   `<section class="card about-copy"><h2>为什么要过三关</h2><p>学八字最容易走的一条歪路，是拿一套词去套所有人：说几句“你外表随和，内心有主见”，听的人点头，于是以为自己会了。过三关就是掐断这条路——先断已经发生的事，对不上就别往下断。</p><p>顺序不能反：过去对不上，现在就是猜；现在对不上，未来就是编。三关过两关，这套结构在这张盘上才算立住。</p></section>
+   <section class="card ref-block"><div class="card-head"><h2 class="card-title">三关怎么写</h2><span class="card-kicker">写不出来，就是还没学会</span></div><div class="ref-body">${gateTable(['关卡','要写什么','合格标准'],rows)}<p class="ref-note">每一关都要求“可证伪”：时间窗、方向、标志，三样缺一不可。写“今年事业有变动”不算，写“今年三月到九月之间换岗或换汇报对象”才算。</p></div></section>
+   <section class="card ref-block"><div class="card-head"><h2 class="card-title">四种自欺</h2><span class="card-kicker">对照检查</span></div><div class="ref-body">${gateTable(['毛病','样子'],traps)}</div></section>
+   ${c?threeGatesHTML(c)+`<section class="card"><div class="card-head"><h2 class="card-title">把判断写下来</h2><span class="card-kicker">存在本机，换设备不跟随</span></div><div class="conclusion-body"><label class="gate-write"><span>第一关：我断的过去两件事</span><textarea class="lesson-note" data-note="gate1" placeholder="例：2016—2019 之间，工作从执行岗换到要带人的岗，压力骤然变大。">${esc(state.notes.gate1||'')}</textarea></label><label class="gate-write"><span>第二关：当下这步运的主线与该防的坑</span><textarea class="lesson-note" data-note="gate2" placeholder="例：这步运在推“责任”，要防的是揽事太多、身体透支。">${esc(state.notes.gate2||'')}</textarea></label><label class="gate-write"><span>第三关：未来三年的可证伪断语</span><textarea class="lesson-note" data-note="gate3" placeholder="例：2027 年上半年之前，换岗或换城市，二者至少发生一件。">${esc(state.notes.gate3||'')}</textarea></label><p class="micro-note">写完隔半年回来看一次，应了打勾，没应写清原因。千万不要倒过来——先有结果再补理由。</p></div></section>`:`<div class="card empty"><h3>先起一张盘</h3><p>三关要落在具体命盘上才有意义。去排盘页起一张，再回来对照。</p><a class="button primary" href="#chart">去排盘 →</a></div>`}`;
  }
  function examItems(id){
    const bank=(C.quizBank&&C.quizBank[id])||[];
@@ -582,11 +767,27 @@
 
  const R=window.ZipingReading;
  function reportSections(c){const extra=R.subjectSections(c),byId=new Map(extra.map(s=>[s.id,s]));const base=baseReportSections(c).map(s=>byId.get(s.id)||s);const ids=new Set(base.map(s=>s.id));const add=extra.filter(s=>!ids.has(s.id));base.splice(2,0,...add.filter(s=>s.id==='strength'));const last=base.findIndex(s=>s.id==='limits');base.splice(last,0,...add.filter(s=>s.id!=='strength'));return base;}
- function reportCard(s,i){return `<article class="card report-card" id="report-${s.id}"><div class="report-section-heading"><span class="report-no">${String(i+1).padStart(2,'0')}</span><h2>${esc(s.title)}</h2></div><div class="fact-box"><b>盘面事实与取法</b><br>${esc(s.fact)}</div>${s.paragraphs.map(p=>`<p>${esc(p)}</p>`).join('')}${s.source?sourceButton(s.source,'查看相关原文与前后文（网络本待校勘）'):''}<p class="reflection">${esc(s.reflection)}</p></article>`;}
+ function sectionSays(c){
+   const d=conclusionData(c),bf=d.baseFavor;
+   const useTxt=[...new Set(bf.map(g=>GROUP_USE[groupOf(g)]).filter(Boolean))].join('、')||'不好定，随运走';
+   const spouse=c.input.gender==='male'?'财星':'官杀';
+   return {
+     strength:d.weak?'一句话：按偏弱用——有印有根，不算虚，但扛不住长期消耗，别用消耗战的方式活。':d.strong?'一句话：按偏强用——力气有余，怕的是憋着没出口，得找地方使。':'一句话：中和，命是看运走的，别急着给自己定性。',
+     relationships:`一句话：${spouse}${/合/.test(R.relationText(R.relationFacts(c.pillars).filter(r=>r.indices.includes(2))))?'在明面、日支又被合住，感情来得不慢，但容易拖着不定':'在明面，缘分来得直接'}；看星也看宫，宫里有拉扯就别急着定。`,
+     work:`一句话：用神在${useTxt}，靠这一路吃饭比逆着来省力；具体做什么行当，盘里给不了，得看手上的本事。`,
+     wealth:`一句话：${d.weak?'钱是能见到的，留不留看节制，先把固定收入做厚再谈扩张。':'财路跟着运走，运来就动，运过就收，别把行情当本事。'}`,
+     health:`一句话：五行${d.climateEl==='火'?'偏寒':'偏燥'}，作息上要注意的那一头已经写明；病名不在这里谈。`,
+     children:'一句话：子女只看结构倾向，人数、性别、生得早晚都算不出来，别硬断。',
+     parents:'一句话：年柱是根基，月柱是父母兄弟；托不托得住看这两柱，具体的事要问本人。',
+     siblings:'一句话：同辈能帮也能分，合作先把账写清，别用感情代替约定。',
+     'timing-method':'一句话：应期是窗口不是日期，写清窗口，等它来或不来。',
+   };
+ }
+ function reportCard(s,i,says){const say=says&&says[s.id];return `<article class="card report-card" id="report-${s.id}"><div class="report-section-heading"><span class="report-no">${String(i+1).padStart(2,'0')}</span><h2>${esc(s.title)}</h2></div>${say?`<p class="section-say">${esc(say)}</p>`:''}<div class="fact-box"><b>盘面事实与取法</b><br>${esc(s.fact)}</div>${s.paragraphs.map(p=>`<p>${esc(p)}</p>`).join('')}${s.source?sourceButton(s.source,'查看相关原文与前后文（网络本待校勘）'):''}<p class="reflection">${esc(s.reflection)}</p></article>`;}
  function analysisHTML(){
   const c=state.chart;if(!c||c.unknownTime||c.uncertain)return head('八字详批','先有可核对的命盘，再展开条件分析。','READING · 结构详析')+`<div class="card empty"><h3>${c?.unknownTime?'时刻未知，暂不生成唯一详批':c?.uncertain?'时间范围跨过干支边界，暂不生成唯一详批':'请先建立命盘'}</h3><p>先处理时间与候选，再阅读身强身弱、人生议题、八步大运和流年。</p><a class="button primary" href="#chart">返回排盘 →</a></div>`;
-  const sections=reportSections(c),lucks=R.eightLuck(c),strength=R.strength(c),vd=strengthVerdict(c);
-  return head('八字详批','先读原局，再按八步大运与立春流年展开：每项都有事实、传统条件和待核事项。','READING · 八运逐年',btn('↓ 导出完整详批','export-report')+btn('▧ 打印报告','print'))+`<div class="analysis-layout"><aside class="card report-toc"><h3>本盘阅读目录</h3>${sections.map((s,i)=>`<a href="#analysis" data-scroll="${s.id}">${String(i+1).padStart(2,'0')} ${esc(s.title.split('：')[0])}</a>`).join('')}<a href="#analysis" data-scroll="eight-luck"><strong>八步大运 · 逐年详读</strong></a>${lucks.map(l=>`<a href="#analysis" data-luck-report="${l.number}">第${l.number}运 ${l.pillar} · ${l.year}起</a>`).join('')}<small>固定计算与原创条件说明。未连接外部模型，未认证复杂格局或预测准确率。</small></aside><div class="report"><section class="card report-banner"><div class="eyebrow">PERSONAL READING · V0.7.2</div><h2>${esc(c.input.name)} · ${c.input.gender==='male'?'男命 / 乾造':'女命 / 坤造'}详读</h2><p>${c.pillars.join('　')}<br>${esc(c.input.place)} · ${esc(c.input.timezone)} · ${clockName(c)}</p><div class="insight-grid"><div class="insight"><small>日主</small><strong>${c.dayMaster} · ${Z.polar(c.dayMaster)}${Z.element(c.dayMaster)}</strong></div><div class="insight"><small>普通扶抑工作判断</small><strong>${esc(vd.scoreSide)} · ${vd.score} 分</strong><em class="insight-sub">规则初筛：${esc(vd.ruleLabel)}${vd.conflict?' · 与分数相反':vd.undecided?' · 未定论':''}</em></div><div class="insight"><small>研读范围</small><strong>8步大运 · ${lucks.reduce((n,l)=>n+l.years.length,0)}个流年分段</strong></div></div><p class="micro-note">逐年条目含交运前后的部分立春年；同一年在两步运各显示其有效窗口。传统解释不是已核实人生事实。</p></section>${warningHTML(c)}${sections.map(reportCard).join('')}${eightLuckHTML(c,lucks)}<div class="analysis-cta"><div><h3>看到判断，也能复核为什么</h3><p>基础总表、旺衰四栏、婚姻事业财富健康六亲和应期专题均可单独学习。</p></div><a class="button primary" href="#learn/basics">打开基础与旺衰工具 →</a></div></div></div>`;
+  const sections=reportSections(c),lucks=R.eightLuck(c),strength=R.strength(c),vd=strengthVerdict(c),says=sectionSays(c);
+  return head('八字详批','先读原局，再按八步大运与立春流年展开：每项都有事实、传统条件和待核事项。','READING · 八运逐年',btn('↓ 导出完整详批','export-report')+btn('▧ 打印报告','print'))+`<div class="analysis-layout"><aside class="card report-toc"><h3>本盘阅读目录</h3><a href="#analysis" data-scroll="report-conclusion"><strong>结论摘要 · 先看判断</strong></a><a href="#analysis" data-scroll="report-gates"><strong>过三关 · 验一验</strong></a>${sections.map((s,i)=>`<a href="#analysis" data-scroll="${s.id}">${String(i+1).padStart(2,'0')} ${esc(s.title.split('：')[0])}</a>`).join('')}<a href="#analysis" data-scroll="eight-luck"><strong>八步大运 · 逐年详读</strong></a>${lucks.map(l=>`<a href="#analysis" data-luck-report="${l.number}">第${l.number}运 ${l.pillar} · ${l.year}起</a>`).join('')}<small>固定计算与原创条件说明。未连接外部模型，未认证复杂格局或预测准确率。</small></aside><div class="report">${conclusionHTML(c)}<section class="card report-banner"><div class="eyebrow">PERSONAL READING · V0.8.1</div><h2>${esc(c.input.name)} · ${c.input.gender==='male'?'男命 / 乾造':'女命 / 坤造'}详读</h2><p>${c.pillars.join('　')}<br>${esc(c.input.place)} · ${esc(c.input.timezone)} · ${clockName(c)}</p><div class="insight-grid"><div class="insight"><small>日主</small><strong>${c.dayMaster} · ${Z.polar(c.dayMaster)}${Z.element(c.dayMaster)}</strong></div><div class="insight"><small>普通扶抑工作判断</small><strong>${esc(vd.scoreSide)} · ${vd.score} 分</strong><em class="insight-sub">规则初筛：${esc(vd.ruleLabel)}${vd.conflict?' · 与分数相反':vd.undecided?' · 未定论':''}</em></div><div class="insight"><small>研读范围</small><strong>8步大运 · ${lucks.reduce((n,l)=>n+l.years.length,0)}个流年分段</strong></div></div><p class="micro-note">逐年条目含交运前后的部分立春年；同一年在两步运各显示其有效窗口。传统解释不是已核实人生事实。</p></section>${warningHTML(c)}${sections.map((s,i)=>reportCard(s,i,says)).join('')}${threeGatesHTML(c)}${eightLuckHTML(c,lucks)}<div class="analysis-cta"><div><h3>看到判断，也能复核为什么</h3><p>基础总表、旺衰四栏、婚姻事业财富健康六亲和应期专题均可单独学习。</p></div><a class="button primary" href="#learn/basics">打开基础与旺衰工具 →</a></div></div></div>`;
  }
  function noteParagraphs(n){return [['结构与根气',n.structure],['婚姻与关系',n.marriage],['事业与学习',n.career],['财运与财富层级',n.wealth],['健康',n.health],['子女与照顾责任',n.children],['父母与家庭支持',n.parents],['兄弟姐妹与同辈',n.siblings]].map(([t,p])=>`<div class="year-topic"><h4>${t}</h4><p>${esc(p)}</p></div>`).join('');}
  function eightLuckHTML(c,lucks){return `<section class="card luck-report-intro" id="report-eight-luck"><div class="eyebrow">EIGHT DECADES · YEAR BY YEAR</div><h2>八步大运与逐年研读</h2><p>只分析起运后的前八步。每运十年，所有起止均按${esc(c.input.timezone)}展示，结束时刻不含在本段内。流年以立春为界，交运年分段显示；不按公历元旦切运。</p><div class="actions"><button class="button" data-expand-lucks="open">展开八运</button><button class="button" data-expand-lucks="close">收起八运</button><button class="button" data-expand-years="open">展开全部流年正文</button><button class="button" data-expand-years="close">收起流年正文</button></div><form id="report-year-form" class="search-bar"><input id="report-year-query" aria-label="定位流年年份" type="number" min="${lucks[0].years[0].year}" max="${lucks.at(-1).years.at(-1).year}" placeholder="输入年份定位，如2026"><button class="button" type="submit">定位流年</button></form><p id="report-year-status" aria-live="polite" class="micro-note"></p></section>${lucks.map(l=>`<details class="card luck-report" id="luck-report-${l.number}" ${l.number===1?'open':''}><summary><span>第${l.number}步大运 <strong>${pairHTML(l.pillar,'report-pillar')}</strong></span><span>${l.year}起 · 约${l.age}周岁起</span></summary><div class="luck-report-body"><div class="fact-box"><strong>有效区间</strong><br>${esc(l.window)}<br><strong>新增关系</strong><br>${esc(R.relationText(l.relations))}</div><p class="micro-note">年龄为起运折算摘要，不能代替上方确切时刻。幼年阶段优先结合家庭和学习资料；成人关系、工作与财务均须实际资料。</p>${noteParagraphs(l.notes)}<h3>本运所含流年 · ${l.years.length}个时间分段</h3><p class="micro-note">点击每年展开具体的十神、关系、各议题和候选条件。</p><div class="year-list">${l.years.map(y=>`<details class="annual-report" data-year="${y.year}" id="annual-${l.number}-${y.year}"><summary><span><strong>${y.year} ${y.pillar}</strong> · ${y.detail.god}</span><span>${y.partial?'交运分段年':'完整立春年'}</span></summary><div class="annual-report-body"><div class="year-window">本运内有效窗口：${esc(y.window)}<br>整年立春边界：${esc(R.fullDate(y.yearStart,c.input.timezone))} 至 ${esc(R.fullDate(y.yearEnd,c.input.timezone))}前</div><p class="micro-note">为什么讨论这一年：流年${y.pillar[0]}为${y.detail.god}，流年支藏${y.detail.hidden.map(h=>h.stem+h.god).join('、')}；${esc(R.relationText(y.relations))}。</p>${y.overlap.length?`<p class="micro-note">其中涉及本运与流年：${esc(R.relationText(y.overlap))}。</p>`:''}${noteParagraphs(y.notes)}<p class="reflection">候选解释需原局、整运、该年及现实资料共同核对。本条不保证发生某事；请记录符合、不符、其他事件与未知。</p></div></details>`).join('')}</div></div></details>`).join('')}`;}
