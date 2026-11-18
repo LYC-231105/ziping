@@ -1,6 +1,6 @@
 {
- "version": "0.8.1",
- "createdAt": "2026-11-17T14:31:42Z",
+ "version": "0.9.5",
+ "createdAt": "2026-11-18T14:29:27Z",
  "scope": "网页交付文件完整性；不认证预测效果",
  "files": [
   {
@@ -10,13 +10,18 @@
   },
   {
    "path": ".gitignore",
-   "bytes": 501,
-   "sha256": "122e42ac17220c62a77b768de497ddcc700937e33556af0f2ad4e137280a34c1"
+   "bytes": 517,
+   "sha256": "2d0ef159887891ac785b134b582f4a3092fa065a2628618e8374656dabe4d1d5"
   },
   {
    "path": "AGENTS.md",
    "bytes": 2957,
    "sha256": "02041cff9f86fad822f45df3bd5dadd918451745b4bfc94005e9111c382997b6"
+  },
+  {
+   "path": "AI部署说明.md",
+   "bytes": 12524,
+   "sha256": "1e43d366e6332641fc07a4ee96df077302cfe339a01132698c636b83d034e864"
   },
   {
    "path": "README.md",
@@ -34,9 +39,19 @@
    "sha256": "88c24101f063680d02dea327234d6b9059f1288154fb2afecd6b16d8ac51b992"
   },
   {
+   "path": "ai.config.example.json",
+   "bytes": 901,
+   "sha256": "048ed9b0c554d4c98d7decd113a9252d40fae8cb439a3108ebb0411a157608cb"
+  },
+  {
+   "path": "ai.js",
+   "bytes": 29032,
+   "sha256": "f27ec27111d0999e517f9097eb667bf0aa8a5f1452e16a30270b3c3e508813db"
+  },
+  {
    "path": "app.js",
-   "bytes": 181430,
-   "sha256": "c19f6190e65750d2b6a5aec1acd5d29a2d3f3cdd6329a9c21e433cf0c5a0ea5f"
+   "bytes": 201170,
+   "sha256": "489b0b377b510e4ca1bf417de5d378e2423e0c61b07407d9b85d9ca8c30fdfc4"
   },
   {
    "path": "assets/seal.svg",
@@ -80,8 +95,8 @@
   },
   {
    "path": "case-map.js",
-   "bytes": 47438,
-   "sha256": "d37108052b965af7411b6185c94e875261cbc973b7c7f7fbb3275848233e0594"
+   "bytes": 47485,
+   "sha256": "31d27424eccfd3894eb3a4bb5c5154d67acb01a75098f7927f6a881afe5cc5ff"
   },
   {
    "path": "cases-deep.js",
@@ -90,8 +105,8 @@
   },
   {
    "path": "cases-more.js",
-   "bytes": 74297,
-   "sha256": "cda7470994620a8c105f4bea80ecf08badb60a32b8d639ca8092b82c5ecc21dc"
+   "bytes": 74376,
+   "sha256": "a57800f33c623af13609b7524d740694d76df21383276252642ac4b4bbf3822c"
   },
   {
    "path": "content.js",
@@ -99,9 +114,14 @@
    "sha256": "e3fe562df53b25ed5c9bfadd7c475173ee6998de885ede24823df887a8bc151b"
   },
   {
+   "path": "deep.js",
+   "bytes": 17273,
+   "sha256": "d1b4a9f44a0a2b5d6ba500f9dd01723548813df6e61cd73dc244a57d4ab2a700"
+  },
+  {
    "path": "engine.js",
-   "bytes": 17737,
-   "sha256": "b634fd4f439acdc7e6fe9a336c3fe2c2b055093fef4cc570f036653e78f5f381"
+   "bytes": 18312,
+   "sha256": "d2be3a7a559c6daceaf06de5f6a899066c957ff90cd3924bf77f737c68ddb2c4"
   },
   {
    "path": "extra.js",
@@ -115,8 +135,8 @@
   },
   {
    "path": "index.html",
-   "bytes": 3879,
-   "sha256": "0c679b8d4fc698317d55a655ba293aefac05c18aac94cb7bb648906e0cef4278"
+   "bytes": 4389,
+   "sha256": "e5c821d71fdbfe3fd803ed673d9edf0d4a6c7f5c535469d2a4d99e2dda0bc744"
   },
   {
    "path": "lessons-deep.js",
@@ -130,8 +150,8 @@
   },
   {
    "path": "package.json",
-   "bytes": 496,
-   "sha256": "cd76a5a993cb51697e4ac9602b2f3f03d436e0500deb157353fabb72a02723f2"
+   "bytes": 544,
+   "sha256": "30f4e6110ff0ab96934089abf45a5cba112e890caa49d64e59514d8839e6d11f"
   },
   {
    "path": "places.js",
@@ -190,13 +210,13 @@
   },
   {
    "path": "server.cjs",
-   "bytes": 4847,
-   "sha256": "09ed7bfa2bd90f7fb229c954ce3f402503029e562597304cc04cf4a3b1ebc4f4"
+   "bytes": 21320,
+   "sha256": "3bcf660f9eff62b320f17f59cde39d452702333dd1f4a8dc72e42025f0d897f6"
   },
   {
    "path": "styles.css",
-   "bytes": 68663,
-   "sha256": "f056909d6e5f258c14fede595bea7b39a0a2d05216e7cd8966ae575308bedb33"
+   "bytes": 91302,
+   "sha256": "ca424533a149633aff9d6c9b69d4471957d72d92dac3696786d73914ddafb7a8"
   },
   {
    "path": "tables.js",
@@ -236,7 +256,7 @@
   {
    "path": "tests/V03_详批与教学逻辑验收.json",
    "bytes": 7268,
-   "sha256": "2b8befa6fe1596684223cba6da5634e05d48b660c8957f3f3a3a9e9de7c5407a"
+   "sha256": "b1425747cb460537032ac299399bbbda1e806ffdd09d39061105dfdf5bb19c83"
   },
   {
    "path": "tests/accuracy.test.cjs",
@@ -244,9 +264,19 @@
    "sha256": "3fbb35aaa52c6c7842b6d7888ab402f0bce4d94af4985bbadbfca0f42114a17d"
   },
   {
+   "path": "tests/ai-proxy.test.cjs",
+   "bytes": 16689,
+   "sha256": "ec61c0b40ce08618fc299cfb60497bca5a31a38f64016e4ac5c301214cf6382d"
+  },
+  {
    "path": "tests/cases.test.cjs",
    "bytes": 5178,
    "sha256": "bfa57e8078249993176baec3c41b13d6d3d5926c95edc593c3dba8009cb40ce1"
+  },
+  {
+   "path": "tests/deep.test.cjs",
+   "bytes": 3829,
+   "sha256": "691a57bb198cf3939baf063de176ada88df2679e22c70053ac133323308e84ab"
   },
   {
    "path": "tests/engine.test.cjs",
@@ -291,17 +321,17 @@
   {
    "path": "tests/计算测试结果.json",
    "bytes": 1350,
-   "sha256": "96f6c1095774dcf7f66ab3b46397726a555fc05710be481b059828c14ad92441"
+   "sha256": "3e36e75d8f11f0ee27ba8245a0df772795ce3cdd3165870bb39f940879153791"
   },
   {
    "path": "tools/gen-case-map.cjs",
-   "bytes": 17656,
-   "sha256": "f6efa0e72af3a11bafa1e9a018ee13effd09f34131e87d8b92b24e4457380ab2"
+   "bytes": 17626,
+   "sha256": "e8e989eeba887a33d9763c64c447a05d24cb73f01a37f911b96a8e383770cc74"
   },
   {
    "path": "tools/gen-cases.cjs",
-   "bytes": 21197,
-   "sha256": "ea7b4a18e35edb058919a234dc25c779d0c4cdc7c9f26e72e3a6a112481e358f"
+   "bytes": 22121,
+   "sha256": "416d9dd752f0b64a91408c1d3166592212faaa9fc423bc1d583234052987e786"
   },
   {
    "path": "upload-github.ps1",
@@ -325,8 +355,8 @@
   },
   {
    "path": "使用说明.md",
-   "bytes": 14709,
-   "sha256": "d8c4e6c4a8ee6742f1f8b50eb2cb20461c13ca35dcc2048885988f62fdcb5ac8"
+   "bytes": 20334,
+   "sha256": "ba376d29841535b859be320a1d827141fcc6274930ca8da0b292c855ffd7189a"
   },
   {
    "path": "启动网页.cmd",
@@ -387,6 +417,36 @@
    "path": "更新说明_V0.8.1.md",
    "bytes": 2920,
    "sha256": "bd9130114306301aabc9dd7da3ad6499dc2289fa122efb0617baf33446091f56"
+  },
+  {
+   "path": "更新说明_V0.9.0.md",
+   "bytes": 6283,
+   "sha256": "ec214c17b28a58e6125815be7bfe1e83f079a206543a521c9686c810af2e74bb"
+  },
+  {
+   "path": "更新说明_V0.9.1.md",
+   "bytes": 5082,
+   "sha256": "c7d1c564e6d86c796f4aed56af01bc5f2133cac8e7456b0359e31783a26e3946"
+  },
+  {
+   "path": "更新说明_V0.9.2.md",
+   "bytes": 2933,
+   "sha256": "bd037b6081dcc4402ffff0cdb9c1fbb3435669b225da02109dcdd5b07a39d73a"
+  },
+  {
+   "path": "更新说明_V0.9.3.md",
+   "bytes": 4378,
+   "sha256": "06db48045d4ae7cbbcb5b6b2b38fd148c5380f296575c48719fd73a853e9ad47"
+  },
+  {
+   "path": "更新说明_V0.9.4.md",
+   "bytes": 3614,
+   "sha256": "4419be4cb81a84f4b91431740e263987a6c6f55dc0b24e40ab1dd9d9309f7b8a"
+  },
+  {
+   "path": "更新说明_V0.9.5.md",
+   "bytes": 3410,
+   "sha256": "d5bffd3021ea6799a8617cfeb57192ad23033d79141d21f1cc48a302c1bc4bbb"
   },
   {
    "path": "验收截图/01_排盘_桌面.png",

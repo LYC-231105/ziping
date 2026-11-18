@@ -168,7 +168,7 @@ function point(f, lid, i) {
       return [
         `${h}。此盘明面见${f.godsFace.join('、')}，其中${f.topGod}${f.topVal} 最重。`,
         `日主${f.dm}，明面${f.godsFace.join('、')}；${f.topGod}${f.topVal} 居首。${h}。`,
-        `${h}：${f.dm}日见 ${f.godsFace[0]}、${f.godsFace[1]}、${f.godsFace[2]}，先把相对关系摆正。`,
+        `${h}：${f.dm}日见${f.godsFace.join('、')}，先把相对关系摆正。`,
       ][v];
     case 'relation':
       return [

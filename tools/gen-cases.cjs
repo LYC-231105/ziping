@@ -187,20 +187,24 @@ function build(c) {
 }
 
 const seeds = [];
-// 确定性遍历：每 9 天取一个样本，时间轮换，性别交替，城市轮换
-let day = Date.UTC(1975, 0, 3);
-const end = Date.UTC(2005, 11, 20);
+// 确定性取样：1950—2008 年，步长 41 天（与月长互质，月支能散开），时间轮换、性别交替、城市轮换。
+// 取完再按哈希打散，避免各类案例都挤在最早的那几年。
+let day = Date.UTC(1950, 0, 3);
+const end = Date.UTC(2008, 11, 20);
 const times = ['02:40', '06:20', '09:50', '13:10', '17:30', '21:40'];
 let i = 0;
 while (day <= end && seeds.length < 40000) {
   const d = new Date(day), ds = `${d.getUTCFullYear()}-${String(d.getUTCMonth() + 1).padStart(2, '0')}-${String(d.getUTCDate()).padStart(2, '0')}`;
   seeds.push({ date: ds, time: times[i % times.length], gender: i % 2 ? 'female' : 'male', city: CITIES[i % CITIES.length] });
-  day += 9 * 86400000; i++;
+  day += 41 * 86400000; i++;
 }
+const hash = (s) => { let h = 2166136261; for (const ch of s) { h ^= ch.codePointAt(0); h = Math.imul(h, 16777619); } return h >>> 0; };
+seeds.sort((a, b) => hash(a.date + a.time + a.gender) - hash(b.date + b.time + b.gender));
 
 const out = [], used = new Set();
 for (const cat of CATS) {
   let n = 0;
+  const picked = [];
   for (const s of seeds) {
     if (n >= 5) break;
     const key = s.date + s.time + s.gender;
@@ -210,6 +214,12 @@ for (const cat of CATS) {
     let ok = false;
     try { ok = cat.pred(c); } catch { ok = false; }
     if (!ok) continue;
+    // 同类五盘要真不一样：日主+月支不重复，年柱最多出现两次，十年段不重复超过两次
+    const sig = c.dayMaster + c.pillars[1][1];
+    if (picked.some(p => p.sig === sig)) continue;
+    if (picked.filter(p => p.year === c.pillars[0]).length >= 2) continue;
+    if (picked.filter(p => p.decade === c.pillars[0][0] + Math.floor(Number(s.date.slice(0, 4)) / 10)).length >= 2) continue;
+    picked.push({ sig, year: c.pillars[0], decade: c.pillars[0][0] + Math.floor(Number(s.date.slice(0, 4)) / 10) });
     used.add(key);
     const k = build(c);
     const w = cat.write(c, k);
@@ -228,7 +238,7 @@ for (const cat of CATS) {
 
 const groups = CATS.map(cat => ({ key: cat.key, name: cat.name, ids: out.filter(x => x.cat === cat.key).map(x => x.id), lessons: cat.lessons }));
 const head = `/* 分类教学案例库（自动生成，勿手改数字）
-   来源：按目标结构在 1975—2005 年合法日期范围内检索得到，四柱与分数由引擎现算。
+   来源：按目标结构在 1950—2008 年合法日期范围内检索得到，四柱与分数由引擎现算。
    用途：每一类结构 5 盘，配套「判读示范／推理链／边界」三段解析；不是真实人物，不含生平事件。 */
 (() => {
   'use strict';
